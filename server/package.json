@@ -1,0 +1,30 @@
+{
+  "name": "passeios-turisticos-bba",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "keywords": [
+    "node",
+    "express",
+    "sequelize",
+    "postgres"
+  ],
+  "license": "MIT",
+  "main": "/src/app.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon ./src/app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "path": "^0.12.7",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.31.0",
+    "sequelize-cli": "^6.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
