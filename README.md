@@ -8,8 +8,8 @@ Sistema web feito para a disciplina do Projeto Integrador I dos cursos de Comput
 
 Neste repositório se encontram os diretórios
 
-- [server](), que contém o backend da aplicação;
-- [web](), contendo o frontend.
+- [server](https://github.com/alanabacco/passeios-turisticos-bba/tree/main/server), que contém o backend da aplicação;
+- [web](https://github.com/alanabacco/passeios-turisticos-bba/tree/main/web), contendo o frontend.
 
 ## Ferramentas e tecnologias utilizadas
 
@@ -22,4 +22,4 @@ Neste repositório se encontram os diretórios
 
 ### Frontend
 
-- [NextJS]()
+- [NextJS](https://nextjs.org/)

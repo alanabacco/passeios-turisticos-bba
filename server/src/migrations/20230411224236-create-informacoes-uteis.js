@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("guia_turistico", {
+    await queryInterface.createTable("informacoes_uteis", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,13 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       nome: {
-        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      descricao: {
+        type: Sequelize.STRING,
+      },
+      endereco: {
         type: Sequelize.STRING,
       },
       telefone: {
-        type: Sequelize.STRING,
-      },
-      tipos_turismo: {
         type: Sequelize.STRING,
       },
       createdAt: {
@@ -30,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("guia_turistico");
+    await queryInterface.dropTable("informacoes_uteis");
   },
 };

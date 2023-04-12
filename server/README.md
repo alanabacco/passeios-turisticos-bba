@@ -29,3 +29,16 @@ estará rodando na porta 3000.
 Obs.: é preciso fazer a conexão com o banco de dados em: ./src/config/config.json
 
 - Banco de dados utilizado neste projeto: [postgresql](https://www.postgresql.org/).
+
+<!--
+## Modelos de comandos úteis no projeto
+
+- npx sequelize-cli model:generate --name guia_turistico --attributes nome:string,telefone:integer,tipos_turismo:string
+
+- npx sequelize-cli db:migrate
+
+- npx sequelize-cli seed:generate --name demo-guia
+
+- npx sequelize-cli db:seed:all
+
+-->

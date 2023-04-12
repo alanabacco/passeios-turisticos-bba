@@ -2,22 +2,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("guia_turistico", {
+    await queryInterface.createTable("atracao_guia", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      nome: {
-        allowNull: false,
-        type: Sequelize.STRING,
+      atracao_turistica_id: {
+        type: Sequelize.INTEGER,
       },
-      telefone: {
-        type: Sequelize.STRING,
-      },
-      tipos_turismo: {
-        type: Sequelize.STRING,
+      guia_turistico_id: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
@@ -30,6 +26,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("guia_turistico");
+    await queryInterface.dropTable("atracao_guia");
   },
 };
