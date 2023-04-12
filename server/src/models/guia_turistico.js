@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   guia_turistico.init(
     {
       nome: DataTypes.STRING,
-      telefone: DataTypes.INTEGER,
+      telefone: DataTypes.STRING,
       tipos_turismo: DataTypes.STRING,
     },
     {

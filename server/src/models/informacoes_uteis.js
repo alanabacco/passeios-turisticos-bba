@@ -11,13 +11,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  informacoes -
-    uteis.init(
+  informacoes_uteis.init(
       {
         nome: DataTypes.STRING,
         descricao: DataTypes.STRING,
         endereco: DataTypes.STRING,
-        telefone: DataTypes.INTEGER,
+        telefone: DataTypes.STRING,
       },
       {
         sequelize,
