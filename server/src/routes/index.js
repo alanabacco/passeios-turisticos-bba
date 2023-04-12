@@ -7,12 +7,13 @@ const atracoesTuristicas = require("./atracoesTuristicasRoute");
 const usuarios = require("./usuariosRoute");
 
 module.exports = (app) => {
-  app.use(bodyParser.json());
-
-  app.use(guiasTuristicos);
-  app.use(restaurantes);
-  app.use(hospedagens);
-  app.use(informacoesUteis);
-  app.use(atracoesTuristicas);
-  app.use(usuarios);
+  app.use(
+    bodyParser.json(),
+    guiasTuristicos,
+    restaurantes,
+    hospedagens,
+    informacoesUteis,
+    atracoesTuristicas,
+    usuarios
+  );
 };
