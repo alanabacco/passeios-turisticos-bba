@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "usuarios",
       freezeTableName: true,
+      paranoid: true, // soft delete
     }
   );
   return usuarios;
