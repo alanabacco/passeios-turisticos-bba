@@ -1,7 +1,7 @@
 const database = require("../models");
 
 class AtracoesTuristicasController {
-  static async listaAtracoesTuristicas(req, res) {
+  static async listarAtracoesTuristicas(req, res) {
     try {
       const todasAsAtracoes = await database.atracoes_turisticas.findAll();
       return res.status(200).json(todasAsAtracoes);
@@ -10,7 +10,7 @@ class AtracoesTuristicasController {
     }
   }
 
-  static async criaAtracaoTuristica(req, res) {
+  static async criarAtracaoTuristica(req, res) {
     const novaAtracaoTuristica = req.body;
     try {
       const atracaoTuristicaCriada = await database.atracoes_turisticas.create(
@@ -22,7 +22,7 @@ class AtracoesTuristicasController {
     }
   }
 
-  static async atualizaAtracaoTuristica(req, res) {
+  static async atualizarAtracaoTuristica(req, res) {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
@@ -38,7 +38,7 @@ class AtracoesTuristicasController {
     }
   }
 
-  static async excluiAtracaoTuristica(req, res) {
+  static async excluirAtracaoTuristica(req, res) {
     const { id } = req.params;
     try {
       await database.atracoes_turisticas.destroy({ where: { id: Number(id) } });

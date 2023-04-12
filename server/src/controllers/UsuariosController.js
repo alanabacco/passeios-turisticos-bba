@@ -1,7 +1,7 @@
 const database = require("../models");
 
 class UsuariosController {
-  static async listaUsuarios(req, res) {
+  static async listarUsuarios(req, res) {
     try {
       const todosOsUsuarios = await database.usuarios.findAll();
       return res.status(200).json(todosOsUsuarios);
@@ -10,7 +10,7 @@ class UsuariosController {
     }
   }
 
-  static async criaUsuario(req, res) {
+  static async criarUsuario(req, res) {
     const novoUsuario = req.body;
     try {
       const usuarioCriado = await database.usuarios.create(novoUsuario);
@@ -20,7 +20,7 @@ class UsuariosController {
     }
   }
 
-  static async atualizaUsuario(req, res) {
+  static async atualizarUsuario(req, res) {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
@@ -34,7 +34,7 @@ class UsuariosController {
     }
   }
 
-  static async excluiUsuario(req, res) {
+  static async excluirUsuario(req, res) {
     const { id } = req.params;
     try {
       await database.usuarios.destroy({ where: { id: Number(id) } });

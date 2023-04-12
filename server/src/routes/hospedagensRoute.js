@@ -3,9 +3,9 @@ const HospedagensController = require("../controllers/HospedagensController");
 
 const router = Router();
 
-router.get("/hospedagens", HospedagensController.listaHospedagens);
-router.post("/hospedagens", HospedagensController.criaHospedagem);
-router.put("/hospedagens/:id", HospedagensController.atualizaHospedagem);
-router.delete("/hospedagens/:id", HospedagensController.excluiHospedagem);
+router.get("/hospedagens", HospedagensController.listarHospedagens);
+router.post("/hospedagens", HospedagensController.criarHospedagem);
+router.put("/hospedagens/:id", HospedagensController.atualizarHospedagem);
+router.delete("/hospedagens/:id", HospedagensController.excluirHospedagem);
 
 module.exports = router;

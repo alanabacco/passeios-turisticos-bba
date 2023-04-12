@@ -1,7 +1,7 @@
 const database = require("../models");
 
 class HospedagensController {
-  static async listaHospedagens(req, res) {
+  static async listarHospedagens(req, res) {
     try {
       const todasAsHospedagens = await database.hospedagens.findAll();
       return res.status(200).json(todasAsHospedagens);
@@ -10,7 +10,7 @@ class HospedagensController {
     }
   }
 
-  static async criaHospedagem(req, res) {
+  static async criarHospedagem(req, res) {
     const novaHospedagem = req.body;
     try {
       const hospedagemCriada = await database.hospedagens.create(novaHospedagem);
@@ -20,7 +20,7 @@ class HospedagensController {
     }
   }
 
-  static async atualizaHospedagem(req, res) {
+  static async atualizarHospedagem(req, res) {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
@@ -34,7 +34,7 @@ class HospedagensController {
     }
   }
 
-  static async excluiHospedagem(req, res) {
+  static async excluirHospedagem(req, res) {
     const { id } = req.params;
     try {
       await database.hospedagens.destroy({ where: { id: Number(id) } });

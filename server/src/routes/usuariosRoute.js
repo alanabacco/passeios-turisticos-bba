@@ -3,8 +3,8 @@ const UsuariosController = require("../controllers/UsuariosController");
 
 const router = Router();
 
-router.get("/usuarios", UsuariosController.listaUsuarios);
-router.post("/usuarios", UsuariosController.criaUsuario);
-router.put("/usuarios/:id", UsuariosController.atualizaUsuario);
+router.get("/usuarios", UsuariosController.listarUsuarios);
+router.post("/usuarios", UsuariosController.criarUsuario);
+router.put("/usuarios/:id", UsuariosController.atualizarUsuario);
 
 module.exports = router;

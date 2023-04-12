@@ -3,15 +3,15 @@ const AtracoesTuristicasController = require("../controllers/AtracoesTuristicasC
 
 const router = Router();
 
-router.get("/atracoes-turisticas", AtracoesTuristicasController.listaAtracoesTuristicas);
-router.post("/atracoes-turisticas", AtracoesTuristicasController.criaAtracaoTuristica);
+router.get("/atracoes-turisticas", AtracoesTuristicasController.listarAtracoesTuristicas);
+router.post("/atracoes-turisticas", AtracoesTuristicasController.criarAtracaoTuristica);
 router.put(
   "/atracoes-turisticas/:id",
-  AtracoesTuristicasController.atualizaAtracaoTuristica
+  AtracoesTuristicasController.atualizarAtracaoTuristica
 );
 router.delete(
   "/atracoes-turisticas/:id",
-  AtracoesTuristicasController.excluiAtracaoTuristica
+  AtracoesTuristicasController.excluirAtracaoTuristica
 );
 
 module.exports = router;

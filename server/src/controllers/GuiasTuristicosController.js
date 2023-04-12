@@ -1,7 +1,7 @@
 const database = require("../models");
 
 class GuiasTuristicosController {
-  static async listaGuias(req, res) {
+  static async listarGuias(req, res) {
     try {
       const todosOsGuias = await database.guias_turisticos.findAll();
       return res.status(200).json(todosOsGuias);
@@ -10,7 +10,7 @@ class GuiasTuristicosController {
     }
   }
 
-  static async listaGuiaPorId(req, res) {
+  static async listarGuiaPorId(req, res) {
     const { id } = req.params;
     try {
       const guia = await database.guias_turisticos.findOne({ where: { id: Number(id) } });
@@ -20,7 +20,7 @@ class GuiasTuristicosController {
     }
   }
 
-  static async criaGuia(req, res) {
+  static async criarGuia(req, res) {
     const novoGuia = req.body;
     try {
       const guiaCriado = await database.guias_turisticos.create(novoGuia);
@@ -30,7 +30,7 @@ class GuiasTuristicosController {
     }
   }
 
-  static async atualizaGuia(req, res) {
+  static async atualizarGuia(req, res) {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
@@ -44,7 +44,7 @@ class GuiasTuristicosController {
     }
   }
 
-  static async excluiGuia(req, res) {
+  static async excluirGuia(req, res) {
     const { id } = req.params;
     try {
       await database.guias_turisticos.destroy({ where: { id: Number(id) } });

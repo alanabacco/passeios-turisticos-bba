@@ -3,9 +3,9 @@ const RestaurantesController = require("../controllers/RestaurantesController");
 
 const router = Router();
 
-router.get("/restaurantes", RestaurantesController.listaRestaurantes);
-router.post("/restaurantes", RestaurantesController.criaRestaurante);
-router.put("/restaurantes/:id", RestaurantesController.atualizaRestaurante);
-router.delete("/restaurantes/:id", RestaurantesController.excluiRestaurante);
+router.get("/restaurantes", RestaurantesController.listarRestaurantes);
+router.post("/restaurantes", RestaurantesController.criarRestaurante);
+router.put("/restaurantes/:id", RestaurantesController.atualizarRestaurante);
+router.delete("/restaurantes/:id", RestaurantesController.excluirRestaurante);
 
 module.exports = router;

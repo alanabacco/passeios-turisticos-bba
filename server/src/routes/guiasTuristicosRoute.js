@@ -3,10 +3,10 @@ const GuiasTuristicosController = require("../controllers/GuiasTuristicosControl
 
 const router = Router();
 
-router.get("/guias-turisticos", GuiasTuristicosController.listaGuias);
-router.get("/guias-turisticos/:id", GuiasTuristicosController.listaGuiaPorId);
-router.post("/guias-turisticos", GuiasTuristicosController.criaGuia);
-router.put("/guias-turisticos/:id", GuiasTuristicosController.atualizaGuia);
-router.delete("/guias-turisticos/:id", GuiasTuristicosController.excluiGuia);
+router.get("/guias-turisticos", GuiasTuristicosController.listarGuiaPorId);
+router.get("/guias-turisticos/:id", GuiasTuristicosController.listarGuiaPorId);
+router.post("/guias-turisticos", GuiasTuristicosController.criarGuia);
+router.put("/guias-turisticos/:id", GuiasTuristicosController.atualizarGuia);
+router.delete("/guias-turisticos/:id", GuiasTuristicosController.excluirGuia);
 
 module.exports = router;

@@ -5,6 +5,7 @@ const hospedagens = require("./hospedagensRoute");
 const informacoesUteis = require("./informacoesUteisRoute");
 const atracoesTuristicas = require("./atracoesTuristicasRoute");
 const usuarios = require("./usuariosRoute");
+const eventos = require("./eventosRoute");
 
 module.exports = (app) => {
   app.use(
@@ -14,6 +15,7 @@ module.exports = (app) => {
     hospedagens,
     informacoesUteis,
     atracoesTuristicas,
-    usuarios
+    usuarios,
+    eventos
   );
 };

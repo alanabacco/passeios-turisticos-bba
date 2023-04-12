@@ -3,12 +3,15 @@ const InformacoesUteisController = require("../controllers/InformacoesUteisContr
 
 const router = Router();
 
-router.get("/informacoes-uteis", InformacoesUteisController.listaInformacoesUteis);
-router.post("/informacoes-uteis", InformacoesUteisController.criaInformacoesUteis);
-router.put("/informacoes-uteis/:id", InformacoesUteisController.atualizaInformacoesUteis);
+router.get("/informacoes-uteis", InformacoesUteisController.listarInformacoesUteis);
+router.post("/informacoes-uteis", InformacoesUteisController.criarInformacoesUteis);
+router.put(
+  "/informacoes-uteis/:id",
+  InformacoesUteisController.atualizarInformacoesUteis
+);
 router.delete(
   "/informacoes-uteis/:id",
-  InformacoesUteisController.excluiInformacoesUteis
+  InformacoesUteisController.excluirInformacoesUteis
 );
 
 module.exports = router;

@@ -41,4 +41,6 @@ Obs.: é preciso fazer a conexão com o banco de dados em: ./src/config/config.j
 
 - npx sequelize-cli db:seed:all
 
+- npx eslint ./src --fix
+
 -->

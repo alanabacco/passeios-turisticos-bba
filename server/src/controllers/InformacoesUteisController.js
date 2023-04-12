@@ -1,7 +1,7 @@
 const database = require("../models");
 
 class InformacoesUteisController {
-  static async listaInformacoesUteis(req, res) {
+  static async listarInformacoesUteis(req, res) {
     try {
       const todasInformacoes = await database.informacoes_uteis.findAll();
       return res.status(200).json(todasInformacoes);
@@ -10,7 +10,7 @@ class InformacoesUteisController {
     }
   }
 
-  static async criaInformacoesUteis(req, res) {
+  static async criarInformacoesUteis(req, res) {
     const novaInformacao = req.body;
     try {
       const InformacaoUtilCriada = await database.informacoes_uteis.create(
@@ -22,7 +22,7 @@ class InformacoesUteisController {
     }
   }
 
-  static async atualizaInformacoesUteis(req, res) {
+  static async atualizarInformacoesUteis(req, res) {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
@@ -38,7 +38,7 @@ class InformacoesUteisController {
     }
   }
 
-  static async excluiInformacoesUteis(req, res) {
+  static async excluirInformacoesUteis(req, res) {
     const { id } = req.params;
     try {
       await database.informacoes_uteis.destroy({ where: { id: Number(id) } });
