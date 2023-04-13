@@ -13,8 +13,24 @@ module.exports = (sequelize, DataTypes) => {
   }
   usuarios.init(
     {
-      nome: DataTypes.STRING,
-      senha: DataTypes.STRING,
+      nome: {
+        type: DataTypes.STRING,
+        validate: {
+          len: {
+            args: [2, 255],
+            msg: "O campo nome deve ter no mínimo 3 caracteres.",
+          },
+        },
+      },
+      senha: {
+        type: DataTypes.STRING,
+        validate: {
+          len: {
+            args: [6, 255],
+            msg: "O campo senha deve ter no mínimo 6 caracteres.",
+          },
+        },
+      },
     },
     {
       sequelize,
