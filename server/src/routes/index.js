@@ -6,6 +6,7 @@ const informacoesUteis = require("./informacoesUteisRoute");
 const atracoesTuristicas = require("./atracoesTuristicasRoute");
 const usuarios = require("./usuariosRoute");
 const eventos = require("./eventosRoute");
+const atracoesGuias = require("./atracoesGuiasRoute");
 
 module.exports = (app) => {
   app.use(
@@ -16,6 +17,7 @@ module.exports = (app) => {
     informacoesUteis,
     atracoesTuristicas,
     usuarios,
-    eventos
+    eventos,
+    atracoesGuias
   );
 };
