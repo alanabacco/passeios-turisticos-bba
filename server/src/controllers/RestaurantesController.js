@@ -1,9 +1,10 @@
-const database = require("../models");
+const { RestaurantesServices } = require("../services");
+const restaurantesServices = new RestaurantesServices();
 
 class RestaurantesController {
   static async listarRestaurantes(req, res) {
     try {
-      const todosOsRestaurantes = await database.restaurantes.findAll();
+      const todosOsRestaurantes = await restaurantesServices.listarRegistros();
       return res.status(200).json(todosOsRestaurantes);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -13,7 +14,7 @@ class RestaurantesController {
   static async criarRestaurante(req, res) {
     const novoRestaurante = req.body;
     try {
-      const restauranteCriado = await database.restaurantes.create(novoRestaurante);
+      const restauranteCriado = await restaurantesServices.criarRegistro(novoRestaurante);
       return res.status(201).json(restauranteCriado);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -24,10 +25,8 @@ class RestaurantesController {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
-      await database.restaurantes.update(atualizacoes, { where: { id: Number(id) } });
-      const restauranteAtualizado = await database.restaurantes.findOne({
-        where: { id: Number(id) },
-      });
+      await restaurantesServices.atualizarRegistro(atualizacoes, id);
+      const restauranteAtualizado = await restaurantesServices.listarRegistroPorId(id);
       return res.status(200).json(restauranteAtualizado);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -37,7 +36,7 @@ class RestaurantesController {
   static async excluirRestaurante(req, res) {
     const { id } = req.params;
     try {
-      await database.restaurantes.destroy({ where: { id: Number(id) } });
+      await restaurantesServices.excluirRegistro(id);
       return res.status(200).json({ message: `id ${id} excluído.` });
     } catch (error) {
       return res.status(500).json(error.message);

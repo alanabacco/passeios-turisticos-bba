@@ -1,9 +1,10 @@
-const database = require("../models");
+const { HospedagensServices } = require("../services");
+const hospedagensServices = new HospedagensServices();
 
 class HospedagensController {
   static async listarHospedagens(req, res) {
     try {
-      const todasAsHospedagens = await database.hospedagens.findAll();
+      const todasAsHospedagens = await hospedagensServices.listarRegistros();
       return res.status(200).json(todasAsHospedagens);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -13,7 +14,7 @@ class HospedagensController {
   static async criarHospedagem(req, res) {
     const novaHospedagem = req.body;
     try {
-      const hospedagemCriada = await database.hospedagens.create(novaHospedagem);
+      const hospedagemCriada = await hospedagensServices.criarRegistro(novaHospedagem);
       return res.status(201).json(hospedagemCriada);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -24,10 +25,8 @@ class HospedagensController {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
-      await database.hospedagens.update(atualizacoes, { where: { id: Number(id) } });
-      const hospedagemAtualizada = await database.hospedagens.findOne({
-        where: { id: Number(id) },
-      });
+      await hospedagensServices.atualizarRegistro(atualizacoes, id);
+      const hospedagemAtualizada = await hospedagensServices.listarRegistroPorId(id);
       return res.status(200).json(hospedagemAtualizada);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -37,7 +36,7 @@ class HospedagensController {
   static async excluirHospedagem(req, res) {
     const { id } = req.params;
     try {
-      await database.hospedagens.destroy({ where: { id: Number(id) } });
+      await hospedagensServices.excluirRegistro(id);
       return res.status(200).json({ message: `id ${id} excluído.` });
     } catch (error) {
       return res.status(500).json(error.message);

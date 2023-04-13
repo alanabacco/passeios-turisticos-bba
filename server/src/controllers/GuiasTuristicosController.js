@@ -1,9 +1,10 @@
-const database = require("../models");
+const { GuiasTuristicosServices } = require("../services");
+const guiasTuristicosServices = new GuiasTuristicosServices();
 
 class GuiasTuristicosController {
   static async listarGuias(req, res) {
     try {
-      const todosOsGuias = await database.guias_turisticos.findAll();
+      const todosOsGuias = await guiasTuristicosServices.listarRegistros();
       return res.status(200).json(todosOsGuias);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -13,7 +14,7 @@ class GuiasTuristicosController {
   static async listarGuiaPorId(req, res) {
     const { id } = req.params;
     try {
-      const guia = await database.guias_turisticos.findOne({ where: { id: Number(id) } });
+      const guia = await guiasTuristicosServices.listarRegistroPorId(id);
       return res.status(200).json(guia);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -23,7 +24,7 @@ class GuiasTuristicosController {
   static async criarGuia(req, res) {
     const novoGuia = req.body;
     try {
-      const guiaCriado = await database.guias_turisticos.create(novoGuia);
+      const guiaCriado = await guiasTuristicosServices.criarRegistro(novoGuia);
       return res.status(201).json(guiaCriado);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -34,10 +35,8 @@ class GuiasTuristicosController {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
-      await database.guias_turisticos.update(atualizacoes, { where: { id: Number(id) } });
-      const guiaAtualizado = await database.guias_turisticos.findOne({
-        where: { id: Number(id) },
-      });
+      await guiasTuristicosServices.atualizarRegistro(atualizacoes, id);
+      const guiaAtualizado = await guiasTuristicosServices.listarRegistroPorId(id);
       return res.status(200).json(guiaAtualizado);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -47,7 +46,7 @@ class GuiasTuristicosController {
   static async excluirGuia(req, res) {
     const { id } = req.params;
     try {
-      await database.guias_turisticos.destroy({ where: { id: Number(id) } });
+      await guiasTuristicosServices.excluirRegistro(id);
       return res.status(200).json({ message: `id ${id} excluído.` });
     } catch (error) {
       return res.status(500).json(error.message);

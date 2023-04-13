@@ -1,9 +1,10 @@
-const database = require("../models");
+const { AtracoesTuristicasServices } = require("../services");
+const atracoesTuristicasServices = new AtracoesTuristicasServices();
 
 class AtracoesTuristicasController {
   static async listarAtracoesTuristicas(req, res) {
     try {
-      const todasAsAtracoes = await database.atracoes_turisticas.findAll();
+      const todasAsAtracoes = await atracoesTuristicasServices.listarRegistros();
       return res.status(200).json(todasAsAtracoes);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -13,7 +14,7 @@ class AtracoesTuristicasController {
   static async criarAtracaoTuristica(req, res) {
     const novaAtracaoTuristica = req.body;
     try {
-      const atracaoTuristicaCriada = await database.atracoes_turisticas.create(
+      const atracaoTuristicaCriada = await atracoesTuristicasServices.criarRegistro(
         novaAtracaoTuristica
       );
       return res.status(201).json(atracaoTuristicaCriada);
@@ -26,12 +27,9 @@ class AtracoesTuristicasController {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
-      await database.atracoes_turisticas.update(atualizacoes, {
-        where: { id: Number(id) },
-      });
-      const atracaoTuristicaAtualizada = await database.atracoes_turisticas.findOne({
-        where: { id: Number(id) },
-      });
+      await atracoesTuristicasServices.atualizarRegistro(atualizacoes, id);
+      const atracaoTuristicaAtualizada =
+        await atracoesTuristicasServices.listarRegistroPorId(id);
       return res.status(200).json(atracaoTuristicaAtualizada);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -41,7 +39,7 @@ class AtracoesTuristicasController {
   static async excluirAtracaoTuristica(req, res) {
     const { id } = req.params;
     try {
-      await database.atracoes_turisticas.destroy({ where: { id: Number(id) } });
+      await atracoesTuristicasServices.excluirRegistro(id);
       return res.status(200).json({ message: `id ${id} excluído.` });
     } catch (error) {
       return res.status(500).json(error.message);
