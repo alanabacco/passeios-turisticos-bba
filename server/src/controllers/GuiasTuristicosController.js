@@ -1,55 +1,71 @@
+const NaoEncontrado = require("../errors/NaoEncontrado");
 const { GuiasTuristicosServices } = require("../services");
 const guiasTuristicosServices = new GuiasTuristicosServices();
 
 class GuiasTuristicosController {
-  static async listarGuias(req, res) {
+  static async listarGuias(req, res, next) {
     try {
       const todosOsGuias = await guiasTuristicosServices.listarRegistros();
       return res.status(200).json(todosOsGuias);
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async listarGuiaPorId(req, res) {
+  static async listarGuiaPorId(req, res, next) {
     const { id } = req.params;
     try {
       const guia = await guiasTuristicosServices.listarRegistroPorId(id);
-      return res.status(200).json(guia);
+      if (guia !== null) {
+        return res.status(200).json(guia);
+      } else {
+        next(new NaoEncontrado("Id de guia turístico não encontrado."));
+      }
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async criarGuia(req, res) {
+  static async criarGuia(req, res, next) {
     const novoGuia = req.body;
     try {
       const guiaCriado = await guiasTuristicosServices.criarRegistro(novoGuia);
       return res.status(201).json(guiaCriado);
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async atualizarGuia(req, res) {
+  static async atualizarGuia(req, res, next) {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
       await guiasTuristicosServices.atualizarRegistro(atualizacoes, id);
       const guiaAtualizado = await guiasTuristicosServices.listarRegistroPorId(id);
-      return res.status(200).json(guiaAtualizado);
+
+      if (guiaAtualizado !== null) {
+        res.status(200).json(guiaAtualizado);
+      } else {
+        next(new NaoEncontrado("Id de guia turístico não encontrado."));
+      }
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async excluirGuia(req, res) {
+  static async excluirGuia(req, res, next) {
     const { id } = req.params;
     try {
-      await guiasTuristicosServices.excluirRegistro(id);
-      return res.status(200).json({ message: `id ${id} excluído.` });
+      const guiaPorId = await guiasTuristicosServices.listarRegistroPorId(id);
+
+      if (guiaPorId !== null) {
+        await guiasTuristicosServices.excluirRegistro(id);
+        return res.status(200).json({ message: `id ${id} excluído.` });
+      } else {
+        next(new NaoEncontrado("Id de guia turístico não encontrado."));
+      }
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 }

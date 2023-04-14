@@ -13,7 +13,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   eventos.init(
     {
-      nome: DataTypes.STRING,
+      nome: {
+        type: DataTypes.STRING,
+        validate: {
+          len: {
+            args: [2, 255],
+            msg: "O campo nome deve ter no mínimo 3 caracteres.",
+          },
+        },
+      },
       descricao: DataTypes.STRING,
       endereco: DataTypes.STRING,
       data_inicio: DataTypes.DATEONLY,

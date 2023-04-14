@@ -1,17 +1,18 @@
+const NaoEncontrado = require("../errors/NaoEncontrado");
 const { InformacoesUteisServices } = require("../services");
 const informacoesUteisServices = new InformacoesUteisServices();
 
 class InformacoesUteisController {
-  static async listarInformacoesUteis(req, res) {
+  static async listarInformacoesUteis(req, res, next) {
     try {
       const todasInformacoes = await informacoesUteisServices.listarRegistros();
       return res.status(200).json(todasInformacoes);
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async criarInformacoesUteis(req, res) {
+  static async criarInformacoesUteis(req, res, next) {
     const novaInformacao = req.body;
     try {
       const InformacaoUtilCriada = await informacoesUteisServices.criarRegistro(
@@ -19,29 +20,40 @@ class InformacoesUteisController {
       );
       return res.status(201).json(InformacaoUtilCriada);
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async atualizarInformacoesUteis(req, res) {
+  static async atualizarInformacoesUteis(req, res, next) {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
       await informacoesUteisServices.atualizarRegistro(atualizacoes, id);
       const informacaoAtualizada = await informacoesUteisServices.listarRegistroPorId(id);
-      return res.status(200).json(informacaoAtualizada);
+
+      if (informacaoAtualizada !== null) {
+        res.status(200).json(informacaoAtualizada);
+      } else {
+        next(new NaoEncontrado("Id de informações úteis não encontrado."));
+      }
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async excluirInformacoesUteis(req, res) {
+  static async excluirInformacoesUteis(req, res, next) {
     const { id } = req.params;
     try {
-      await informacoesUteisServices.excluirRegistro(id);
-      return res.status(200).json({ message: `id ${id} excluído.` });
+      const informacoesUteisId = await informacoesUteisServices.listarRegistroPorId(id);
+
+      if (informacoesUteisId !== null) {
+        await informacoesUteisServices.excluirRegistro(id);
+        return res.status(200).json({ message: `id ${id} excluído.` });
+      } else {
+        next(new NaoEncontrado("Id de informações úteis não encontrado."));
+      }
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 }

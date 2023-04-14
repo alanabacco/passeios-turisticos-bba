@@ -1,45 +1,57 @@
+const NaoEncontrado = require("../errors/NaoEncontrado");
 const { HospedagensServices } = require("../services");
 const hospedagensServices = new HospedagensServices();
 
 class HospedagensController {
-  static async listarHospedagens(req, res) {
+  static async listarHospedagens(req, res, next) {
     try {
       const todasAsHospedagens = await hospedagensServices.listarRegistros();
       return res.status(200).json(todasAsHospedagens);
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async criarHospedagem(req, res) {
+  static async criarHospedagem(req, res, next) {
     const novaHospedagem = req.body;
     try {
       const hospedagemCriada = await hospedagensServices.criarRegistro(novaHospedagem);
       return res.status(201).json(hospedagemCriada);
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async atualizarHospedagem(req, res) {
+  static async atualizarHospedagem(req, res, next) {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
       await hospedagensServices.atualizarRegistro(atualizacoes, id);
       const hospedagemAtualizada = await hospedagensServices.listarRegistroPorId(id);
-      return res.status(200).json(hospedagemAtualizada);
+
+      if (hospedagemAtualizada !== null) {
+        res.status(200).json(hospedagemAtualizada);
+      } else {
+        next(new NaoEncontrado("Id de hospedagem não encontrado."));
+      }
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async excluirHospedagem(req, res) {
+  static async excluirHospedagem(req, res, next) {
     const { id } = req.params;
     try {
-      await hospedagensServices.excluirRegistro(id);
-      return res.status(200).json({ message: `id ${id} excluído.` });
+      const hospedagemId = await hospedagensServices.listarRegistroPorId(id);
+
+      if (hospedagemId !== null) {
+        await hospedagensServices.excluirRegistro(id);
+        return res.status(200).json({ message: `id ${id} excluído.` });
+      } else {
+        next(new NaoEncontrado("Id de hospedagem não encontrado."));
+      }
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 }

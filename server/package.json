@@ -13,7 +13,9 @@
   "main": "/src/app.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon ./src/app.js"
+    "dev": "nodemon ./src/app.js",
+    "migrate": "npx sequelize-cli db:migrate",
+    "seed": "npx sequelize-cli db:seed:all"
   },
   "dependencies": {
     "body-parser": "^1.20.2",

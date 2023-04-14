@@ -13,7 +13,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   restaurantes.init(
     {
-      nome: DataTypes.STRING,
+      nome: {
+        type: DataTypes.STRING,
+        validate: {
+          len: {
+            args: [2, 255],
+            msg: "O campo nome deve ter no mínimo 3 caracteres.",
+          },
+        },
+      },
       descricao: DataTypes.STRING,
       endereco: DataTypes.STRING,
       telefone: DataTypes.STRING,

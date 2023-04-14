@@ -17,7 +17,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   guias_turisticos.init(
     {
-      nome: DataTypes.STRING,
+      nome: {
+        type: DataTypes.STRING,
+        validate: {
+          len: {
+            args: [2, 255],
+            msg: "O campo nome deve ter no mínimo 3 caracteres.",
+          },
+        },
+      },
       telefone: DataTypes.STRING,
       tipos_turismo: DataTypes.STRING,
     },

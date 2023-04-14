@@ -1,17 +1,18 @@
+const NaoEncontrado = require("../errors/NaoEncontrado");
 const { AtracoesTuristicasServices } = require("../services");
 const atracoesTuristicasServices = new AtracoesTuristicasServices();
 
 class AtracoesTuristicasController {
-  static async listarAtracoesTuristicas(req, res) {
+  static async listarAtracoesTuristicas(req, res, next) {
     try {
       const todasAsAtracoes = await atracoesTuristicasServices.listarRegistros();
       return res.status(200).json(todasAsAtracoes);
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async criarAtracaoTuristica(req, res) {
+  static async criarAtracaoTuristica(req, res, next) {
     const novaAtracaoTuristica = req.body;
     try {
       const atracaoTuristicaCriada = await atracoesTuristicasServices.criarRegistro(
@@ -19,30 +20,43 @@ class AtracoesTuristicasController {
       );
       return res.status(201).json(atracaoTuristicaCriada);
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async atualizarAtracaoTuristica(req, res) {
+  static async atualizarAtracaoTuristica(req, res, next) {
     const { id } = req.params;
     const atualizacoes = req.body;
     try {
       await atracoesTuristicasServices.atualizarRegistro(atualizacoes, id);
       const atracaoTuristicaAtualizada =
         await atracoesTuristicasServices.listarRegistroPorId(id);
-      return res.status(200).json(atracaoTuristicaAtualizada);
+
+      if (atracaoTuristicaAtualizada !== null) {
+        return res.status(200).json(atracaoTuristicaAtualizada);
+      } else {
+        next(new NaoEncontrado("Id de atração turística não encontrado."));
+      }
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 
-  static async excluirAtracaoTuristica(req, res) {
+  static async excluirAtracaoTuristica(req, res, next) {
     const { id } = req.params;
     try {
-      await atracoesTuristicasServices.excluirRegistro(id);
-      return res.status(200).json({ message: `id ${id} excluído.` });
+      const atracaoTuristicaPorId = await atracoesTuristicasServices.listarRegistroPorId(
+        id
+      );
+
+      if (atracaoTuristicaPorId !== null) {
+        await atracoesTuristicasServices.excluirRegistro(id);
+        return res.status(200).json({ message: `id ${id} excluído.` });
+      } else {
+        next(new NaoEncontrado("Id de atração turística não encontrado."));
+      }
     } catch (error) {
-      return res.status(500).json(error.message);
+      next(error);
     }
   }
 }
