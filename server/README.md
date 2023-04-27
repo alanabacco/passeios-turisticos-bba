@@ -24,7 +24,7 @@ npm install
 npm run dev
 ```
 
-estará rodando na porta 3000.
+estará rodando na porta 8080.
 
 Obs.: é preciso fazer a conexão com o banco de dados em: ./src/config/config.json
 
