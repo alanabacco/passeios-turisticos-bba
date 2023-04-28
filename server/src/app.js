@@ -13,6 +13,7 @@ routes(app);
 app.use(
   cors({
     origin: "http://localhost:3000",
+    allowedHeaders: "Content-Type",
   })
 );
 app.use(manipulador404);
