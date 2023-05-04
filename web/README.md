@@ -8,8 +8,8 @@ Sistema web feito para a disciplina do Projeto Integrador I dos cursos de Comput
 
 ## Ferramentas e tecnologias utilizadas
 
-- [NextJS](https://nextjs.org/)
 - [React](https://react.dev/)
+- [NextJS](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 
 ## Como executar o projeto localmente

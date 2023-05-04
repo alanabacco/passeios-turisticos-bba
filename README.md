@@ -15,11 +15,13 @@ Neste repositório se encontram os diretórios
 
 ### Backend
 
-- [NodeJS](https://nodejs.org/)
-- [Express](https://expressjs.com/)
-- [Sequelize](https://sequelize.org/)
-- [postgresql](https://www.postgresql.org/) para o banco de dados
+- [NodeJS](https://nodejs.org/) - ambiente de execução Javascrip
+- [Express](https://expressjs.com/) - framework para Node.js
+- [Sequelize](https://sequelize.org/) - ORM (Object-Relational Mapper) para Node.js
+- [postgresql](https://www.postgresql.org/) - ferramenta de sistema de gerenciamento de bancos de dados
 
 ### Frontend
 
-- [NextJS](https://nextjs.org/)
+- [React](https://react.dev/) - biblioteca de código aberto para interfaces gráficas
+- [NextJS](https://nextjs.org/) - framework para React
+- [TypeScript](https://www.typescriptlang.org/) - superset de javascript que adiciona recursos à linguagem
