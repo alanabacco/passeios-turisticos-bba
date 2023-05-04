@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%; /* 10px */
+}
+
+body {
+  font-size: 1.6rem; /* 16px */
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  color: #b80b0b;
+  background: #fbfbfb;
+}
+
+a {
+  color: inherit;
+}
+
+/* SCROLL BAR */
+
+body::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 8rem;
+}
+
+/* ul {
+  list-style: none;
+} */

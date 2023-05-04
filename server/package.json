@@ -12,6 +12,10 @@
   "license": "MIT",
   "main": "/src/app.js",
   "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanabacco/passeios-turisticos-bba"
+  },
   "scripts": {
     "dev": "nodemon ./src/app.js",
     "migrate": "npx sequelize-cli db:migrate",

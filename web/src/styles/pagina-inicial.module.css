@@ -1,0 +1,38 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+
+  margin: auto;
+
+  max-width: 100rem;
+  min-height: calc(100vh - 9.7rem); /* (altura pág - altura footer) */
+  padding: 3.2rem;
+}
+
+.introSection {
+  text-align: center;
+  display: grid;
+  gap: 3.2rem;
+}
+
+.tituloPagina {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 3.2rem;
+}
+
+.linksBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1.6rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #fbfbfb;
+  background-color: #b80b0b;
+  border-radius: 0.8rem;
+  padding: 2.4rem;
+  text-align: center;
+}

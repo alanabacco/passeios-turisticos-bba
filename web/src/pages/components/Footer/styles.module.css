@@ -1,0 +1,22 @@
+.appFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+
+  color: #fbfbfb;
+  background-color: #b80b0b;
+  padding: 1.6rem;
+
+  bottom: 0px;
+}
+
+.footerTitle {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.footerLink {
+  font-size: 1.2rem;
+}

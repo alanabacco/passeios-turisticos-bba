@@ -8,6 +8,11 @@
     "React",
     "TypeScript"
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanabacco/passeios-turisticos-bba"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
