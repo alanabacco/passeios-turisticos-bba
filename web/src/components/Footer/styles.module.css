@@ -4,15 +4,13 @@
   align-items: center;
   gap: 0.8rem;
 
-  color: #fbfbfb;
-  background-color: #b80b0b;
+  color: var(--white);
+  background-color: var(--red);
   padding: 1.6rem;
-
-  bottom: 0px;
 }
 
 .footerTitle {
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: var(--font-montserrat_alternates);
   font-size: 1.6rem;
   text-align: center;
 }

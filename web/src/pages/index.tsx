@@ -1,18 +1,19 @@
 import Link from "next/link";
 import Head from "../utils/Head";
-import Footer from "./components/Footer";
+import Footer from "../components/Footer";
 import styles from "../styles/pagina-inicial.module.css";
+import comumStyles from "../styles/comum.module.css";
 
 export default function PaginaInicial() {
   return (
     <>
       <Head title="Página Inicial | Passeios Turísticos de Borborema" />
-      <main className={styles.mainContainer}>
-        <section className={styles.introSection}>
-          <h1 className={styles.tituloPagina}>
+      <main className={comumStyles.mainContainer}>
+        <section className={comumStyles.introSection}>
+          <h1 className={comumStyles.introTitulo}>
             Trilhas e Passeios <br /> Turísticos de Borborema
           </h1>
-          <p>
+          <p className={comumStyles.introDescricao}>
             Boas vindas ao Trilha e Passeios Turísticos de Borborema, o lugar perfeito
             para descobrir tudo sobre turismo na cidade. Oferecemos diversas informações
             úteis para te ajudar a explorar os melhores pontos turísticos e experiências
@@ -22,19 +23,19 @@ export default function PaginaInicial() {
 
         <section>
           <nav className={styles.linksBox}>
-            <Link className={styles.link} href="/eventos-cidade">
+            <Link className={styles.link} href="catalogo/eventos-cidade">
               Eventos na cidade
             </Link>
-            <Link className={styles.link} href="/atracoes-turisticas">
+            <Link className={styles.link} href="catalogo/atracoes-turisticas">
               Atrações turísticas
             </Link>
-            <Link className={styles.link} href="/guias-turisticos">
+            <Link className={styles.link} href="catalogo/guias-turisticos">
               Guias turíticos
             </Link>
-            <Link className={styles.link} href="/restaurantes">
+            <Link className={styles.link} href="catalogo/restaurantes">
               Restaurantes
             </Link>
-            <Link className={styles.link} href="/hospedasgens">
+            <Link className={styles.link} href="catalogo/hospedasgens">
               Hospedagem
             </Link>
             <Link
@@ -51,7 +52,7 @@ export default function PaginaInicial() {
             >
               Dados do município
             </Link>
-            <Link className={styles.link} href="/informacoes-uteis">
+            <Link className={styles.link} href="catalogo/informacoes-uteis">
               Outras informações úteis
             </Link>
           </nav>

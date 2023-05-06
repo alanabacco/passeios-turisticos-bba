@@ -1,0 +1,32 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+
+  margin: auto;
+
+  max-width: 100rem;
+  min-height: calc(100vh - 9.7rem); /* (altura pág - altura footer) */
+  padding: 3.2rem 8rem;
+}
+
+.introSection {
+  text-align: center;
+  display: grid;
+  gap: 3.2rem;
+}
+
+.introTitulo {
+  font-family: var(--font-montserrat_alternates);
+  font-size: 3.2rem;
+}
+
+.introDescricao {
+  line-height: 2.4rem;
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    padding: 3.2rem;
+  }
+}

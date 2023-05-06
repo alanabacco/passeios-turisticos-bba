@@ -1,0 +1,44 @@
+.formContainer {
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px #aaa;
+  margin: 0 auto;
+  max-width: 50rem;
+  padding: 5.6rem;
+  display: grid;
+  gap: 1.6rem;
+}
+
+.info {
+  font-size: 1.4rem;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.input {
+  height: 32px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.botaoCancelar,
+.botaoCadastrar {
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.botaoCadastrar {
+  color: var(--white);
+  font-weight: 600;
+  background-color: var(--red);
+}
