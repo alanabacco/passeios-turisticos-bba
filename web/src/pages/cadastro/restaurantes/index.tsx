@@ -3,6 +3,7 @@
 import Link from "next/link";
 import comumStyles from "../../../styles/comum.module.css";
 import styles from "./styles.module.css";
+import Footer from "@/pages/components/Footer";
 
 export default function CadastroRestaurante() {
   return (
@@ -19,7 +20,7 @@ export default function CadastroRestaurante() {
           <p className={styles.info}>Campos com * são obrigatórios.</p>
           <div className={styles.inputContainer}>
             <label htmlFor="nome" className={styles.label}>
-              Nome:*{" "}
+              Nome*
             </label>
             <input
               type="text"
@@ -32,18 +33,18 @@ export default function CadastroRestaurante() {
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="descricao" className={styles.label}>
-              Descrição:{" "}
+              Descrição
             </label>
             <textarea
               id="descricao"
               name="descricao"
               placeholder="Digite a descrição"
-              className={styles.input}
+              className={`${styles.input} ${styles.textarea}`}
             />
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="telefone" className={styles.label}>
-              Telefone:{" "}
+              Telefone
             </label>
             <input
               type="text"
@@ -55,7 +56,7 @@ export default function CadastroRestaurante() {
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="endereco" className={styles.label}>
-              Endereço:{" "}
+              Endereço
             </label>
             <input
               type="text"
@@ -74,6 +75,7 @@ export default function CadastroRestaurante() {
           </div>
         </form>
       </section>
+      <Footer />
     </>
   );
 }

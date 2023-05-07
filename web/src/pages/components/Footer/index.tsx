@@ -4,7 +4,9 @@ import styles from "./styles.module.css";
 export default function Footer(): JSX.Element {
   return (
     <footer className={styles.appFooter}>
-      <h2 className={styles.footerTitle}>Trilhas e Passeios Turísticos de Borborema</h2>
+      <h2 className={styles.footerTitle}>
+        <Link href="/">Trilhas e Passeios Turísticos de Borborema</Link>
+      </h2>
       <Link
         href="https://www.borborema.sp.gov.br"
         target="_blank"

@@ -1,4 +1,4 @@
-import Footer from "../../../components/Footer";
+import Footer from "../../components/Footer";
 import styles from "./styles.module.css";
 import comumStyles from "../../../styles/comum.module.css";
 

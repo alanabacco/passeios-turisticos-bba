@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Head from "../utils/Head";
-import Footer from "../components/Footer";
+import Footer from "./components/Footer";
 import styles from "../styles/pagina-inicial.module.css";
 import comumStyles from "../styles/comum.module.css";
 

@@ -18,6 +18,5 @@
 
 .link:hover {
   transform: scale(1.02);
-  /* opacity: 0.95; */
   background-color: #aa0b0b;
 }

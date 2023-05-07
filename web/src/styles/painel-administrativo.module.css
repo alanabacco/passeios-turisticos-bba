@@ -1,0 +1,11 @@
+.loginLogout {
+  border: 1px solid var(--red);
+  border-radius: 0.8rem;
+  padding: 1.6rem 2.4rem;
+  width: fit-content;
+  margin: 0 auto 1.6rem;
+}
+
+.loginLogout:hover {
+  transform: scale(1.01);
+}
