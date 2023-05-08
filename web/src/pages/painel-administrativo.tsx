@@ -8,7 +8,7 @@ import painelAdministrativoStyle from "../styles/painel-administrativo.module.cs
 export default function PainelAdministrativo() {
   return (
     <>
-      <Head title="Página Inicial | Passeios Turísticos de Borborema" />
+      <Head title="Painel Administrativo | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Painel administrativo</h1>
@@ -18,32 +18,32 @@ export default function PainelAdministrativo() {
           </p>
         </section>
 
-        <Link href="/entrar" className={painelAdministrativoStyle.loginLogout}>
+        <Link href="/login" className={painelAdministrativoStyle.loginLogout}>
           Entrar com usuário e senha
         </Link>
 
-        <Link href="/sair" className={painelAdministrativoStyle.loginLogout}>
+        <Link href="/logout" className={painelAdministrativoStyle.loginLogout}>
           Sair
         </Link>
 
         <section>
           <nav className={paginaInicialStyle.linksBox}>
-            <Link className={paginaInicialStyle.link} href="cadastro/eventos-cidade">
+            <Link className={paginaInicialStyle.link} href="cadastrar/evento-cidade">
               Cadastrar Evento na Cidade
             </Link>
-            <Link className={paginaInicialStyle.link} href="cadastro/atracoes-turisticas">
+            <Link className={paginaInicialStyle.link} href="cadastrar/atracao-turistica">
               Cadastrar Atração Turística
             </Link>
-            <Link className={paginaInicialStyle.link} href="cadastro/guias-turisticos">
+            <Link className={paginaInicialStyle.link} href="cadastrar/guia-turistico">
               Cadastrar Guia Turítico
             </Link>
-            <Link className={paginaInicialStyle.link} href="cadastro/restaurantes">
+            <Link className={paginaInicialStyle.link} href="cadastrar/restaurante">
               Cadastrar Restaurante
             </Link>
-            <Link className={paginaInicialStyle.link} href="cadastro/hospedasgens">
+            <Link className={paginaInicialStyle.link} href="cadastrar/hospedasgem">
               Cadastrar Hospedagem
             </Link>
-            <Link className={paginaInicialStyle.link} href="cadastro/informacoes-uteis">
+            <Link className={paginaInicialStyle.link} href="cadastrar/informacao-util">
               Cadastrar Informação Útil
             </Link>
           </nav>

@@ -4,10 +4,43 @@ import Link from "next/link";
 import comumStyles from "../../../styles/comum.module.css";
 import styles from "./styles.module.css";
 import Footer from "@/pages/components/Footer";
+import Head from "@/utils/Head";
 
-export default function CadastroRestaurante() {
+// referência: https://nextjs.org/docs/pages/building-your-application/data-fetching/building-forms#part-6-form-submission-with-javascript-enabled
+const handleSubmit = async (e: any) => {
+  e.preventDefault();
+
+  const dados = {
+    nome: e.target.nome.value,
+    descricao: e.target.descricao.value,
+    endereco: e.target.endereco.value,
+    telefone: e.target.telefone.value,
+  };
+
+  const endpoint = "http://localhost:8080/restaurantes";
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(dados),
+  };
+
+  return await fetch(endpoint, options).then(async (res) => {
+    if (res.ok) {
+      const resposta = await res.json();
+      return resposta;
+    }
+    throw new Error("Não foi possível cadastrar os dados.");
+  });
+
+  // redirecionar p painel
+};
+
+export default function CadastrarRestaurante() {
   return (
     <>
+      <Head title="Cadastrar Restaurante | Passeios Turísticos de Borborema" />
       <section className={comumStyles.mainContainer}>
         <div className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Cadastrar Restaurantes</h1>
@@ -16,7 +49,7 @@ export default function CadastroRestaurante() {
             entre outras coisas onde os turistas possam se alimentar.
           </p>
         </div>
-        <form action="" className={styles.formContainer}>
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
           <p className={styles.info}>Campos com * são obrigatórios.</p>
           <div className={styles.inputContainer}>
             <label htmlFor="nome" className={styles.label}>
@@ -28,6 +61,7 @@ export default function CadastroRestaurante() {
               id="nome"
               name="nome"
               placeholder="Digite o nome do lugar"
+              minLength={3}
               className={styles.input}
             />
           </div>
@@ -47,10 +81,11 @@ export default function CadastroRestaurante() {
               Telefone
             </label>
             <input
-              type="text"
+              type="number"
               id="telefone"
               name="telefone"
               placeholder="(16) 00000-0000"
+              // pattern=".{10}"
               className={styles.input}
             />
           </div>
@@ -68,10 +103,12 @@ export default function CadastroRestaurante() {
           </div>
 
           <div className={styles.botoes}>
-            <Link href="/">
+            <Link href="/painel-administrativo">
               <button className={styles.botaoCancelar}>Cancelar</button>
             </Link>
-            <input type="submit" value="Cadastrar" className={styles.botaoCadastrar} />
+            <button type="submit" className={styles.botaoCadastrar}>
+              Cadastrar
+            </button>
           </div>
         </form>
       </section>

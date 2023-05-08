@@ -8,14 +8,15 @@ const app = express();
 
 const port = 8080;
 
-routes(app);
-
 app.use(
   cors({
     origin: "http://localhost:3000",
     allowedHeaders: "Content-Type",
   })
 );
+
+routes(app);
+
 app.use(manipulador404);
 app.use(manipuladorDeErros);
 
