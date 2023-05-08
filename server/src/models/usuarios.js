@@ -35,6 +35,11 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "usuarios",
+      defaultScope: {
+        attributes: {
+          exclude: ["senha"],
+        },
+      },
       freezeTableName: true,
       paranoid: true, // soft delete
     }

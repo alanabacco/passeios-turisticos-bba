@@ -1,5 +1,9 @@
 const NaoEncontrado = require("../errors/NaoEncontrado");
 const { UsuariosServices } = require("../services");
+
+const { hash } = require("bcryptjs"); // lib pra criptografar senha
+const uuid = require("uuid");
+
 const usuariosServices = new UsuariosServices();
 
 class UsuariosController {
@@ -28,7 +32,16 @@ class UsuariosController {
   }
 
   static async criarUsuario(req, res, next) {
-    const novoUsuario = req.body;
+    const { nome, senha } = req.body;
+    const senhaHash = await hash(senha, 8);
+
+    const novoUsuario = {
+      id: uuid.v4(),
+      nome: nome,
+      senha: senhaHash,
+    };
+    console.log(novoUsuario.senhaHash);
+
     try {
       const usuarioCriado = await usuariosServices.criarRegistro(novoUsuario);
       return res.status(201).json(usuarioCriado);
