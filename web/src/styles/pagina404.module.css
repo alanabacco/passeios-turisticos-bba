@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  gap: 4rem;
+
+  text-align: center;
+  
+  max-width: 60rem;
+  margin: auto;
+  padding: 4rem;
+
+  border: 4px solid var(--red);
+  border-radius: 0.8rem;
+}
+
+.container a {
+  font-size: 2rem;
+}
