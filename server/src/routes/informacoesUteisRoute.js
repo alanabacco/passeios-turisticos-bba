@@ -1,16 +1,23 @@
 const { Router } = require("express");
 const InformacoesUteisController = require("../controllers/InformacoesUteisController");
+const autenticador = require("../middlewares/autenticador");
 
 const router = Router();
 
 router.get("/informacoes-uteis", InformacoesUteisController.listarInformacoesUteis);
-router.post("/informacoes-uteis", InformacoesUteisController.criarInformacoesUteis);
+router.post(
+  "/informacoes-uteis",
+  autenticador,
+  InformacoesUteisController.criarInformacoesUteis
+);
 router.put(
   "/informacoes-uteis/:id",
+  autenticador,
   InformacoesUteisController.atualizarInformacoesUteis
 );
 router.delete(
   "/informacoes-uteis/:id",
+  autenticador,
   InformacoesUteisController.excluirInformacoesUteis
 );
 

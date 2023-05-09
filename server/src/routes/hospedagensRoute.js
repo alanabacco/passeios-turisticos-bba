@@ -1,11 +1,12 @@
 const { Router } = require("express");
 const HospedagensController = require("../controllers/HospedagensController");
+const autenticador = require("../middlewares/autenticador");
 
 const router = Router();
 
 router.get("/hospedagens", HospedagensController.listarHospedagens);
-router.post("/hospedagens", HospedagensController.criarHospedagem);
-router.put("/hospedagens/:id", HospedagensController.atualizarHospedagem);
-router.delete("/hospedagens/:id", HospedagensController.excluirHospedagem);
+router.post("/hospedagens", autenticador, HospedagensController.criarHospedagem);
+router.put("/hospedagens/:id", autenticador, HospedagensController.atualizarHospedagem);
+router.delete("/hospedagens/:id", autenticador, HospedagensController.excluirHospedagem);
 
 module.exports = router;

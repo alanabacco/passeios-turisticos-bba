@@ -1,11 +1,12 @@
 const { Router } = require("express");
 const AtracoesGuiasController = require("../controllers/AtracoesGuiasController");
+const autenticador = require("../middlewares/autenticador");
 
 const router = Router();
 
 router.get("/atracoes-guias", AtracoesGuiasController.listarAtracoesEGuias);
-router.post("/atracoes-guias", AtracoesGuiasController.criarAtracaoEGuia);
-router.put("/atracoes-guias/:id", AtracoesGuiasController.atualizarAtracaoEGuia);
-router.delete("/atracoes-guias/:id", AtracoesGuiasController.excluirAtracaoEGuia);
+router.post("/atracoes-guias", autenticador, AtracoesGuiasController.criarAtracaoEGuia);
+router.put("/atracoes-guias/:id", autenticador, AtracoesGuiasController.atualizarAtracaoEGuia);
+router.delete("/atracoes-guias/:id", autenticador, AtracoesGuiasController.excluirAtracaoEGuia);
 
 module.exports = router;

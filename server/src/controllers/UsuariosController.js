@@ -31,6 +31,22 @@ class UsuariosController {
     }
   }
 
+  static async listarUsuarioPorNome(req, res, next) {
+    const { nome } = req.params;
+    try {
+      const usuario = await usuariosServices.listarRegistroPorNomeUsuario(nome);
+      console.log(usuario);
+
+      if (usuario !== null) {
+        res.status(200).json(usuario);
+      } else {
+        next(new NaoEncontrado("Nome de usuário não encontrado."));
+      }
+    } catch (error) {
+      next(error); // encaminha o erro para o middleware
+    }
+  }
+
   static async criarUsuario(req, res, next) {
     const { nome, senha } = req.body;
     const senhaHash = await hash(senha, 8);
@@ -40,9 +56,15 @@ class UsuariosController {
       nome: nome,
       senha: senhaHash,
     };
-    console.log(novoUsuario.senhaHash);
-
     try {
+      const usuarioExiste = await usuariosServices.listarRegistroPorNomeUsuario(nome);
+
+      if (usuarioExiste) {
+        res.status(401).send({
+          mensagem: "Esse nome de usuário já existe.",
+          status: 401,
+        });
+      }
       const usuarioCriado = await usuariosServices.criarRegistro(novoUsuario);
       return res.status(201).json(usuarioCriado);
     } catch (error) {
