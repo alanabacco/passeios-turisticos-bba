@@ -4,7 +4,7 @@ import comumStyles from "src/styles/comum.module.css";
 import { withSession } from "src/services/auth/session";
 
 export const getServerSideProps = withSession(async (context: any) => {
-  const API = `${process.env.API_URL}/restaurantes`;
+  const API = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
   const restaurantes = await fetch(API)
     .then((res) => {
       return res.json();

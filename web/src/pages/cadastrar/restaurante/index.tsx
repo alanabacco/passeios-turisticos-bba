@@ -1,43 +1,55 @@
-"use client";
-
 import Link from "next/link";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "./styles.module.css";
 import Footer from "src/pages/components/Footer";
 import Head from "src/infra/Head";
+import { withSessionHOC } from "src/services/auth/session";
+import { tokenService } from "src/services/auth/tokenService";
+import { useRouter } from "next/router";
 
-// referência: https://nextjs.org/docs/pages/building-your-application/data-fetching/building-forms#part-6-form-submission-with-javascript-enabled
-const handleSubmit = async (e: any) => {
-  e.preventDefault();
+function CadastrarRestaurante() {
+  const router = useRouter();
 
-  const dados = {
-    nome: e.target.nome.value,
-    descricao: e.target.descricao.value,
-    endereco: e.target.endereco.value,
-    telefone: e.target.telefone.value,
-  };
+  // referência: https://nextjs.org/docs/pages/building-your-application/data-fetching/building-forms#part-6-form-submission-with-javascript-enabled
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
 
-  const endpoint = `${process.env.API_URL}/restaurantes`;
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(dados),
-  };
+    const dados = {
+      nome: e.target.nome.value,
+      descricao: e.target.descricao.value,
+      endereco: e.target.endereco.value,
+      telefone: e.target.telefone.value,
+    };
+    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
+    const token = tokenService.get();
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(dados),
+    };
 
-  return await fetch(endpoint, options).then(async (res) => {
-    if (res.ok) {
-      const resposta = await res.json();
-      return resposta;
+    try {
+      await fetch(endpoint, options)
+        .then(async (res) => {
+          if (res.ok) {
+            const resposta = await res.json();
+            return resposta;
+          }
+        })
+        .then(() => {
+          router.push("/cadastrar");
+        });
+    } catch (error) {
+      console.log(error);
+      alert("Não foi possível cadastrar os dados, tente novamente mais tarde.");
+
+      throw new Error("Não foi possível cadastrar os dados.");
     }
-    throw new Error("Não foi possível cadastrar os dados.");
-  });
+  };
 
-  // redirecionar p painel
-};
-
-export default function CadastrarRestaurante() {
   return (
     <>
       <Head title="Cadastrar Restaurante | Passeios Turísticos de Borborema" />
@@ -103,7 +115,7 @@ export default function CadastrarRestaurante() {
           </div>
 
           <div className={styles.botoes}>
-            <Link href="/painel-administrativo">
+            <Link href="/cadastrar">
               <button className={styles.botaoCancelar}>Cancelar</button>
             </Link>
             <button type="submit" className={styles.botaoCadastrar}>
@@ -116,3 +128,5 @@ export default function CadastrarRestaurante() {
     </>
   );
 }
+
+export default withSessionHOC(CadastrarRestaurante);

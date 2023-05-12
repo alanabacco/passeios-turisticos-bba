@@ -1,13 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 import Head from "src/infra/Head";
 import Footer from "./components/Footer";
-import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 import painelAdministrativoStyle from "src/styles/painel-administrativo.module.css";
-import { useSession, withSessionHOC } from "src/services/auth/session";
-import { useRouter } from "next/router";
+import { withSessionHOC } from "src/services/auth/session";
 
-function PainelAdministrativo(props: any) {
+function PainelAdministrativo() {
   // const router = useRouter();
   // const session = useSession();
   // console.log("session", session);
@@ -22,41 +21,28 @@ function PainelAdministrativo(props: any) {
       <main className={comumStyles.mainContainer}>
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Painel administrativo</h1>
-          <p className={comumStyles.introDescricao}>
-            Escolha um dos itens para cadastrar algo novo. Você precisa estar logado com
-            usuário e senha para conseguir cadastrar.
-          </p>
+          <div className={painelAdministrativoStyle.descricaoContainer}>
+            <p className={painelAdministrativoStyle.introDescricao}>
+              Escolha o botão "Cadastrar" para cadastrar um item novo. Escolha o botão
+              "Editar" para editar um item. Escolha o botão "Excluir" para excluir um
+              item.
+            </p>
+            <Link href="/logout" className={painelAdministrativoStyle.logout}>
+              Sair
+            </Link>
+          </div>
         </section>
 
-        {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
-
-        <Link href="/login" className={painelAdministrativoStyle.loginLogout}>
-          Entrar com usuário e senha
-        </Link>
-
-        <Link href="/logout" className={painelAdministrativoStyle.loginLogout}>
-          Sair
-        </Link>
-
         <section>
-          <nav className={paginaInicialStyle.linksBox}>
-            <Link className={paginaInicialStyle.link} href="cadastrar/evento-cidade">
-              Cadastrar Evento na Cidade
+          <nav className={painelAdministrativoStyle.linksBox}>
+            <Link className={painelAdministrativoStyle.link} href="/cadastrar">
+              Cadastrar
             </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/atracao-turistica">
-              Cadastrar Atração Turística
+            <Link className={painelAdministrativoStyle.link} href="/editar">
+              Editar
             </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/guia-turistico">
-              Cadastrar Guia Turítico
-            </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/restaurante">
-              Cadastrar Restaurante
-            </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/hospedasgem">
-              Cadastrar Hospedagem
-            </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/informacao-util">
-              Cadastrar Informação Útil
+            <Link className={painelAdministrativoStyle.link} href="/excluir">
+              Excluir
             </Link>
           </nav>
         </section>

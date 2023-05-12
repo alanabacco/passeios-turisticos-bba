@@ -60,7 +60,7 @@ export default function PaginaInicial() {
           </nav>
         </section>
       </main>
-      <Footer />
+      <Footer loginLink={true} />
     </>
   );
 }

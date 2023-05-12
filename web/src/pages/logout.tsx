@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { tokenService } from "src/services/auth/tokenService";
 import Head from "src/infra/Head";
 
-export default function Login() {
+export default function Logout() {
   const router = useRouter();
 
   tokenService.delete();

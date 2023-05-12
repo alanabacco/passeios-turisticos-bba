@@ -1,7 +1,11 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
 
-export default function Footer(): JSX.Element {
+type Props = {
+  loginLink?: boolean;
+};
+
+export default function Footer({ loginLink = false }: Props): JSX.Element {
   return (
     <footer className={styles.appFooter}>
       <h2 className={styles.footerTitle}>
@@ -14,9 +18,19 @@ export default function Footer(): JSX.Element {
       >
         Site oficial do município de Borborema
       </Link>
-      <Link href="/painel-administrativo" className={styles.footerLink}>
-        Painel Administrativo
-      </Link>
+      <div>
+        <Link href="/painel-administrativo" className={styles.footerLink}>
+          Painel Administrativo
+        </Link>
+        {loginLink && (
+          <>
+            <span> -</span>{" "}
+            <Link href="/login" className={styles.footerLink}>
+              Login
+            </Link>
+          </>
+        )}
+      </div>
     </footer>
   );
 }
