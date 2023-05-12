@@ -57,10 +57,6 @@ export default function Login() {
           <h1 className={comumStyles.introTitulo}>Entrar com usuário e senha</h1>
         </section>
 
-        <p className={styles.info}>
-          Obs.: Esse site utiliza cookies para guardar suas informações de login.
-        </p>
-
         <form className={styles.formContainer} onSubmit={handleSubmit}>
           <div className={styles.inputContainer}>
             <label htmlFor="nomeUsuario" className={styles.label}>

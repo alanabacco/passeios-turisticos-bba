@@ -21,7 +21,7 @@ class AuthServices extends Services {
     }
 
     const secret = `${process.env.HASH_SECRET}`;
-    const umDia = 60 * 60 * 24;
+    const tresHoras = (60 * 60 * 24) / 8;
 
     const accessToken = sign(
       {
@@ -30,7 +30,7 @@ class AuthServices extends Services {
       },
       secret,
       {
-        expiresIn: umDia,
+        expiresIn: tresHoras,
       }
     );
 

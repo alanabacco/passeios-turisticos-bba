@@ -83,10 +83,6 @@
   background-color: #ddd;
 }
 
-.info {
-  text-align: center;
-}
-
 @media (max-width: 768px) {
   .formContainer {
     min-width: 20rem;

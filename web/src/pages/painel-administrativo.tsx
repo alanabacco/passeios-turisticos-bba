@@ -34,7 +34,7 @@ function PainelAdministrativo(props: any) {
           Entrar com usuário e senha
         </Link>
 
-        <Link href="/auth/logout" className={painelAdministrativoStyle.loginLogout}>
+        <Link href="/logout" className={painelAdministrativoStyle.loginLogout}>
           Sair
         </Link>
 

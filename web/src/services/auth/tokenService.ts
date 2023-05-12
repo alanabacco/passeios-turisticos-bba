@@ -4,13 +4,13 @@
 
 import nookies from "nookies";
 const ACCESS_TOKEN_KEY = "ATK";
-const umDia = 60 * 60 * 24;
+const tresHoras = (60 * 60 * 24) / 8;
 
 export const tokenService = {
   save(accessToken: string, context: any = null) {
     // globalThis?.sessionStorage?.setItem(ACCESS_TOKEN_KEY, accessToken);
     nookies.set(context, ACCESS_TOKEN_KEY, accessToken, {
-      maxAge: umDia,
+      maxAge: tresHoras,
       path: "/",
     });
   },
