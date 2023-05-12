@@ -1,8 +1,9 @@
-import Footer from "../../components/Footer";
+import Footer from "src/pages/components/Footer";
 import styles from "./styles.module.css";
-import comumStyles from "../../../styles/comum.module.css";
+import comumStyles from "src/styles/comum.module.css";
+import { withSession } from "src/services/auth/session";
 
-export async function getServerSideProps(context: any) {
+export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.API_URL}/restaurantes`;
   const restaurantes = await fetch(API)
     .then((res) => {
@@ -13,22 +14,28 @@ export async function getServerSideProps(context: any) {
     });
 
   return {
-    props: { restaurantes },
+    props: {
+      session: context.req.session,
+      restaurantes,
+    },
   };
-}
+});
 
 type Props = {
   restaurantes: [];
+  session: null;
 };
 
-export default function PaginaRestaurantes({ restaurantes }: Props) {
+export default function PaginaRestaurantes({ restaurantes, session }: Props) {
   return (
     <>
       <main className={comumStyles.mainContainer}>
+        {/* <pre>{JSON.stringify(session, null, 2)}</pre> */}
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Restaurantes</h1>
           <p className={comumStyles.introDescricao}>
-            Aqui você encontra uma lista de restaurantes, lanchonetes, pizzarias e outros locais, para que você possa visitar em nossa cidade. 
+            Aqui você encontra uma lista de restaurantes, lanchonetes, pizzarias e outros
+            locais, para que você possa visitar em nossa cidade.
           </p>
         </section>
         <section>

@@ -1,11 +1,21 @@
 import Link from "next/link";
-import Head from "../utils/Head";
+import Head from "src/infra/Head";
 import Footer from "./components/Footer";
-import paginaInicialStyle from "../styles/pagina-inicial.module.css";
-import comumStyles from "../styles/comum.module.css";
-import painelAdministrativoStyle from "../styles/painel-administrativo.module.css";
+import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
+import comumStyles from "src/styles/comum.module.css";
+import painelAdministrativoStyle from "src/styles/painel-administrativo.module.css";
+import { useSession, withSessionHOC } from "src/services/auth/session";
+import { useRouter } from "next/router";
 
-export default function PainelAdministrativo() {
+function PainelAdministrativo(props: any) {
+  // const router = useRouter();
+  // const session = useSession();
+  // console.log("session", session);
+
+  // if (!session.loading && session.error) {
+  //   router.push("/?error=401");
+  // }
+
   return (
     <>
       <Head title="Painel Administrativo | Passeios Turísticos de Borborema" />
@@ -18,11 +28,13 @@ export default function PainelAdministrativo() {
           </p>
         </section>
 
+        {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
+
         <Link href="/login" className={painelAdministrativoStyle.loginLogout}>
           Entrar com usuário e senha
         </Link>
 
-        <Link href="/logout" className={painelAdministrativoStyle.loginLogout}>
+        <Link href="/auth/logout" className={painelAdministrativoStyle.loginLogout}>
           Sair
         </Link>
 
@@ -53,3 +65,5 @@ export default function PainelAdministrativo() {
     </>
   );
 }
+
+export default withSessionHOC(PainelAdministrativo);
