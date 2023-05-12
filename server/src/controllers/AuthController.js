@@ -31,6 +31,26 @@ class AuthController {
   static async logout(req, res, next) {
     res.status(200).send({ auth: false, token: null });
   }
+
+  static async getSession(req, res, next) {
+    const nome = req.nome;
+
+    try {
+      if (nome) {
+        res.status(200).json({
+          dados: {
+            session: {
+              usuario: {
+                nome: nome,
+              },
+            },
+          },
+        });
+      }
+    } catch (error) {
+      res.status(401).json({ status: 401, message: "Token de acesso inválido." });
+    }
+  }
 }
 
 module.exports = AuthController;
