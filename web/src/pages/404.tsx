@@ -1,6 +1,6 @@
 "use-client";
 
-import Head from "src/utils/Head";
+import Head from "src/infra/Head";
 import Link from "next/link";
 import style404 from "../styles/pagina404.module.css";
 import comumStyles from "../styles/comum.module.css";

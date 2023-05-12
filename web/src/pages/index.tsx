@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import Head from "../utils/Head";
+import Head from "src/infra/Head";
 import Footer from "./components/Footer";
-import styles from "../styles/pagina-inicial.module.css";
-import comumStyles from "../styles/comum.module.css";
+import styles from "src/styles/pagina-inicial.module.css";
+import comumStyles from "src/styles/comum.module.css";
 
 export default function PaginaInicial() {
   return (

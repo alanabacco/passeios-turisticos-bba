@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import comumStyles from "../../../styles/comum.module.css";
+import comumStyles from "src/styles/comum.module.css";
 import styles from "./styles.module.css";
-import Footer from "@/pages/components/Footer";
-import Head from "@/utils/Head";
+import Footer from "src/pages/components/Footer";
+import Head from "src/infra/Head";
 
 // referência: https://nextjs.org/docs/pages/building-your-application/data-fetching/building-forms#part-6-form-submission-with-javascript-enabled
 const handleSubmit = async (e: any) => {
@@ -17,7 +17,7 @@ const handleSubmit = async (e: any) => {
     telefone: e.target.telefone.value,
   };
 
-  const endpoint = "http://localhost:8080/restaurantes";
+  const endpoint = `${process.env.API_URL}/restaurantes`;
   const options = {
     method: "POST",
     headers: {
