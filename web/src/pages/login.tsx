@@ -1,13 +1,11 @@
-"use-client";
-
-import Head from "src/infra/Head";
-import Footer from "./components/Footer";
-import comumStyles from "src/styles/comum.module.css";
-import styles from "src/styles/login.module.css";
+import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import Head from "src/infra/Head";
+import Footer from "./components/Footer";
 import { authService } from "src/services/auth/authService";
+import comumStyles from "src/styles/comum.module.css";
+import styles from "src/styles/login.module.css";
 
 // TODO: ao teclar enter, clicar no botao entrar.
 
@@ -30,7 +28,7 @@ export default function Login() {
     });
   }
 
-  function handleSubmit(e: any) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     authService
