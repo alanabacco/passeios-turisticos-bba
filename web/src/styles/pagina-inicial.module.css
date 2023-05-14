@@ -1,8 +1,9 @@
 .linksBox {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 1.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
 }
 
 .link {
@@ -12,6 +13,7 @@
   border-radius: 0.8rem;
   padding: 2.4rem;
   text-align: center;
+  width: 24rem;
 
   transition: all 0.1s ease-in-out;
 }

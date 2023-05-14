@@ -46,7 +46,7 @@ export default function PaginaEditarRestaurantes({ restaurantes, session }: Prop
                   className={styles.item}
                 >
                   <li>
-                    <h2 className={styles.nomeItem}>{restaurante.nome}</h2>
+                    <h2>{restaurante.nome}</h2>
                     <p>Descrição: {restaurante.descricao}</p>
                     <p>Telefone: {restaurante.telefone}</p>
                     <p>Endereço: {restaurante.endereco}</p>

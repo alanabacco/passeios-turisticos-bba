@@ -1,5 +1,4 @@
 import { FormEvent, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Head from "src/infra/Head";
 import Footer from "./components/Footer";
@@ -91,10 +90,16 @@ export default function Login() {
           </div>
 
           <div className={styles.botoes}>
-            <Link href="/painel-administrativo">
-              <button className={styles.botaoCancelar}>Cancelar</button>
-            </Link>
-            <button className={styles.botaoEntrar}>Entrar</button>
+            <button
+              type="button"
+              onClick={() => router.push("/painel-administrativo")}
+              className={styles.botaoCancelar}
+            >
+              Cancelar
+            </button>
+            <button type="submit" className={styles.botaoEntrar}>
+              Entrar
+            </button>
           </div>
         </form>
       </div>

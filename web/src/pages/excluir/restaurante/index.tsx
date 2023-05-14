@@ -60,7 +60,7 @@ export default function PaginaExcluirRestaurantes({ restaurantes, session }: Pro
             router.push("/excluir/restaurante");
           });
       } catch (error) {
-        // console.log(error);
+        console.log(error);
         alert("Não foi possível excluir os dados, tente novamente mais tarde.");
         throw new Error("Não foi possível excluir os dados.");
       }
@@ -87,7 +87,7 @@ export default function PaginaExcluirRestaurantes({ restaurantes, session }: Pro
                   onClick={() => handleClick(restaurante.id)}
                 >
                   <li>
-                    <h2 className={styles.nomeItem}>{restaurante.nome}</h2>
+                    <h2>{restaurante.nome}</h2>
                     <p>Descrição: {restaurante.descricao}</p>
                     <p>Telefone: {restaurante.telefone}</p>
                     <p>Endereço: {restaurante.endereco}</p>

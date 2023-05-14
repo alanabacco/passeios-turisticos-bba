@@ -43,7 +43,7 @@ export default function PaginaRestaurantes({ restaurantes, session }: Props) {
             {restaurantes.map((restaurante: any) => {
               return (
                 <li key={restaurante.id} className={styles.item}>
-                  <h2 className={styles.nomeItem}>{restaurante.nome}</h2>
+                  <h2>{restaurante.nome}</h2>
                   <p>Descrição: {restaurante.descricao}</p>
                   <p>Telefone: {restaurante.telefone}</p>
                   <p>Endereço: {restaurante.endereco}</p>

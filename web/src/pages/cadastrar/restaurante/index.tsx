@@ -1,4 +1,3 @@
-import Link from "next/link";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "./styles.module.css";
 import Footer from "src/pages/components/Footer";
@@ -85,6 +84,7 @@ function CadastrarRestaurante() {
               id="descricao"
               name="descricao"
               placeholder="Digite a descrição"
+              maxLength={240}
               className={`${styles.input} ${styles.textarea}`}
             />
           </div>
@@ -110,14 +110,19 @@ function CadastrarRestaurante() {
               id="endereco"
               name="endereco"
               placeholder="Digite o endereço"
+              maxLength={200}
               className={styles.input}
             />
           </div>
 
           <div className={styles.botoes}>
-            <Link href="/cadastrar">
-              <button className={styles.botaoCancelar}>Cancelar</button>
-            </Link>
+            <button
+              type="button"
+              onClick={() => router.push("/painel-administrativo")}
+              className={styles.botaoCancelar}
+            >
+              Cancelar
+            </button>
             <button type="submit" className={styles.botaoCadastrar}>
               Cadastrar
             </button>

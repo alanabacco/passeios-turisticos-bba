@@ -30,3 +30,9 @@
     padding: 3.2rem;
   }
 }
+
+@media (max-width: 360px) {
+  .mainContainer {
+    padding: 2.4rem;
+  }
+}

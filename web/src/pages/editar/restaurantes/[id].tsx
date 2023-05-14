@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Head from "src/infra/Head";
 import Footer from "src/pages/components/Footer";
@@ -129,6 +128,7 @@ export default function Restaurante() {
               id="descricao"
               name="descricao"
               placeholder="Digite a descrição"
+              maxLength={240}
               onChange={handleChange}
               className={`${styles.input} ${styles.textarea}`}
             />
@@ -158,15 +158,20 @@ export default function Restaurante() {
               id="endereco"
               name="endereco"
               placeholder="Digite o endereço"
+              maxLength={200}
               onChange={handleChange}
               className={styles.input}
             />
           </div>
 
           <div className={styles.botoes}>
-            <Link href="/editar/restaurantes">
-              <button className={styles.botaoCancelar}>Cancelar</button>
-            </Link>
+            <button
+              type="button"
+              onClick={() => router.push("/editar/restaurantes")}
+              className={styles.botaoCancelar}
+            >
+              Cancelar
+            </button>
             <button type="submit" className={styles.botaoCadastrar}>
               Cadastrar
             </button>
