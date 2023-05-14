@@ -28,9 +28,9 @@ class AuthController {
     }
   }
 
-  static async logout(req, res, next) {
-    res.status(200).send({ auth: false, token: null });
-  }
+  // static async logout(req, res, next) {
+  //   res.status(200).send({ auth: false, token: null });
+  // }
 
   static async getSession(req, res, next) {
     const nome = req.nome;

@@ -12,6 +12,20 @@ class EventosController {
     }
   }
 
+  static async listarEventoPorId(req, res, next) {
+    const { id } = req.params;
+    try {
+      const evento = await eventosServices.listarRegistroPorId(id);
+      if (evento !== null) {
+        return res.status(200).json(evento);
+      } else {
+        next(new NaoEncontrado("Id de evento não encontrado."));
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async criarEventos(req, res, next) {
     const novoEvento = req.body;
     try {

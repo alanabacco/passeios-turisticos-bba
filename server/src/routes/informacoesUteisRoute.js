@@ -5,6 +5,11 @@ const autenticador = require("../middlewares/autenticador");
 const router = Router();
 
 router.get("/informacoes-uteis", InformacoesUteisController.listarInformacoesUteis);
+router.get(
+  "/informacoes-uteis/:id",
+  autenticador,
+  InformacoesUteisController.listarInformacaoUtilPorId
+);
 router.post(
   "/informacoes-uteis",
   autenticador,

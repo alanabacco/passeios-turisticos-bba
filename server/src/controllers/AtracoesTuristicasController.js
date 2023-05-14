@@ -12,6 +12,20 @@ class AtracoesTuristicasController {
     }
   }
 
+  static async listarAtracoesTuristicasPorId(req, res, next) {
+    const { id } = req.params;
+    try {
+      const atracaoTuristica = await atracoesTuristicasServices.listarRegistroPorId(id);
+      if (atracaoTuristica !== null) {
+        return res.status(200).json(atracaoTuristica);
+      } else {
+        next(new NaoEncontrado("Id de atração turística não encontrado."));
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async criarAtracaoTuristica(req, res, next) {
     const novaAtracaoTuristica = req.body;
     try {

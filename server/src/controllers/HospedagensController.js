@@ -12,6 +12,20 @@ class HospedagensController {
     }
   }
 
+  static async listarHospedagemPorId(req, res, next) {
+    const { id } = req.params;
+    try {
+      const hospedagem = await hospedagensServices.listarRegistroPorId(id);
+      if (hospedagem !== null) {
+        return res.status(200).json(hospedagem);
+      } else {
+        next(new NaoEncontrado("Id de hospedagem não encontrado."));
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async criarHospedagem(req, res, next) {
     const novaHospedagem = req.body;
     try {

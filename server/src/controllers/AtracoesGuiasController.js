@@ -12,6 +12,20 @@ class AtracoesGuiasController {
     }
   }
 
+  static async listarAtracaoEGuiaPorId(req, res, next) {
+    const { id } = req.params;
+    try {
+      const atracaoGuiaPorId = await atracoesGuiasServices.listarRegistroPorId(id);
+      if (atracaoGuiaPorId !== null) {
+        return res.status(200).json(atracaoGuiaPorId);
+      } else {
+        next(new NaoEncontrado("Id de atracao e guia não encontrado."));
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async criarAtracaoEGuia(req, res, next) {
     const novaAtracaoEGuia = req.body;
     try {

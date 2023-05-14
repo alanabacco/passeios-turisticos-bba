@@ -5,7 +5,7 @@ const autenticador = require("../middlewares/autenticador");
 const router = Router();
 
 router.get("/guias-turisticos", GuiasTuristicosController.listarGuias);
-router.get("/guias-turisticos/:id", GuiasTuristicosController.listarGuiaPorId);
+router.get("/guias-turisticos/:id", autenticador, GuiasTuristicosController.listarGuiaPorId);
 router.post("/guias-turisticos", autenticador, GuiasTuristicosController.criarGuia);
 router.put("/guias-turisticos/:id", autenticador, GuiasTuristicosController.atualizarGuia);
 router.delete("/guias-turisticos/:id", autenticador, GuiasTuristicosController.excluirGuia);

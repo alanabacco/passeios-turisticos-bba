@@ -5,6 +5,11 @@ const autenticador = require("../middlewares/autenticador");
 const router = Router();
 
 router.get("/atracoes-turisticas", AtracoesTuristicasController.listarAtracoesTuristicas);
+router.get(
+  "/atracoes-turisticas/:id",
+  autenticador,
+  AtracoesTuristicasController.listarAtracoesTuristicasPorId
+);
 router.post(
   "/atracoes-turisticas",
   autenticador,

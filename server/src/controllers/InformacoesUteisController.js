@@ -12,6 +12,20 @@ class InformacoesUteisController {
     }
   }
 
+  static async listarInformacaoUtilPorId(req, res, next) {
+    const { id } = req.params;
+    try {
+      const informacaoUtil = await informacoesUteisServices.listarRegistroPorId(id);
+      if (informacaoUtil !== null) {
+        return res.status(200).json(informacaoUtil);
+      } else {
+        next(new NaoEncontrado("Id de informação útil não encontrado."));
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async criarInformacoesUteis(req, res, next) {
     const novaInformacao = req.body;
     try {
