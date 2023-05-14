@@ -1,0 +1,26 @@
+.itens {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+}
+
+.item {
+  border: 1px solid var(--red);
+  border-radius: 0.8rem;
+  padding: 2.4rem;
+  box-shadow: 2px 2px 8px #aaa;
+
+  transition: transform 0.1s ease-in-out;
+}
+
+.item:hover {
+  transform: scale(1.02);
+}
+
+.nomeItem {
+  font-family: var(--font-montserrat_alternates);
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 0.8rem;
+}

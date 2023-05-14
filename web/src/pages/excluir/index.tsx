@@ -11,31 +11,31 @@ function Excluir() {
       <Head title="Excluir | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
         <section className={comumStyles.introSection}>
-          <h1 className={comumStyles.introTitulo}>Editar</h1>
+          <h1 className={comumStyles.introTitulo}>Excluir</h1>
           <p className={comumStyles.introDescricao}>
-            Escolha um dos itens para poder editar.
+            Escolha um dos itens para poder excluir.
           </p>
         </section>
 
         <section>
           <nav className={paginaInicialStyle.linksBox}>
             <Link className={paginaInicialStyle.link} href="excluir/evento-cidade">
-              Excluir Evento na Cidade
+              Excluir um Evento na Cidade
             </Link>
             <Link className={paginaInicialStyle.link} href="excluir/atracao-turistica">
-              Excluir Atração Turística
+              Excluir uma Atração Turística
             </Link>
             <Link className={paginaInicialStyle.link} href="excluir/guia-turistico">
-              Excluir Guia Turítico
+              Excluir um Guia Turítico
             </Link>
             <Link className={paginaInicialStyle.link} href="excluir/restaurante">
-              Excluir Restaurante
+              Excluir um Restaurante
             </Link>
             <Link className={paginaInicialStyle.link} href="excluir/hospedasgem">
-              Excluir Hospedagem
+              Excluir uma Hospedagem
             </Link>
             <Link className={paginaInicialStyle.link} href="excluir/informacao-util">
-              Excluir Informação Útil
+              Excluir uma Informação Útil
             </Link>
           </nav>
         </section>

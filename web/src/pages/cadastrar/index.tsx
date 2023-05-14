@@ -3,7 +3,6 @@ import Head from "src/infra/Head";
 import Footer from "src/pages/components/Footer";
 import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
-import painelAdministrativoStyle from "src/styles/painel-administrativo.module.css";
 import { withSessionHOC } from "src/services/auth/session";
 
 function Cadastrar() {
