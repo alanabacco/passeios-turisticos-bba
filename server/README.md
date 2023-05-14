@@ -26,7 +26,7 @@ npm run dev
 
 estará rodando na porta 8080.
 
-Obs.: é preciso fazer a conexão com o banco de dados em: ./src/config/config.json
+Obs.: é preciso fazer a conexão com o banco de dados em: ./src/config/config.js
 
 - Banco de dados utilizado neste projeto: [postgresql](https://www.postgresql.org/).
 
