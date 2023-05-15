@@ -1,10 +1,9 @@
 import Footer from "src/pages/components/Footer";
 import styles from "./styles.module.css";
 import comumStyles from "src/styles/comum.module.css";
-import { withSession } from "src/services/auth/session";
 import Head from "src/infra/Head";
 
-export const getServerSideProps = withSession(async (context: any) => {
+export const getServerSideProps = (async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
   const restaurantes = await fetch(API)
     .then((res) => {
@@ -16,7 +15,6 @@ export const getServerSideProps = withSession(async (context: any) => {
 
   return {
     props: {
-      session: context.req.session,
       restaurantes,
     },
   };
@@ -24,10 +22,9 @@ export const getServerSideProps = withSession(async (context: any) => {
 
 type Props = {
   restaurantes: [];
-  session: null;
 };
 
-export default function PaginaRestaurantes({ restaurantes, session }: Props) {
+export default function PaginaRestaurantes({ restaurantes }: Props) {
   return (
     <>
       <Head title="Restaurantes | Passeios Turísticos de Borborema" />

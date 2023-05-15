@@ -14,9 +14,9 @@ function CadastrarRestaurante() {
     e.preventDefault();
 
     const dados = {
-      nome: e.target.nome.value,
-      descricao: e.target.descricao.value,
-      endereco: e.target.endereco.value,
+      nome: e.target.nome.value.trim(),
+      descricao: e.target.descricao.value.trim(),
+      endereco: e.target.endereco.value.trim(),
       telefone: e.target.telefone.value,
     };
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
