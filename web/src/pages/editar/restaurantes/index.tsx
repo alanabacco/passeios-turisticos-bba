@@ -3,6 +3,7 @@ import styles from "./indexStyles.module.css";
 import comumStyles from "src/styles/comum.module.css";
 import { withSession } from "src/services/auth/session";
 import Link from "next/link";
+import Head from "src/infra/Head";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
@@ -30,6 +31,7 @@ type Props = {
 export default function PaginaEditarRestaurantes({ restaurantes, session }: Props) {
   return (
     <>
+      <Head title="Editar | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
         {/* <pre>{JSON.stringify(session, null, 2)}</pre> */}
         <section className={comumStyles.introSection}>

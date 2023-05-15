@@ -64,7 +64,7 @@ function CadastrarRestaurante() {
 
   return (
     <>
-      <Head title="Cadastrar Restaurante | Passeios Turísticos de Borborema" />
+      <Head title="Cadastrar | Passeios Turísticos de Borborema" />
       <section className={comumStyles.mainContainer}>
         <div className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Cadastrar Restaurantes</h1>

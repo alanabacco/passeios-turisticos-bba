@@ -7,14 +7,6 @@ import painelAdministrativoStyle from "src/styles/painel-administrativo.module.c
 import { withSessionHOC } from "src/services/auth/session";
 
 function PainelAdministrativo() {
-  // const router = useRouter();
-  // const session = useSession();
-  // console.log("session", session);
-
-  // if (!session.loading && session.error) {
-  //   router.push("/?error=401");
-  // }
-
   return (
     <>
       <Head title="Painel Administrativo | Passeios Turísticos de Borborema" />

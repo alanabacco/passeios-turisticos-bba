@@ -6,8 +6,6 @@ import { authService } from "src/services/auth/authService";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "src/styles/login.module.css";
 
-// TODO: ao teclar enter, clicar no botao entrar.
-
 export default function Login() {
   const router = useRouter();
 

@@ -73,3 +73,13 @@ export function withSessionHOC(Component: NextComponentType) {
     return <Component {...contextoModificado} />;
   };
 }
+
+// Exemplo se for usar apenas o useSession() em um componente
+
+// const router = useRouter();
+// const session = useSession();
+// console.log("session", session);
+
+// if (!session.loading && session.error) {
+//   router.push("/?error=401");
+// }

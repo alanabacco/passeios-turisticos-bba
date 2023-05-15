@@ -107,7 +107,7 @@ function Restaurante() {
 
   return (
     <>
-      <Head title="Editar Restaurante | Passeios Turísticos de Borborema" />
+      <Head title="Editar | Passeios Turísticos de Borborema" />
       <section className={comumStyles.mainContainer}>
         <div className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Editar Restaurantes</h1>

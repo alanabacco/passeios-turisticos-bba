@@ -5,6 +5,7 @@ import { withSession } from "src/services/auth/session";
 import Link from "next/link";
 import { tokenService } from "src/services/auth/tokenService";
 import { useRouter } from "next/router";
+import Head from "src/infra/Head";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
@@ -69,6 +70,7 @@ export default function PaginaExcluirRestaurantes({ restaurantes, session }: Pro
 
   return (
     <>
+      <Head title="Excluir | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Restaurantes</h1>
