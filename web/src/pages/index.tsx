@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Head from "src/infra/Head";
 import Footer from "./components/Footer";
