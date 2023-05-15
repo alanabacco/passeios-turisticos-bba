@@ -48,6 +48,17 @@
   outline: 0;
 }
 
+/* Tirar as setas */
+.inputNumber::-webkit-outer-spin-button,
+.inputNumber::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* firefox */
+.inputNumber {
+  appearance: textfield;
+}
+
 .botoes {
   margin-top: 1.6rem;
   display: flex;

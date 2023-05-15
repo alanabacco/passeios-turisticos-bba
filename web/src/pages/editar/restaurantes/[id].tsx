@@ -92,6 +92,19 @@ function Restaurante() {
     }
   };
 
+  function handleTelefone(e: any) {
+    const input = e.target;
+    input.value = mascaraTelefone(input.value);
+  }
+
+  function mascaraTelefone(value: any) {
+    if (!value) return "";
+    value = value.replace(/\D/g, "");
+    value = value.replace(/(\d{2})(\d)/, "($1) $2");
+    value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+    return value;
+  }
+
   return (
     <>
       <Head title="Editar Restaurante | Passeios Turísticos de Borborema" />
@@ -139,14 +152,14 @@ function Restaurante() {
               Telefone
             </label>
             <input
-              value={values.telefone}
-              type="number"
+              type="tel"
               id="telefone"
               name="telefone"
               placeholder="(16) 00000-0000"
-              // pattern=".{10}"
-              onChange={handleChange}
-              className={styles.input}
+              minLength={14}
+              maxLength={15}
+              onKeyUp={handleTelefone}
+              className={`${styles.input} ${styles.inputNumber}`}
             />
           </div>
           <div className={styles.inputContainer}>
@@ -154,13 +167,11 @@ function Restaurante() {
               Endereço
             </label>
             <input
-              value={values.endereco}
               type="text"
               id="endereco"
               name="endereco"
               placeholder="Digite o endereço"
               maxLength={200}
-              onChange={handleChange}
               className={styles.input}
             />
           </div>
