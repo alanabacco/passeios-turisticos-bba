@@ -30,7 +30,7 @@ export function withSession(funcao: any) {
 
 // para páginas estáticas
 export function useSession() {
-  const [session, setSession] = useState(null);
+  const [session, setSession]: any = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
