@@ -1,12 +1,13 @@
 const express = require("express");
+const process = require("process");
+const cors = require("cors");
 const routes = require("./routes");
 const manipuladorDeErros = require("./middlewares/manipuladorDeErros");
 const manipulador404 = require("./middlewares/manipulador404");
-const cors = require("cors");
 
 const app = express();
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 app.use(
   cors({
