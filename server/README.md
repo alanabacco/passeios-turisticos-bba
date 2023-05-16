@@ -14,7 +14,7 @@ Sistema web feito para a disciplina do Projeto Integrador I dos cursos de Comput
 
 ## Como executar o projeto localmente
 
-Para executar o projeto de maneira local, primeiro você precisa ter o [NodeJS](https://nodejs.org/) instalado na sua máquina. Em seguida, execute os seguintes comandos, um de cada vez:
+Para executar o projeto de maneira local, primeiro você precisa ter o [NodeJS](https://nodejs.org/) e o [Git](https://git-scm.com/) instalados na sua máquina. Em seguida, execute os seguintes comandos, um de cada vez:
 
 ```
 git clone https://github.com/alanabacco/passeios-turisticos-bba

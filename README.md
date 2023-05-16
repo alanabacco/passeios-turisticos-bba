@@ -25,3 +25,32 @@ Neste repositório se encontram os diretórios
 - [React](https://react.dev/) - biblioteca de código aberto para interfaces gráficas
 - [NextJS](https://nextjs.org/) - framework para React
 - [TypeScript](https://www.typescriptlang.org/) - superset de javascript que adiciona recursos à linguagem
+
+## Como executar o projeto localmente
+
+Para executar o projeto de maneira local, você precisa ter o [NodeJS](https://nodejs.org/) e o [Git](https://git-scm.com/) instalados na sua máquina. Em seguida, execute os seguintes comandos:
+
+```
+git clone https://github.com/alanabacco/passeios-turisticos-bba
+cd passeios-turisticos-bba
+```
+
+Para rodar o backend:
+
+```
+cd server
+npm install
+npm run dev
+```
+o backend estará rodando na porta 8080.
+
+obs.: é preciso fazer a conexão com o banco de dados em: ./src/config/config.js e configurar as variáveis de ambiente.
+
+Para rodar o frontend, em outro terminal rode os comandos:
+
+```
+cd web
+npm install
+npm run dev
+```
+o frontend estará rodando na porta 3000.
