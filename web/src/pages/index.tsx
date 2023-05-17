@@ -35,7 +35,7 @@ export default function PaginaInicial() {
             <Link className={styles.link} href="catalogo/restaurantes">
               Restaurantes
             </Link>
-            <Link className={styles.link} href="catalogo/hospedasgens">
+            <Link className={styles.link} href="catalogo/hospedagens">
               Hospedagem
             </Link>
             <Link

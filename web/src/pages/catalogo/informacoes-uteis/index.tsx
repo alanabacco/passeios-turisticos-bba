@@ -4,8 +4,8 @@ import Head from "src/infra/Head";
 import Card_1 from "src/pages/components/Card_01";
 
 export const getServerSideProps = async (context: any) => {
-  const API = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
-  const restaurantes = await fetch(API)
+  const API = `${process.env.NEXT_PUBLIC_API_URL}/informacoes-uteis`;
+  const informacoesUteis = await fetch(API)
     .then((res) => {
       return res.json();
     })
@@ -15,28 +15,27 @@ export const getServerSideProps = async (context: any) => {
 
   return {
     props: {
-      restaurantes,
+      informacoesUteis,
     },
   };
 };
 
 type Props = {
-  restaurantes: [];
+  informacoesUteis: [];
 };
 
-export default function PaginaRestaurantes({ restaurantes }: Props) {
+export default function PaginaInfoUteis({ informacoesUteis }: Props) {
   return (
     <>
-      <Head title="Restaurantes | Passeios Turísticos de Borborema" />
+      <Head title="Informações Úteis | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
         <section className={comumStyles.introSection}>
-          <h1 className={comumStyles.introTitulo}>Restaurantes</h1>
+          <h1 className={comumStyles.introTitulo}>Informações Úteis</h1>
           <p className={comumStyles.introDescricao}>
-            Aqui você encontra uma lista de restaurantes, lanchonetes, pizzarias e outros
-            locais, para que você possa visitar em nossa cidade.
+            Aqui você encontra uma lista de informações que podem ser úteis durante seu passeio.
           </p>
         </section>
-        <Card_1 item={restaurantes} />
+        <Card_1 item={informacoesUteis} />
       </main>
       <Footer />
     </>
