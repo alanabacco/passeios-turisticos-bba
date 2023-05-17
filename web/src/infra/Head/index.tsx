@@ -8,14 +8,10 @@ type HeadProps = {
 
 export default function Head({
   title = "Passeios Turísticos de Borborema",
-  description = "",
-  faviconImg = "/favicon.ico",
 }: HeadProps): JSX.Element {
   return (
     <NextHead>
       <title>{title}</title>
-      <meta name="description" content={description} />
-      <link rel="icon" href={faviconImg} />
     </NextHead>
   );
 }
