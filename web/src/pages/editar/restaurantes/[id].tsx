@@ -152,6 +152,7 @@ function Restaurante() {
               Telefone
             </label>
             <input
+              value={values.telefone}
               type="tel"
               id="telefone"
               name="telefone"
@@ -159,6 +160,7 @@ function Restaurante() {
               minLength={14}
               maxLength={15}
               onKeyUp={handleTelefone}
+              onChange={handleChange}
               className={`${styles.input} ${styles.inputNumber}`}
             />
           </div>
@@ -167,6 +169,8 @@ function Restaurante() {
               Endereço
             </label>
             <input
+              value={values.endereco}
+              onChange={handleChange}
               type="text"
               id="endereco"
               name="endereco"
