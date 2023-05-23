@@ -5,12 +5,14 @@ import Footer from "./components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import painelAdministrativoStyle from "src/styles/painel-administrativo.module.css";
 import { withSessionHOC } from "src/services/auth/session";
+import BotaoVoltar from "./components/BotaoVoltar";
 
 function PainelAdministrativo() {
   return (
     <>
       <Head title="Painel Administrativo | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
+        <BotaoVoltar />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Painel administrativo</h1>
           <div className={painelAdministrativoStyle.descricaoContainer}>

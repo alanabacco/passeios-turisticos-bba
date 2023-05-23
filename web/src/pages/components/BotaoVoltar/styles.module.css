@@ -1,0 +1,13 @@
+.link {
+  display: flex;
+  gap: 0.8rem;
+  color: var(--red);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-bottom: -2.4rem;
+}
+
+.icon {
+  width: 1.6rem;
+}

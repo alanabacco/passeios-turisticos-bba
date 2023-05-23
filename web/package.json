@@ -21,20 +21,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^13.4.2",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "next": "^13.4.3",
     "nookies": "^2.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.0.4"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.4.2",
+    "@next/eslint-plugin-next": "^13.4.3",
     "@types/node": "^18.16.3",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
-    "@typescript-eslint/eslint-plugin": "^5.59.6",
-    "@typescript-eslint/parser": "^5.59.6",
-    "eslint": "^8.40.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "eslint": "^8.41.0",
     "eslint-plugin-react": "^7.32.2"
   }
 }

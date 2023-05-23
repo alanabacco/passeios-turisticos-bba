@@ -4,12 +4,14 @@ import Footer from "src/pages/components/Footer";
 import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 import { withSessionHOC } from "src/services/auth/session";
+import BotaoVoltar from "../components/BotaoVoltar";
 
 function Excluir() {
   return (
     <>
       <Head title="Excluir | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
+        <BotaoVoltar />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Excluir</h1>
           <p className={comumStyles.introDescricao}>
