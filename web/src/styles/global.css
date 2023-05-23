@@ -25,8 +25,11 @@ a {
   color: inherit;
 }
 
-/* SCROLL BAR */
+ul {
+  list-style: none;
+}
 
+/* SCROLL BAR */
 body::-webkit-scrollbar {
   width: 0.8rem;
 }
@@ -38,8 +41,4 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: #aaa;
   border-radius: 8rem;
-}
-
-ul {
-  list-style: none;
 }
