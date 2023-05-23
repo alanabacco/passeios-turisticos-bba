@@ -2,6 +2,7 @@ import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "./styles.module.css";
 import Head from "src/infra/Head";
+import BotaoVoltar from "src/pages/components/BotaoVoltar";
 
 export const getServerSideProps = async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/eventos`;
@@ -29,6 +30,7 @@ export default function PaginaEventos({ eventos }: Props) {
     <>
       <Head title="Eventos | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
+        <BotaoVoltar />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Eventos</h1>
           <p className={comumStyles.introDescricao}>

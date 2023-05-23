@@ -6,6 +6,7 @@ import Head from "src/infra/Head";
 import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "./styles.module.css";
+import BotaoVoltar from "src/pages/components/BotaoVoltar";
 
 function PaginaUsuarios() {
   const token = tokenService.get();
@@ -32,6 +33,7 @@ function PaginaUsuarios() {
     <>
       <Head title="Usuários | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
+        <BotaoVoltar />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Usuários</h1>
           <p className={comumStyles.introDescricao}>Lista de usuários do sistema.</p>

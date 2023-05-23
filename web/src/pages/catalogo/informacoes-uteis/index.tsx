@@ -2,6 +2,7 @@ import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import Head from "src/infra/Head";
 import Card_1 from "src/pages/components/Card_01";
+import BotaoVoltar from "src/pages/components/BotaoVoltar";
 
 export const getServerSideProps = async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/informacoes-uteis`;
@@ -29,6 +30,7 @@ export default function PaginaInfoUteis({ informacoesUteis }: Props) {
     <>
       <Head title="Informações Úteis | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
+        <BotaoVoltar />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Informações Úteis</h1>
           <p className={comumStyles.introDescricao}>
