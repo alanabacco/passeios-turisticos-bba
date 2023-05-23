@@ -9,8 +9,8 @@ import Head from "src/infra/Head";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
 
 export const getServerSideProps = withSession(async (context: any) => {
-  const API = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
-  const restaurantes = await fetch(API)
+  const API = `${process.env.NEXT_PUBLIC_API_URL}/hospedagens`;
+  const hospedagens = await fetch(API)
     .then((res) => {
       return res.json();
     })
@@ -21,17 +21,17 @@ export const getServerSideProps = withSession(async (context: any) => {
   return {
     props: {
       session: context.req.session,
-      restaurantes,
+      hospedagens,
     },
   };
 });
 
 type Props = {
-  restaurantes: [];
+  hospedagens: [];
   session: null;
 };
 
-export default function PaginaExcluirRestaurantes({ restaurantes, session }: Props) {
+export default function PaginaExcluirHospedagens({ hospedagens, session }: Props) {
   const router = useRouter();
 
   async function handleClick(id: any) {
@@ -39,7 +39,7 @@ export default function PaginaExcluirRestaurantes({ restaurantes, session }: Pro
       "Esse item será excluído. Tem certeza que deseja continuar?"
     );
 
-    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes/${id}`;
+    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/hospedagens/${id}`;
     const token = tokenService.get();
     const options = {
       method: "DELETE",
@@ -59,7 +59,7 @@ export default function PaginaExcluirRestaurantes({ restaurantes, session }: Pro
             }
           })
           .then(() => {
-            router.push("/excluir/restaurante");
+            router.push("/excluir/hospedagem");
           });
       } catch (error) {
         console.log(error);
@@ -75,17 +75,17 @@ export default function PaginaExcluirRestaurantes({ restaurantes, session }: Pro
       <main className={comumStyles.mainContainer}>
         <BotaoVoltar />
         <section className={comumStyles.introSection}>
-          <h1 className={comumStyles.introTitulo}>Restaurantes</h1>
+          <h1 className={comumStyles.introTitulo}>Hospedagens</h1>
           <p className={comumStyles.introDescricao}>
             Escolha um dos itens para excluí-lo.
           </p>
         </section>
         <section>
           <ul className={styles.itens}>
-            {restaurantes.map((item: any) => {
+            {hospedagens.map((item: any) => {
               return (
                 <Link
-                  href="/excluir/restaurante"
+                  href="/excluir/hospedagem"
                   key={item.id}
                   className={styles.item}
                   onClick={() => handleClick(item.id)}

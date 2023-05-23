@@ -8,12 +8,12 @@ import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "./formStyles.module.css";
 
-function Restaurante() {
+function Hospedagem() {
   const router = useRouter();
   const token = tokenService.get();
 
   const params = router.query;
-  const API = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes/${params.id}`;
+  const API = `${process.env.NEXT_PUBLIC_API_URL}/hospedagem/${params.id}`;
 
   const [values, setValues] = useState({
     nome: "",
@@ -64,7 +64,7 @@ function Restaurante() {
       endereco: e.target.endereco.value.trim(),
       telefone: e.target.telefone.value,
     };
-    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes/${params.id}`;
+    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/hospedagens/${params.id}`;
     const options = {
       method: "PUT",
       headers: {
@@ -83,7 +83,7 @@ function Restaurante() {
           }
         })
         .then(() => {
-          router.push("/editar/restaurantes");
+          router.push("/editar/hospedagens");
         });
     } catch (error) {
       console.log(error);
@@ -110,7 +110,7 @@ function Restaurante() {
       <Head title="Editar | Passeios Turísticos de Borborema" />
       <section className={comumStyles.mainContainer}>
         <div className={comumStyles.introSection}>
-          <h1 className={comumStyles.introTitulo}>Editar Restaurantes</h1>
+          <h1 className={comumStyles.introTitulo}>Editar Hospedagens</h1>
           <p className={comumStyles.introDescricao}>
             Esse formulário serve para editar as informações.
           </p>
@@ -199,4 +199,4 @@ function Restaurante() {
   );
 }
 
-export default withSessionHOC(Restaurante);
+export default withSessionHOC(Hospedagem);

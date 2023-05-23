@@ -1,72 +1,27 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Head from "src/infra/Head";
-import { HttpClient } from "src/infra/HttpClient";
-import { tokenService } from "src/services/auth/tokenService";
-import { withSessionHOC } from "src/services/auth/session";
-import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
-import styles from "./formStyles.module.css";
+import styles from "./styles.module.css";
+import Footer from "src/pages/components/Footer";
+import Head from "src/infra/Head";
+import { withSessionHOC } from "src/services/auth/session";
+import { tokenService } from "src/services/auth/tokenService";
+import { useRouter } from "next/router";
 
-function Restaurante() {
+function CadastrarHospedagem() {
   const router = useRouter();
-  const token = tokenService.get();
-
-  const params = router.query;
-  const API = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes/${params.id}`;
-
-  const [values, setValues] = useState({
-    nome: "",
-    descricao: "",
-    endereco: "",
-    telefone: "",
-  });
-
-  useEffect(() => {
-    try {
-      HttpClient(API, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => {
-        setValues((valorAtual) => {
-          return {
-            ...valorAtual,
-            nome: res.body.nome,
-            telefone: res.body.telefone,
-            descricao: res.body.descricao,
-            endereco: res.body.endereco,
-          };
-        });
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-
-  function handleChange(e: any) {
-    const valorCampo = e.target.value;
-    const nomeCampo = e.target.name;
-    setValues((valorAtual) => {
-      return {
-        ...valorAtual,
-        [nomeCampo]: valorCampo,
-      };
-    });
-  }
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
     const dados = {
       nome: e.target.nome.value.trim(),
       descricao: e.target.descricao.value.trim(),
       endereco: e.target.endereco.value.trim(),
       telefone: e.target.telefone.value,
     };
-    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes/${params.id}`;
+    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/hospedagens`;
+    const token = tokenService.get();
     const options = {
-      method: "PUT",
+      method: "POST",
       headers: {
         "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -83,12 +38,13 @@ function Restaurante() {
           }
         })
         .then(() => {
-          router.push("/editar/restaurantes");
+          router.push("/cadastrar");
         });
     } catch (error) {
       console.log(error);
-      alert("Não foi possível editar os dados, tente novamente mais tarde.");
-      throw new Error("Não foi possível editar os dados.");
+      alert("Não foi possível cadastrar os dados, tente novamente mais tarde.");
+
+      throw new Error("Não foi possível cadastrar os dados.");
     }
   };
 
@@ -107,12 +63,13 @@ function Restaurante() {
 
   return (
     <>
-      <Head title="Editar | Passeios Turísticos de Borborema" />
+      <Head title="Cadastrar | Passeios Turísticos de Borborema" />
       <section className={comumStyles.mainContainer}>
         <div className={comumStyles.introSection}>
-          <h1 className={comumStyles.introTitulo}>Editar Restaurantes</h1>
+          <h1 className={comumStyles.introTitulo}>Cadastrar Hospedagem</h1>
           <p className={comumStyles.introDescricao}>
-            Esse formulário serve para editar as informações.
+            Esse formulário serve para cadastrar qualquer tipo de hospedagem, como hotéis,
+            acampamentos, entre outros.
           </p>
         </div>
         <form onSubmit={handleSubmit} className={styles.formContainer}>
@@ -122,14 +79,12 @@ function Restaurante() {
               Nome*
             </label>
             <input
-              value={values.nome}
               type="text"
               required
               id="nome"
               name="nome"
               placeholder="Digite o nome do lugar"
               minLength={3}
-              onChange={handleChange}
               className={styles.input}
             />
           </div>
@@ -138,12 +93,10 @@ function Restaurante() {
               Descrição
             </label>
             <textarea
-              value={values.descricao}
               id="descricao"
               name="descricao"
               placeholder="Digite a descrição"
               maxLength={240}
-              onChange={handleChange}
               className={`${styles.input} ${styles.textarea}`}
             />
           </div>
@@ -152,7 +105,6 @@ function Restaurante() {
               Telefone
             </label>
             <input
-              value={values.telefone}
               type="tel"
               id="telefone"
               name="telefone"
@@ -160,7 +112,6 @@ function Restaurante() {
               minLength={14}
               maxLength={15}
               onKeyUp={handleTelefone}
-              onChange={handleChange}
               className={`${styles.input} ${styles.inputNumber}`}
             />
           </div>
@@ -169,8 +120,6 @@ function Restaurante() {
               Endereço
             </label>
             <input
-              value={values.endereco}
-              onChange={handleChange}
               type="text"
               id="endereco"
               name="endereco"
@@ -183,7 +132,7 @@ function Restaurante() {
           <div className={styles.botoes}>
             <button
               type="button"
-              onClick={() => router.back()}
+              onClick={() => router.push("/painel-administrativo")}
               className={styles.botaoCancelar}
             >
               Cancelar
@@ -199,4 +148,4 @@ function Restaurante() {
   );
 }
 
-export default withSessionHOC(Restaurante);
+export default withSessionHOC(CadastrarHospedagem);

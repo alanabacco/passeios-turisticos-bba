@@ -1,10 +1,10 @@
 import Link from "next/link";
+import { withSessionHOC } from "src/services/auth/session";
 import Head from "src/infra/Head";
+import BotaoVoltar from "../components/BotaoVoltar";
 import Footer from "src/pages/components/Footer";
 import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
-import { withSessionHOC } from "src/services/auth/session";
-import BotaoVoltar from "../components/BotaoVoltar";
 
 function Cadastrar() {
   return (
@@ -33,7 +33,7 @@ function Cadastrar() {
             <Link className={paginaInicialStyle.link} href="cadastrar/restaurante">
               Cadastrar Restaurante
             </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/hospedasgem">
+            <Link className={paginaInicialStyle.link} href="cadastrar/hospedagem">
               Cadastrar Hospedagem
             </Link>
             <Link className={paginaInicialStyle.link} href="cadastrar/informacao-util">

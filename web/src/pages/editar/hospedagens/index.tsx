@@ -7,8 +7,8 @@ import Head from "src/infra/Head";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
 
 export const getServerSideProps = withSession(async (context: any) => {
-  const API = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
-  const restaurantes = await fetch(API)
+  const API = `${process.env.NEXT_PUBLIC_API_URL}/hospedagens`;
+  const hospedagens = await fetch(API)
     .then((res) => {
       return res.json();
     })
@@ -19,17 +19,17 @@ export const getServerSideProps = withSession(async (context: any) => {
   return {
     props: {
       session: context.req.session,
-      restaurantes,
+      hospedagens,
     },
   };
 });
 
 type Props = {
-  restaurantes: [];
+  hospedagens: [];
   session: null;
 };
 
-export default function PaginaEditarRestaurantes({ restaurantes, session }: Props) {
+export default function PaginaEditarHospedagem({ hospedagens, session }: Props) {
   return (
     <>
       <Head title="Editar | Passeios Turísticos de Borborema" />
@@ -37,15 +37,15 @@ export default function PaginaEditarRestaurantes({ restaurantes, session }: Prop
         <BotaoVoltar />
         {/* <pre>{JSON.stringify(session, null, 2)}</pre> */}
         <section className={comumStyles.introSection}>
-          <h1 className={comumStyles.introTitulo}>Restaurantes</h1>
+          <h1 className={comumStyles.introTitulo}>Hospedagens</h1>
           <p className={comumStyles.introDescricao}>Escolha um dos itens para editar.</p>
         </section>
         <section>
           <ul className={styles.itens}>
-            {restaurantes.map((item: any) => {
+            {hospedagens.map((item: any) => {
               return (
                 <Link
-                  href={`/editar/restaurantes/${item.id}`}
+                  href={`/editar/hospedagens/${item.id}`}
                   key={item.id}
                   className={styles.item}
                 >

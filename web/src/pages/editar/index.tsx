@@ -33,7 +33,7 @@ function Editar() {
             <Link className={paginaInicialStyle.link} href="editar/restaurantes">
               Editar um Restaurante
             </Link>
-            <Link className={paginaInicialStyle.link} href="editar/hospedasgens">
+            <Link className={paginaInicialStyle.link} href="editar/hospedagens">
               Editar uma Hospedagem
             </Link>
             <Link className={paginaInicialStyle.link} href="editar/informacoes-uteis">

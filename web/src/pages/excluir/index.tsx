@@ -33,7 +33,7 @@ function Excluir() {
             <Link className={paginaInicialStyle.link} href="excluir/restaurante">
               Excluir um Restaurante
             </Link>
-            <Link className={paginaInicialStyle.link} href="excluir/hospedasgem">
+            <Link className={paginaInicialStyle.link} href="excluir/hospedagem">
               Excluir uma Hospedagem
             </Link>
             <Link className={paginaInicialStyle.link} href="excluir/informacao-util">
