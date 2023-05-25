@@ -45,8 +45,8 @@ export default function PaginaEventos({ eventos }: Props) {
                   <h2>{item.nome}</h2>
                   <p>Descrição: {item.descricao}</p>
                   <p>Endereço: {item.endereco}</p>
-                  <p>Data de início: {item.data_inicio}</p>
-                  <p>Data de fim: {item.data_fim}</p>
+                  <p>Data de início: {item.data_inicio.split("-").reverse().join("-")}</p>
+                  <p>Data de fim: {item.data_fim.split("-").reverse().join("-")}</p>
                 </li>
               );
             })}
