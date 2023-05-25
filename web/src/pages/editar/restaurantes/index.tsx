@@ -34,7 +34,7 @@ export default function PaginaEditarRestaurantes({ restaurantes, session }: Prop
     <>
       <Head title="Editar | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
-        <BotaoVoltar />
+        <BotaoVoltar href="/editar" />
         {/* <pre>{JSON.stringify(session, null, 2)}</pre> */}
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Restaurantes</h1>

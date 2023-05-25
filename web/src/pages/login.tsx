@@ -90,7 +90,7 @@ export default function Login() {
           <div className={styles.botoes}>
             <button
               type="button"
-              onClick={() => router.push("/painel-administrativo")}
+              onClick={() => router.back()}
               className={styles.botaoCancelar}
             >
               Cancelar
