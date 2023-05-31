@@ -52,8 +52,8 @@ export default function PaginaEditarEventos({ eventos, session }: Props) {
                     <h2>{item.nome}</h2>
                     <p>Descrição: {item.descricao}</p>
                     <p>Endereço: {item.endereco}</p>
-                    <p>Data de Início: {item.data_inicio.split("-").reverse().join("-")}</p>
-                    <p>Data de Fim: {item.data_fim.split("-").reverse().join("-")}</p>
+                    <p>Data de Início: {item.data_inicio.split("-").reverse().join("/")}</p>
+                    <p>Data de Fim: {item.data_fim.split("-").reverse().join("/")}</p>
                   </li>
                 </Link>
               );
