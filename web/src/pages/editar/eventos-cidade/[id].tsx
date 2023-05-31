@@ -154,9 +154,10 @@ function Evento() {
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="dataInicio" className={styles.label}>
-              Data de inicio do evento
+              Data de inicio do evento*
             </label>
             <input
+              required
               value={values.dataInicio}
               onChange={handleChange}
               type="date"
@@ -168,9 +169,10 @@ function Evento() {
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="dataFim" className={styles.label}>
-              Data de fim do evento
+              Data de fim do evento*
             </label>
             <input
+              required
               value={values.dataFim}
               onChange={handleChange}
               type="date"

@@ -102,9 +102,10 @@ function CadastrarEvento() {
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="dataInicio" className={styles.label}>
-              Data de início do evento
+              Data de início do evento*
             </label>
             <input
+              required
               type="date"
               id="dataInicio"
               name="dataInicio"
@@ -114,9 +115,10 @@ function CadastrarEvento() {
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="dataFim" className={styles.label}>
-              Data de fim do evento
+              Data de fim do evento*
             </label>
             <input
+              required
               type="date"
               id="dataFim"
               name="dataFim"
