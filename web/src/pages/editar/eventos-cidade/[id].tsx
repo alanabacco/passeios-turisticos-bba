@@ -23,6 +23,8 @@ function Evento() {
     dataFim: "",
   });
 
+  const [dataMin, setDataMin] = useState("");
+
   useEffect(() => {
     try {
       HttpClient(API, {
@@ -31,6 +33,7 @@ function Evento() {
           Authorization: `Bearer ${token}`,
         },
       }).then((res) => {
+        setDataMin(res.body.data_inicio);
         setValues((valorAtual) => {
           return {
             ...valorAtual,
@@ -50,12 +53,15 @@ function Evento() {
   function handleChange(e: any) {
     const valorCampo = e.target.value;
     const nomeCampo = e.target.name;
+
     setValues((valorAtual) => {
       return {
         ...valorAtual,
         [nomeCampo]: valorCampo,
       };
     });
+
+    if (nomeCampo == "dataInicio") setDataMin(valorCampo);
   }
 
   const handleSubmit = async (e: any) => {
@@ -180,6 +186,7 @@ function Evento() {
               name="dataFim"
               maxLength={10}
               className={styles.input}
+              min={dataMin}
             />
           </div>
 

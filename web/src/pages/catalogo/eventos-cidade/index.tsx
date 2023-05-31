@@ -26,7 +26,7 @@ type Props = {
 };
 
 const dataAtual = new Date();
-console.log(dataAtual.toLocaleDateString());
+const dataAtualInvertida = dataAtual.toLocaleDateString().split("/").reverse().join("-");
 
 export default function PaginaEventos({ eventos }: Props) {
   return (
@@ -43,20 +43,17 @@ export default function PaginaEventos({ eventos }: Props) {
         <section>
           <ul className={styles.itens}>
             {eventos.map((item: any) => {
-              // console.log(dataAtual.toLocaleDateString().split("/").reverse().join("-") > item.data_fim);
-              if (
-                dataAtual.toLocaleDateString().split("/").reverse().join("-") <=
-                item.data_fim
-              ) {
+              // console.log(dataAtualInvertida, item.data_fim);
+              if (dataAtualInvertida <= item.data_fim) {
+                const dataFim = item.data_fim.split("-").reverse().join("/");
+                const dataInicio = item.data_inicio.split("-").reverse().join("/");
                 return (
                   <li key={item.id} className={styles.item}>
                     <h2>{item.nome}</h2>
                     <p>Descrição: {item.descricao}</p>
                     <p>Endereço: {item.endereco}</p>
-                    <p>
-                      Data de início: {item.data_inicio.split("-").reverse().join("/")}
-                    </p>
-                    <p>Data de fim: {item.data_fim.split("-").reverse().join("/")}</p>
+                    <p>Data de início: {dataInicio}</p>
+                    <p>Data de fim: {dataFim}</p>
                   </li>
                 );
               }

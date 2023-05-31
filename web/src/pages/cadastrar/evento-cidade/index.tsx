@@ -5,8 +5,17 @@ import Head from "src/infra/Head";
 import { withSessionHOC } from "src/services/auth/session";
 import { tokenService } from "src/services/auth/tokenService";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 function CadastrarEvento() {
+  const dataAtual = new Date();
+  const dataAtualInvertida = dataAtual
+    .toLocaleDateString()
+    .split("/")
+    .reverse()
+    .join("-");
+
+  const [dataMin, setDataMin] = useState(dataAtualInvertida);
   const router = useRouter();
 
   const handleSubmit = async (e: any) => {
@@ -48,6 +57,11 @@ function CadastrarEvento() {
       throw new Error("Não foi possível cadastrar os dados.");
     }
   };
+
+  function handleDataFim(e: any) {
+    const dataMin = e.target.value;
+    setDataMin(dataMin);
+  }
 
   return (
     <>
@@ -111,6 +125,7 @@ function CadastrarEvento() {
               name="dataInicio"
               maxLength={10}
               className={styles.input}
+              onChange={handleDataFim}
             />
           </div>
           <div className={styles.inputContainer}>
@@ -124,6 +139,7 @@ function CadastrarEvento() {
               name="dataFim"
               maxLength={10}
               className={styles.input}
+              min={dataMin}
             />
           </div>
 

@@ -42,6 +42,8 @@ export default function PaginaEditarEventos({ eventos, session }: Props) {
         <section>
           <ul className={styles.itens}>
             {eventos.map((item: any) => {
+              const dataFim = item.data_fim.split("-").reverse().join("/");
+              const dataInicio = item.data_inicio.split("-").reverse().join("/");
               return (
                 <Link
                   href={`/editar/eventos-cidade/${item.id}`}
@@ -52,8 +54,8 @@ export default function PaginaEditarEventos({ eventos, session }: Props) {
                     <h2>{item.nome}</h2>
                     <p>Descrição: {item.descricao}</p>
                     <p>Endereço: {item.endereco}</p>
-                    <p>Data de Início: {item.data_inicio.split("-").reverse().join("/")}</p>
-                    <p>Data de Fim: {item.data_fim.split("-").reverse().join("/")}</p>
+                    <p>Data de Início: {dataInicio}</p>
+                    <p>Data de Fim: {dataFim}</p>
                   </li>
                 </Link>
               );
