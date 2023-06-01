@@ -4,9 +4,10 @@ import { tokenService } from "src/services/auth/tokenService";
 import { HttpClient } from "src/infra/HttpClient";
 import Head from "src/infra/Head";
 import Footer from "src/pages/components/Footer";
-import comumStyles from "src/styles/comum.module.css";
-import styles from "./styles.module.css";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
+import comumStyles from "src/styles/comum.module.css";
+import stylesUsuarios from "./styles.module.css";
+import styles from "../estilos-comuns.module.css";
 
 function PaginaUsuarios() {
   const token = tokenService.get();
@@ -42,7 +43,7 @@ function PaginaUsuarios() {
           <ul className={styles.itens}>
             {usuarios.map((item: any) => {
               return (
-                <li key={item.id} className={styles.item}>
+                <li key={item.id} className={stylesUsuarios.item}>
                   <p>{item.nome}</p>
                 </li>
               );

@@ -1,6 +1,6 @@
 import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
-import styles from "./styles.module.css";
+import styles from "../estilos-comuns.module.css";
 import Head from "src/infra/Head";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
 

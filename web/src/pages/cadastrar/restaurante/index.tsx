@@ -1,5 +1,5 @@
 import comumStyles from "src/styles/comum.module.css";
-import styles from "./styles.module.css";
+import styles from "../forms-estilos.module.css";
 import Footer from "src/pages/components/Footer";
 import Head from "src/infra/Head";
 import { withSessionHOC } from "src/services/auth/session";
@@ -133,7 +133,7 @@ function CadastrarRestaurante() {
           <div className={styles.botoes}>
             <button
               type="button"
-              onClick={() => router.push("/painel-administrativo")}
+              onClick={() => router.push("/cadastrar")}
               className={styles.botaoCancelar}
             >
               Cancelar

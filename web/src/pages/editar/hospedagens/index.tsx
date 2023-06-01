@@ -1,5 +1,5 @@
 import Footer from "src/pages/components/Footer";
-import styles from "./indexStyles.module.css";
+import styles from "../estilos-comuns.module.css";
 import comumStyles from "src/styles/comum.module.css";
 import { withSession } from "src/services/auth/session";
 import Link from "next/link";

@@ -6,7 +6,7 @@ import { tokenService } from "src/services/auth/tokenService";
 import { withSessionHOC } from "src/services/auth/session";
 import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
-import styles from "./formStyles.module.css";
+import styles from "../forms-estilos.module.css";
 
 function Restaurante() {
   const router = useRouter();

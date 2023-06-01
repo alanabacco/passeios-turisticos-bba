@@ -1,12 +1,12 @@
-import Footer from "src/pages/components/Footer";
-import styles from "./styles.module.css";
-import comumStyles from "src/styles/comum.module.css";
-import { withSession } from "src/services/auth/session";
 import Link from "next/link";
-import { tokenService } from "src/services/auth/tokenService";
 import { useRouter } from "next/router";
 import Head from "src/infra/Head";
+import { withSession } from "src/services/auth/session";
+import { tokenService } from "src/services/auth/tokenService";
+import Footer from "src/pages/components/Footer";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
+import styles from "../estilos-comuns.module.css";
+import comumStyles from "src/styles/comum.module.css";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/informacoes-uteis`;
