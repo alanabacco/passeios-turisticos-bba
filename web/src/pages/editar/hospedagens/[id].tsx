@@ -13,7 +13,7 @@ function Hospedagem() {
   const token = tokenService.get();
 
   const params = router.query;
-  const API = `${process.env.NEXT_PUBLIC_API_URL}/hospedagem/${params.id}`;
+  const API = `${process.env.NEXT_PUBLIC_API_URL}/hospedagens/${params.id}`;
 
   const [values, setValues] = useState({
     nome: "",
@@ -64,7 +64,7 @@ function Hospedagem() {
       endereco: e.target.endereco.value.trim(),
       telefone: e.target.telefone.value,
     };
-    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/hospedagens/${params.id}`;
+    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/hospedagem/${params.id}`;
     const options = {
       method: "PUT",
       headers: {
