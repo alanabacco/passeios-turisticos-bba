@@ -6,7 +6,7 @@ import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 import BotaoVoltar from "../components/BotaoVoltar";
 
-function Editar() {
+function Editar(): JSX.Element {
   return (
     <>
       <Head title="Editar | Passeios Turísticos de Borborema" />

@@ -1,19 +1,16 @@
 import { HttpClient } from "src/infra/HttpClient";
 import { tokenService } from "./tokenService";
 
-type Props = {
-  nome: string;
-  senha: string;
-};
+type AuthServiceProps = { nome: string; senha: string };
+type ResponseProps = { ok: boolean; status: number; statusText: string; body: any };
 
 export const authService = {
-  async login({ nome, senha }: Props) {
+  async login({ nome, senha }: AuthServiceProps) {
     return HttpClient(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
       method: "POST",
       body: { nome, senha },
-    }).then(async (res: any) => {
+    }).then(async (res: ResponseProps) => {
       if (!res.ok) throw new Error("Usuário ou senha inválidos.");
-
       const body = res.body;
       tokenService.save(body.accessToken);
     });
@@ -29,7 +26,6 @@ export const authService = {
       },
     }).then((res) => {
       if (!res.ok) throw new Error("Não autorizado.");
-
       return res.body.dados;
     });
   },

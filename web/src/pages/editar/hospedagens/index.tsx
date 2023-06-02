@@ -1,10 +1,10 @@
-import Footer from "src/pages/components/Footer";
-import styles from "../estilos-comuns.module.css";
-import comumStyles from "src/styles/comum.module.css";
-import { withSession } from "src/services/auth/session";
 import Link from "next/link";
 import Head from "src/infra/Head";
+import { withSession } from "src/services/auth/session";
+import Footer from "src/pages/components/Footer";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
+import styles from "../estilos-comuns.module.css";
+import comumStyles from "src/styles/comum.module.css";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/hospedagens`;
@@ -29,12 +29,15 @@ type Props = {
   session: null;
 };
 
-export default function PaginaEditarHospedagem({ hospedagens, session }: Props) {
+export default function PaginaEditarHospedagem({
+  hospedagens,
+  session,
+}: Props): JSX.Element {
   return (
     <>
       <Head title="Editar | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
-        <BotaoVoltar  href="/editar"/>
+        <BotaoVoltar href="/editar" />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Hospedagens</h1>
           <p className={comumStyles.introDescricao}>Escolha um dos itens para editar.</p>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "src/infra/Head";
 import { HttpClient } from "src/infra/HttpClient";
@@ -8,7 +8,7 @@ import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "../forms-estilos.module.css";
 
-function Evento() {
+function Evento(): JSX.Element {
   const router = useRouter();
   const token = tokenService.get();
 
@@ -47,10 +47,12 @@ function Evento() {
       });
     } catch (error) {
       console.log(error);
+      alert("Não foi possível trazer os dados, tente novamente mais tarde.");
+      throw new Error("Não foi possível trazer os dados.");
     }
   }, []);
 
-  function handleChange(e: any) {
+  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const valorCampo = e.target.value;
     const nomeCampo = e.target.name;
 
@@ -64,7 +66,7 @@ function Evento() {
     if (nomeCampo == "dataInicio") setDataMin(valorCampo);
   }
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     const dados = {
       nome: e.target.nome.value.trim(),
@@ -73,21 +75,19 @@ function Evento() {
       data_inicio: e.target.dataInicio.value,
       data_fim: e.target.dataFim.value,
     };
-    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/eventos/${params.id}`;
     const options = {
       method: "PUT",
       headers: {
-        "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(dados),
+      body: dados,
     };
 
     try {
-      await fetch(endpoint, options)
+      HttpClient(API, options)
         .then(async (res) => {
           if (res.ok) {
-            const resposta = await res.json();
+            const resposta = res.body;
             return resposta;
           }
         })

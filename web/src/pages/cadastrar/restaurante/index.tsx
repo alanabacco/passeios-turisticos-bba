@@ -1,16 +1,29 @@
-import comumStyles from "src/styles/comum.module.css";
-import styles from "../forms-estilos.module.css";
-import Footer from "src/pages/components/Footer";
+import { useRouter } from "next/router";
+import { HttpClient } from "src/infra/HttpClient";
 import Head from "src/infra/Head";
 import { withSessionHOC } from "src/services/auth/session";
 import { tokenService } from "src/services/auth/tokenService";
-import { useRouter } from "next/router";
+import { mascararTelefone } from "src/services/mascararTelefone";
+import Footer from "src/pages/components/Footer";
+import comumStyles from "src/styles/comum.module.css";
+import styles from "../forms-estilos.module.css";
 
-function CadastrarRestaurante() {
+interface EventProps extends React.ChangeEvent<HTMLFormElement> {
+  target: HTMLFormElement & {
+    nome: { value: string };
+    descricao: { value: string };
+    endereco: { value: string };
+    telefone: { value: string };
+  };
+}
+
+function CadastrarRestaurante(): JSX.Element {
   const router = useRouter();
+  const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
+  const token = tokenService.get();
 
   // referência: https://nextjs.org/docs/pages/building-your-application/data-fetching/building-forms#part-6-form-submission-with-javascript-enabled
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: EventProps) => {
     e.preventDefault();
 
     const dados = {
@@ -19,22 +32,20 @@ function CadastrarRestaurante() {
       endereco: e.target.endereco.value.trim(),
       telefone: e.target.telefone.value,
     };
-    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes`;
-    const token = tokenService.get();
+
     const options = {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(dados),
+      body: dados,
     };
 
     try {
-      await fetch(endpoint, options)
-        .then(async (res) => {
+      HttpClient(endpoint, options)
+        .then((res) => {
           if (res.ok) {
-            const resposta = await res.json();
+            const resposta = res.body;
             return resposta;
           }
         })
@@ -44,23 +55,9 @@ function CadastrarRestaurante() {
     } catch (error) {
       console.log(error);
       alert("Não foi possível cadastrar os dados, tente novamente mais tarde.");
-
       throw new Error("Não foi possível cadastrar os dados.");
     }
   };
-
-  function handleTelefone(e: any) {
-    const input = e.target;
-    input.value = mascaraTelefone(input.value);
-  }
-
-  function mascaraTelefone(value: any) {
-    if (!value) return "";
-    value = value.replace(/\D/g, "");
-    value = value.replace(/(\d{2})(\d)/, "($1) $2");
-    value = value.replace(/(\d)(\d{4})$/, "$1-$2");
-    return value;
-  }
 
   return (
     <>
@@ -112,7 +109,7 @@ function CadastrarRestaurante() {
               placeholder="(16) 00000-0000"
               minLength={14}
               maxLength={15}
-              onKeyUp={handleTelefone}
+              onKeyUp={mascararTelefone}
               className={`${styles.input} ${styles.inputNumber}`}
             />
           </div>

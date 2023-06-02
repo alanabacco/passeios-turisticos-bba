@@ -1,13 +1,24 @@
+import { ChangeEvent, useState } from "react";
+import { useRouter } from "next/router";
+import Head from "src/infra/Head";
+import { tokenService } from "src/services/auth/tokenService";
+import { withSessionHOC } from "src/services/auth/session";
+import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "../forms-estilos.module.css";
-import Footer from "src/pages/components/Footer";
-import Head from "src/infra/Head";
-import { withSessionHOC } from "src/services/auth/session";
-import { tokenService } from "src/services/auth/tokenService";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { HttpClient } from "src/infra/HttpClient";
 
-function CadastrarEvento() {
+interface EventProps extends ChangeEvent<HTMLFormElement> {
+  target: HTMLFormElement & {
+    nome: { value: string };
+    descricao: { value: string };
+    endereco: { value: string };
+    data_inicio: { value: Date };
+    data_fim: { value: Date };
+  };
+}
+
+function CadastrarEvento(): JSX.Element {
   const dataAtual = new Date();
   const dataAtualInvertida = dataAtual
     .toLocaleDateString()
@@ -16,9 +27,12 @@ function CadastrarEvento() {
     .join("-");
 
   const [dataMin, setDataMin] = useState(dataAtualInvertida);
-  const router = useRouter();
 
-  const handleSubmit = async (e: any) => {
+  const router = useRouter();
+  const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/eventos`;
+  const token = tokenService.get();
+
+  const handleSubmit = async (e: EventProps) => {
     e.preventDefault();
 
     const dados = {
@@ -28,22 +42,20 @@ function CadastrarEvento() {
       data_inicio: e.target.dataInicio.value,
       data_fim: e.target.dataFim.value,
     };
-    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/eventos`;
-    const token = tokenService.get();
+
     const options = {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(dados),
+      body: dados,
     };
 
     try {
-      await fetch(endpoint, options)
-        .then(async (res) => {
+      HttpClient(endpoint, options)
+        .then((res) => {
           if (res.ok) {
-            const resposta = await res.json();
+            const resposta = res.body;
             return resposta;
           }
         })
@@ -53,12 +65,11 @@ function CadastrarEvento() {
     } catch (error) {
       console.log(error);
       alert("Não foi possível cadastrar os dados, tente novamente mais tarde.");
-
       throw new Error("Não foi possível cadastrar os dados.");
     }
   };
 
-  function handleDataFim(e: any) {
+  function handleDataFim(e: ChangeEvent<HTMLInputElement>) {
     const dataMin = e.target.value;
     setDataMin(dataMin);
   }

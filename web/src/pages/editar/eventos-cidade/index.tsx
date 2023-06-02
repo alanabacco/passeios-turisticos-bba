@@ -1,10 +1,10 @@
-import Footer from "src/pages/components/Footer";
-import styles from "../estilos-comuns.module.css";
-import comumStyles from "src/styles/comum.module.css";
-import { withSession } from "src/services/auth/session";
 import Link from "next/link";
 import Head from "src/infra/Head";
+import { withSession } from "src/services/auth/session";
+import Footer from "src/pages/components/Footer";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
+import styles from "../estilos-comuns.module.css";
+import comumStyles from "src/styles/comum.module.css";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/eventos`;
@@ -29,7 +29,7 @@ type Props = {
   session: null;
 };
 
-export default function PaginaEditarEventos({ eventos, session }: Props) {
+export default function PaginaEditarEventos({ eventos, session }: Props): JSX.Element {
   return (
     <>
       <Head title="Editar | Passeios Turísticos de Borborema" />

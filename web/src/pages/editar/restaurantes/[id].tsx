@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "src/infra/Head";
 import { HttpClient } from "src/infra/HttpClient";
 import { tokenService } from "src/services/auth/tokenService";
 import { withSessionHOC } from "src/services/auth/session";
+import { mascararTelefone } from "src/services/mascararTelefone";
 import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "../forms-estilos.module.css";
 
-function Restaurante() {
+function Restaurante(): JSX.Element {
   const router = useRouter();
   const token = tokenService.get();
 
@@ -42,10 +43,12 @@ function Restaurante() {
       });
     } catch (error) {
       console.log(error);
+      alert("Não foi possível trazer os dados, tente novamente mais tarde.");
+      throw new Error("Não foi possível trazer os dados.");
     }
   }, []);
 
-  function handleChange(e: any) {
+  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const valorCampo = e.target.value;
     const nomeCampo = e.target.name;
     setValues((valorAtual) => {
@@ -56,7 +59,7 @@ function Restaurante() {
     });
   }
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     const dados = {
       nome: e.target.nome.value.trim(),
@@ -64,21 +67,19 @@ function Restaurante() {
       endereco: e.target.endereco.value.trim(),
       telefone: e.target.telefone.value,
     };
-    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/restaurantes/${params.id}`;
     const options = {
       method: "PUT",
       headers: {
-        "Content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(dados),
     };
 
     try {
-      await fetch(endpoint, options)
+      HttpClient(API, options)
         .then(async (res) => {
           if (res.ok) {
-            const resposta = await res.json();
+            const resposta = res.body;
             return resposta;
           }
         })
@@ -91,19 +92,6 @@ function Restaurante() {
       throw new Error("Não foi possível editar os dados.");
     }
   };
-
-  function handleTelefone(e: any) {
-    const input = e.target;
-    input.value = mascaraTelefone(input.value);
-  }
-
-  function mascaraTelefone(value: any) {
-    if (!value) return "";
-    value = value.replace(/\D/g, "");
-    value = value.replace(/(\d{2})(\d)/, "($1) $2");
-    value = value.replace(/(\d)(\d{4})$/, "$1-$2");
-    return value;
-  }
 
   return (
     <>
@@ -159,7 +147,7 @@ function Restaurante() {
               placeholder="(16) 00000-0000"
               minLength={14}
               maxLength={15}
-              onKeyUp={handleTelefone}
+              onKeyUp={mascararTelefone}
               onChange={handleChange}
               className={`${styles.input} ${styles.inputNumber}`}
             />

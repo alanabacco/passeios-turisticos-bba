@@ -6,7 +6,7 @@ import Footer from "src/pages/components/Footer";
 import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 
-function Cadastrar() {
+function Cadastrar(): JSX.Element {
   return (
     <>
       <Head title="Cadastrar | Passeios Turísticos de Borborema" />
