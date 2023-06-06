@@ -6,7 +6,20 @@ class EventosController {
   static async listarEventos(req, res, next) {
     try {
       const todosOsEventos = await eventosServices.listarRegistros();
-      return res.status(200).json(todosOsEventos);
+      const eventosOrdenados = ordenarEventosPorData(todosOsEventos);
+      return res.status(200).json(eventosOrdenados);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async listarEventosFuturos(req, res, next) {
+    try {
+      const todosOsEventos =
+        await eventosServices.listarRegistrosComDataDeFimIgualOuMaiorQueDataAtual();
+
+      const eventosOrdenados = ordenarEventosPorData(todosOsEventos);
+      return res.status(200).json(eventosOrdenados);
     } catch (error) {
       next(error);
     }
@@ -71,3 +84,18 @@ class EventosController {
 }
 
 module.exports = EventosController;
+
+function ordenarEventosPorData(eventos) {
+  // referência: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#:~:text=items.sort(function%20(a%2C%20b)%20%7B%0A%20%20if%20(a.name%20%3E%20b.name)%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20if%20(a.name%20%3C%20b.name)%20%7B%0A%20%20%20%20return%20%2D1%3B%0A%20%20%7D%0A%20%20//%20a%20must%20be%20equal%20to%20b%0A%20%20return%200%3B%0A%7D)%3B
+  const eventosOrdenados = eventos.sort(function (a, b) {
+    if (a.data_inicio > b.data_inicio) {
+      return 1;
+    }
+    if (a.data_inicio < b.data_inicio) {
+      return -1;
+    }
+    return 0;
+  });
+
+  return eventosOrdenados;
+}
