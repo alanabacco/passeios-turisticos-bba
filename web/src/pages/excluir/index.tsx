@@ -6,7 +6,7 @@ import comumStyles from "src/styles/comum.module.css";
 import { withSessionHOC } from "src/services/auth/session";
 import BotaoVoltar from "../components/BotaoVoltar";
 
-function Excluir() {
+function Excluir(): JSX.Element {
   return (
     <>
       <Head title="Excluir | Passeios Turísticos de Borborema" />

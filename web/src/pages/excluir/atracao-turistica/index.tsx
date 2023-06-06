@@ -7,6 +7,7 @@ import Footer from "src/pages/components/Footer";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
 import styles from "../estilos-comuns.module.css";
 import comumStyles from "src/styles/comum.module.css";
+import { AtracaoTuristica } from "src/utils/tipos";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/atracoes-turisticas`;
@@ -31,10 +32,10 @@ type Props = {
   session: null;
 };
 
-export default function PaginaExcluirAtracoes({ atracoes, session }: Props) {
+export default function PaginaExcluirAtracoes({ atracoes, session }: Props): JSX.Element {
   const router = useRouter();
 
-  async function handleClick(id: any) {
+  async function handleClick(id: number) {
     const confirmaExclusao = confirm(
       "Esse item será excluído. Tem certeza que deseja continuar?"
     );
@@ -82,7 +83,7 @@ export default function PaginaExcluirAtracoes({ atracoes, session }: Props) {
         </section>
         <section>
           <ul className={styles.itens}>
-            {atracoes.map((item: any) => {
+            {atracoes.map((item: AtracaoTuristica) => {
               return (
                 <Link
                   href="/excluir/atracao-turistica"

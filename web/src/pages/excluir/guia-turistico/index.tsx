@@ -7,6 +7,7 @@ import Footer from "src/pages/components/Footer";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
 import styles from "../estilos-comuns.module.css";
 import comumStyles from "src/styles/comum.module.css";
+import { GuiaTuristico } from "src/utils/tipos";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/guias-turisticos`;
@@ -31,10 +32,10 @@ type Props = {
   session: null;
 };
 
-export default function PaginaExcluirGuia({ guias, session }: Props) {
+export default function PaginaExcluirGuia({ guias, session }: Props): JSX.Element {
   const router = useRouter();
 
-  async function handleClick(id: any) {
+  async function handleClick(id: number) {
     const confirmaExclusao = confirm(
       "Esse item será excluído. Tem certeza que deseja continuar?"
     );
@@ -82,7 +83,7 @@ export default function PaginaExcluirGuia({ guias, session }: Props) {
         </section>
         <section>
           <ul className={styles.itens}>
-            {guias.map((item: any) => {
+            {guias.map((item: GuiaTuristico) => {
               return (
                 <Link
                   href="/excluir/guia-turistico"

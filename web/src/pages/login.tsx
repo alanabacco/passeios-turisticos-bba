@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "src/infra/Head";
 import Footer from "./components/Footer";
@@ -6,7 +6,7 @@ import { authService } from "src/services/auth/authService";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "src/styles/login.module.css";
 
-export default function Login() {
+export default function Login(): JSX.Element {
   const router = useRouter();
 
   const [values, setValues] = useState({
@@ -14,7 +14,7 @@ export default function Login() {
     senha: "",
   });
 
-  function handleChange(e: any) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const valorCampo = e.target.value;
     const nomeCampo = e.target.name;
     setValues((valorAtual) => {
@@ -39,8 +39,6 @@ export default function Login() {
       .catch((err) => {
         console.log(err);
         alert("Usuário ou senha inválidos.");
-
-        // TODO: colocar um toast ou um aviso mais bonito
       });
   }
 

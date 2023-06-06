@@ -7,7 +7,7 @@ import painelAdministrativoStyle from "src/styles/painel-administrativo.module.c
 import { withSessionHOC } from "src/services/auth/session";
 import BotaoVoltar from "./components/BotaoVoltar";
 
-function PainelAdministrativo() {
+function PainelAdministrativo(): JSX.Element {
   return (
     <>
       <Head title="Painel Administrativo | Passeios Turísticos de Borborema" />

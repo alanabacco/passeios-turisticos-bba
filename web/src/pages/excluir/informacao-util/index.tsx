@@ -7,10 +7,11 @@ import Footer from "src/pages/components/Footer";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
 import styles from "../estilos-comuns.module.css";
 import comumStyles from "src/styles/comum.module.css";
+import { InformacaoUtil } from "src/utils/tipos";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/informacoes-uteis`;
-  const info = await fetch(API)
+  const informacoesUteis = await fetch(API)
     .then((res) => {
       return res.json();
     })
@@ -21,20 +22,23 @@ export const getServerSideProps = withSession(async (context: any) => {
   return {
     props: {
       session: context.req.session,
-      info,
+      informacoesUteis,
     },
   };
 });
 
 type Props = {
-  info: [];
+  informacoesUteis: [];
   session: null;
 };
 
-export default function PaginaExcluirInformacoes({ info, session }: Props) {
+export default function PaginaExcluirInformacoes({
+  informacoesUteis,
+  session,
+}: Props): JSX.Element {
   const router = useRouter();
 
-  async function handleClick(id: any) {
+  async function handleClick(id: number) {
     const confirmaExclusao = confirm(
       "Esse item será excluído. Tem certeza que deseja continuar?"
     );
@@ -82,7 +86,7 @@ export default function PaginaExcluirInformacoes({ info, session }: Props) {
         </section>
         <section>
           <ul className={styles.itens}>
-            {info.map((item: any) => {
+            {informacoesUteis.map((item: InformacaoUtil) => {
               return (
                 <Link
                   href="/excluir/informacao-util"

@@ -3,7 +3,7 @@ import { HttpClient } from "src/infra/HttpClient";
 import Head from "src/infra/Head";
 import { withSessionHOC } from "src/services/auth/session";
 import { tokenService } from "src/services/auth/tokenService";
-import { mascararTelefone } from "src/services/mascararTelefone";
+import { mascararTelefone } from "src/utils/mascararTelefone";
 import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "../forms-estilos.module.css";

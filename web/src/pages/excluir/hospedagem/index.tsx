@@ -7,6 +7,7 @@ import Footer from "src/pages/components/Footer";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
 import styles from "../estilos-comuns.module.css";
 import comumStyles from "src/styles/comum.module.css";
+import { Hospedagem } from "src/utils/tipos";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/hospedagens`;
@@ -31,10 +32,13 @@ type Props = {
   session: null;
 };
 
-export default function PaginaExcluirHospedagens({ hospedagens, session }: Props) {
+export default function PaginaExcluirHospedagens({
+  hospedagens,
+  session,
+}: Props): JSX.Element {
   const router = useRouter();
 
-  async function handleClick(id: any) {
+  async function handleClick(id: number) {
     const confirmaExclusao = confirm(
       "Esse item será excluído. Tem certeza que deseja continuar?"
     );
@@ -82,7 +86,7 @@ export default function PaginaExcluirHospedagens({ hospedagens, session }: Props
         </section>
         <section>
           <ul className={styles.itens}>
-            {hospedagens.map((item: any) => {
+            {hospedagens.map((item: Hospedagem) => {
               return (
                 <Link
                   href="/excluir/hospedagem"

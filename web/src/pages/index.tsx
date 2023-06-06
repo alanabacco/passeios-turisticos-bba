@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import styles from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 
-export default function PaginaInicial() {
+export default function PaginaInicial(): JSX.Element {
   return (
     <>
       <Head title="Página Inicial | Passeios Turísticos de Borborema" />
