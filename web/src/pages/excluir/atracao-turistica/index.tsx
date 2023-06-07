@@ -82,25 +82,29 @@ export default function PaginaExcluirAtracoes({ atracoes, session }: Props): JSX
           </p>
         </section>
         <section>
-          <ul className={styles.itens}>
-            {atracoes.map((item: AtracaoTuristica) => {
-              return (
-                <Link
-                  href="/excluir/atracao-turistica"
-                  key={item.id}
-                  className={styles.item}
-                  onClick={() => handleClick(item.id)}
-                >
-                  <li>
-                    <h2>{item.nome}</h2>
-                    <p>Descrição: {item.descricao}</p>
-                    <p>Telefone: {item.telefone}</p>
-                    <p>Endereço: {item.endereco}</p>
-                  </li>
-                </Link>
-              );
-            })}
-          </ul>
+          {atracoes.length > 0 ? (
+            <ul className={styles.itens}>
+              {atracoes.map((item: AtracaoTuristica) => {
+                return (
+                  <Link
+                    href="/excluir/atracao-turistica"
+                    key={item.id}
+                    className={styles.item}
+                    onClick={() => handleClick(item.id)}
+                  >
+                    <li>
+                      <h2>{item.nome}</h2>
+                      <p>Descrição: {item.descricao}</p>
+                      <p>Telefone: {item.telefone}</p>
+                      <p>Endereço: {item.endereco}</p>
+                    </li>
+                  </Link>
+                );
+              })}
+            </ul>
+          ) : (
+            <p>Não há itens cadastrados aqui.</p>
+          )}
         </section>
       </main>
       <Footer />

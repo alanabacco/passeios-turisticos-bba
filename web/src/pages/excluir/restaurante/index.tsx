@@ -85,25 +85,29 @@ export default function PaginaExcluirRestaurantes({
           </p>
         </section>
         <section>
-          <ul className={styles.itens}>
-            {restaurantes.map((item: Restaurante) => {
-              return (
-                <Link
-                  href="/excluir/restaurante"
-                  key={item.id}
-                  className={styles.item}
-                  onClick={() => handleClick(item.id)}
-                >
-                  <li>
-                    <h2>{item.nome}</h2>
-                    <p>Descrição: {item.descricao}</p>
-                    <p>Telefone: {item.telefone}</p>
-                    <p>Endereço: {item.endereco}</p>
-                  </li>
-                </Link>
-              );
-            })}
-          </ul>
+          {restaurantes.length > 0 ? (
+            <ul className={styles.itens}>
+              {restaurantes.map((item: Restaurante) => {
+                return (
+                  <Link
+                    href="/excluir/restaurante"
+                    key={item.id}
+                    className={styles.item}
+                    onClick={() => handleClick(item.id)}
+                  >
+                    <li>
+                      <h2>{item.nome}</h2>
+                      <p>Descrição: {item.descricao}</p>
+                      <p>Telefone: {item.telefone}</p>
+                      <p>Endereço: {item.endereco}</p>
+                    </li>
+                  </Link>
+                );
+              })}
+            </ul>
+          ) : (
+            <p>Não há itens cadastrados aqui.</p>
+          )}
         </section>
       </main>
       <Footer />

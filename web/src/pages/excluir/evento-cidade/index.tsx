@@ -82,28 +82,32 @@ export default function PaginaExcluirEventos({ eventos, session }: Props): JSX.E
           </p>
         </section>
         <section>
-          <ul className={styles.itens}>
-            {eventos.map((item: Evento) => {
-              const dataInicio = item.data_inicio.split("-").reverse().join("/");
-              const dataFim = item.data_fim.split("-").reverse().join("/");
-              return (
-                <Link
-                  href="/excluir/evento-cidade"
-                  key={item.id}
-                  className={styles.item}
-                  onClick={() => handleClick(item.id)}
-                >
-                  <li>
-                    <h2>{item.nome}</h2>
-                    <p>Descrição: {item.descricao}</p>
-                    <p>Endereço: {item.endereco}</p>
-                    <p>Data de Início: {dataInicio}</p>
-                    <p>Data de Fim: {dataFim}</p>
-                  </li>
-                </Link>
-              );
-            })}
-          </ul>
+          {eventos.length > 0 ? (
+            <ul className={styles.itens}>
+              {eventos.map((item: Evento) => {
+                const dataInicio = item.data_inicio.split("-").reverse().join("/");
+                const dataFim = item.data_fim.split("-").reverse().join("/");
+                return (
+                  <Link
+                    href="/excluir/evento-cidade"
+                    key={item.id}
+                    className={styles.item}
+                    onClick={() => handleClick(item.id)}
+                  >
+                    <li>
+                      <h2>{item.nome}</h2>
+                      <p>Descrição: {item.descricao}</p>
+                      <p>Endereço: {item.endereco}</p>
+                      <p>Data de Início: {dataInicio}</p>
+                      <p>Data de Fim: {dataFim}</p>
+                    </li>
+                  </Link>
+                );
+              })}
+            </ul>
+          ) : (
+            <p>Não há itens cadastrados aqui.</p>
+          )}
         </section>
       </main>
       <Footer />

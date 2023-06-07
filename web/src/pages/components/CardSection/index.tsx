@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import Link from "next/link";
 import styles from "./styles.module.css";
 
@@ -35,10 +36,11 @@ type CardSectionProps<T extends Item> = {
 };
 
 const CardSection = <T extends Item>({
-  itens,
+  itens = [],
   linkIdParam,
 }: CardSectionProps<T>): JSX.Element => (
-    <section>
+  <section>
+    {itens.length > 0 ? (
       <ul className={styles.itens}>
         {itens.map((item) => {
           const { id, createdAt, updatedAt, deletedAt, nome, ...rest } = item;
@@ -63,16 +65,22 @@ const CardSection = <T extends Item>({
             </li>
           );
 
-          return linkIdParam ? (
+          const listaComLink = (
             <Link href={`${linkIdParam}${item.id}`} key={id}>
               {lista}
             </Link>
-          ) : (
-            lista
           );
+
+          if (linkIdParam) {
+            return listaComLink;
+          }
+          return lista;
         })}
       </ul>
-    </section>
-  );
+    ) : (
+      <p>Não há itens cadastrados aqui.</p>
+    )}
+  </section>
+);
 
 export default CardSection;

@@ -85,25 +85,29 @@ export default function PaginaExcluirHospedagens({
           </p>
         </section>
         <section>
-          <ul className={styles.itens}>
-            {hospedagens.map((item: Hospedagem) => {
-              return (
-                <Link
-                  href="/excluir/hospedagem"
-                  key={item.id}
-                  className={styles.item}
-                  onClick={() => handleClick(item.id)}
-                >
-                  <li>
-                    <h2>{item.nome}</h2>
-                    <p>Descrição: {item.descricao}</p>
-                    <p>Telefone: {item.telefone}</p>
-                    <p>Endereço: {item.endereco}</p>
-                  </li>
-                </Link>
-              );
-            })}
-          </ul>
+          {hospedagens.length > 0 ? (
+            <ul className={styles.itens}>
+              {hospedagens.map((item: Hospedagem) => {
+                return (
+                  <Link
+                    href="/excluir/hospedagem"
+                    key={item.id}
+                    className={styles.item}
+                    onClick={() => handleClick(item.id)}
+                  >
+                    <li>
+                      <h2>{item.nome}</h2>
+                      <p>Descrição: {item.descricao}</p>
+                      <p>Telefone: {item.telefone}</p>
+                      <p>Endereço: {item.endereco}</p>
+                    </li>
+                  </Link>
+                );
+              })}
+            </ul>
+          ) : (
+            <p>Não há itens cadastrados aqui.</p>
+          )}
         </section>
       </main>
       <Footer />

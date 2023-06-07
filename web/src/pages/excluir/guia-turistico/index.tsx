@@ -82,24 +82,28 @@ export default function PaginaExcluirGuia({ guias, session }: Props): JSX.Elemen
           </p>
         </section>
         <section>
-          <ul className={styles.itens}>
-            {guias.map((item: GuiaTuristico) => {
-              return (
-                <Link
-                  href="/excluir/guia-turistico"
-                  key={item.id}
-                  className={styles.item}
-                  onClick={() => handleClick(item.id)}
-                >
-                  <li>
-                    <h2>{item.nome}</h2>
-                    <p>Telefone: {item.telefone}</p>
-                    <p>Endereço: {item.tipos_turismo}</p>
-                  </li>
-                </Link>
-              );
-            })}
-          </ul>
+          {guias.length > 0 ? (
+            <ul className={styles.itens}>
+              {guias.map((item: GuiaTuristico) => {
+                return (
+                  <Link
+                    href="/excluir/guia-turistico"
+                    key={item.id}
+                    className={styles.item}
+                    onClick={() => handleClick(item.id)}
+                  >
+                    <li>
+                      <h2>{item.nome}</h2>
+                      <p>Telefone: {item.telefone}</p>
+                      <p>Endereço: {item.tipos_turismo}</p>
+                    </li>
+                  </Link>
+                );
+              })}
+            </ul>
+          ) : (
+            <p>Não há itens cadastrados aqui.</p>
+          )}
         </section>
       </main>
       <Footer />

@@ -85,25 +85,29 @@ export default function PaginaExcluirInformacoes({
           </p>
         </section>
         <section>
-          <ul className={styles.itens}>
-            {informacoesUteis.map((item: InformacaoUtil) => {
-              return (
-                <Link
-                  href="/excluir/informacao-util"
-                  key={item.id}
-                  className={styles.item}
-                  onClick={() => handleClick(item.id)}
-                >
-                  <li>
-                    <h2>{item.nome}</h2>
-                    <p>Descrição: {item.descricao}</p>
-                    <p>Telefone: {item.telefone}</p>
-                    <p>Endereço: {item.endereco}</p>
-                  </li>
-                </Link>
-              );
-            })}
-          </ul>
+          {informacoesUteis.length > 0 ? (
+            <ul className={styles.itens}>
+              {informacoesUteis.map((item: InformacaoUtil) => {
+                return (
+                  <Link
+                    href="/excluir/informacao-util"
+                    key={item.id}
+                    className={styles.item}
+                    onClick={() => handleClick(item.id)}
+                  >
+                    <li>
+                      <h2>{item.nome}</h2>
+                      <p>Descrição: {item.descricao}</p>
+                      <p>Telefone: {item.telefone}</p>
+                      <p>Endereço: {item.endereco}</p>
+                    </li>
+                  </Link>
+                );
+              })}
+            </ul>
+          ) : (
+            <p>Não há itens cadastrados aqui.</p>
+          )}
         </section>
       </main>
       <Footer />
