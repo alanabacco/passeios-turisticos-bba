@@ -1,7 +1,7 @@
 import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import Head from "src/infra/Head";
-import Card_1 from "src/pages/components/Card_01";
+import Card from "src/pages/components/Card";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
 
 export const getServerSideProps = async (context: any) => {
@@ -37,7 +37,7 @@ export default function PaginaAtrTuristicas({ atracoesTuristicas }: Props) {
             Aqui você encontra uma lista de atrações turísticas.
           </p>
         </section>
-        <Card_1 item={atracoesTuristicas} />
+        <Card itens={atracoesTuristicas} />
       </main>
       <Footer />
     </>

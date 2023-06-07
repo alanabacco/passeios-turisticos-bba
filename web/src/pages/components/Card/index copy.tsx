@@ -4,11 +4,11 @@ type CardProps = {
   item: [];
 };
 
-export default function Card_1({ item = [] }: CardProps): JSX.Element {
+function Card_1(itens = []): JSX.Element {
   return (
     <section>
       <ul className={styles.itens}>
-        {item.map((item: any) => {
+        {itens.map((item: any) => {
           return (
             <li key={item.id} className={styles.item}>
               <h2>{item.nome}</h2>

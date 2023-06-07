@@ -1,7 +1,7 @@
 import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import Head from "src/infra/Head";
-import Card_1 from "src/pages/components/Card_01";
+import Card from "src/pages/components/Card";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
 
 export const getServerSideProps = async (context: any) => {
@@ -38,7 +38,7 @@ export default function PaginaRestaurantes({ restaurantes }: Props) {
             locais, para que você possa visitar em nossa cidade.
           </p>
         </section>
-        <Card_1 item={restaurantes} />
+        <Card itens={restaurantes} />
       </main>
       <Footer />
     </>

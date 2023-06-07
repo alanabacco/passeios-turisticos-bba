@@ -3,6 +3,7 @@ import comumStyles from "src/styles/comum.module.css";
 import styles from "../estilos-comuns.module.css";
 import Head from "src/infra/Head";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
+import Card from "src/pages/components/Card";
 
 export const getServerSideProps = async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/eventos-futuros`;
@@ -37,7 +38,7 @@ export default function PaginaEventos({ eventos }: Props) {
             Aqui você encontra uma lista de eventos em nossa cidade.
           </p>
         </section>
-        <section>
+        {/* <section>
           <ul className={styles.itens}>
             {eventos.map((item: any) => {
               const dataInicio = item.data_inicio.split("-").reverse().join("/");
@@ -53,7 +54,8 @@ export default function PaginaEventos({ eventos }: Props) {
               );
             })}
           </ul>
-        </section>
+        </section> */}
+        <Card itens={eventos} />
       </main>
       <Footer />
     </>
