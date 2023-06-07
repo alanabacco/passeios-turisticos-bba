@@ -1,9 +1,8 @@
 import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
-import styles from "../estilos-comuns.module.css";
 import Head from "src/infra/Head";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
-import Card from "src/pages/components/Card";
+import CardSection from "src/pages/components/CardSection";
 
 export const getServerSideProps = async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/eventos-futuros`;
@@ -38,24 +37,7 @@ export default function PaginaEventos({ eventos }: Props) {
             Aqui você encontra uma lista de eventos em nossa cidade.
           </p>
         </section>
-        {/* <section>
-          <ul className={styles.itens}>
-            {eventos.map((item: any) => {
-              const dataInicio = item.data_inicio.split("-").reverse().join("/");
-              const dataFim = item.data_fim.split("-").reverse().join("/");
-              return (
-                <li key={item.id} className={styles.item}>
-                  <h2>{item.nome}</h2>
-                  <p>Descrição: {item.descricao}</p>
-                  <p>Endereço: {item.endereco}</p>
-                  <p>Data de início: {dataInicio}</p>
-                  <p>Data de fim: {dataFim}</p>
-                </li>
-              );
-            })}
-          </ul>
-        </section> */}
-        <Card itens={eventos} />
+        <CardSection itens={eventos} />
       </main>
       <Footer />
     </>

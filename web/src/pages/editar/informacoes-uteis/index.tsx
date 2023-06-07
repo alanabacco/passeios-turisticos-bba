@@ -1,14 +1,13 @@
-import Link from "next/link";
 import Head from "src/infra/Head";
 import { withSession } from "src/services/auth/session";
 import Footer from "src/pages/components/Footer";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
-import styles from "../estilos-comuns.module.css";
 import comumStyles from "src/styles/comum.module.css";
+import CardSection from "src/pages/components/CardSection";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/informacoes-uteis`;
-  const info = await fetch(API)
+  const informacoesUteis = await fetch(API)
     .then((res) => {
       return res.json();
     })
@@ -19,17 +18,20 @@ export const getServerSideProps = withSession(async (context: any) => {
   return {
     props: {
       session: context.req.session,
-      info,
+      informacoesUteis,
     },
   };
 });
 
 type Props = {
-  info: [];
+  informacoesUteis: [];
   session: null;
 };
 
-export default function PaginaEditarInformacao({ info, session }: Props): JSX.Element {
+export default function PaginaEditarInformacao({
+  informacoesUteis,
+  session,
+}: Props): JSX.Element {
   return (
     <>
       <Head title="Editar | Passeios Turísticos de Borborema" />
@@ -39,26 +41,7 @@ export default function PaginaEditarInformacao({ info, session }: Props): JSX.El
           <h1 className={comumStyles.introTitulo}>Informações Úteis</h1>
           <p className={comumStyles.introDescricao}>Escolha um dos itens para editar.</p>
         </section>
-        <section>
-          <ul className={styles.itens}>
-            {info.map((item: any) => {
-              return (
-                <Link
-                  href={`/editar/informacoes-uteis/${item.id}`}
-                  key={item.id}
-                  className={styles.item}
-                >
-                  <li>
-                    <h2>{item.nome}</h2>
-                    <p>Descrição: {item.descricao}</p>
-                    <p>Telefone: {item.telefone}</p>
-                    <p>Endereço: {item.endereco}</p>
-                  </li>
-                </Link>
-              );
-            })}
-          </ul>
-        </section>
+        <CardSection itens={informacoesUteis} linkIdParam="/editar/informacoes-uteis/" />
       </main>
       <Footer />
     </>

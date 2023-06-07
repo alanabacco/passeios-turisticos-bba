@@ -6,8 +6,7 @@ import Head from "src/infra/Head";
 import Footer from "src/pages/components/Footer";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
 import comumStyles from "src/styles/comum.module.css";
-import stylesUsuarios from "./styles.module.css";
-import styles from "../estilos-comuns.module.css";
+import CardSection from "src/pages/components/CardSection";
 
 function PaginaUsuarios() {
   const token = tokenService.get();
@@ -39,17 +38,7 @@ function PaginaUsuarios() {
           <h1 className={comumStyles.introTitulo}>Usuários</h1>
           <p className={comumStyles.introDescricao}>Lista de usuários do sistema.</p>
         </section>
-        <section>
-          <ul className={styles.itens}>
-            {usuarios.map((item: any) => {
-              return (
-                <li key={item.id} className={stylesUsuarios.item}>
-                  <p>{item.nome}</p>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
+        <CardSection itens={usuarios} />
       </main>
       <Footer />
     </>

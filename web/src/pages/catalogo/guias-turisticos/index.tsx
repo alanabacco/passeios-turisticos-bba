@@ -1,8 +1,8 @@
 import Footer from "src/pages/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
-import styles from "../estilos-comuns.module.css";
 import Head from "src/infra/Head";
 import BotaoVoltar from "src/pages/components/BotaoVoltar";
+import CardSection from "src/pages/components/CardSection";
 
 export const getServerSideProps = async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/guias-turisticos`;
@@ -38,19 +38,7 @@ export default function PaginaGuiasTuristicos({ guias }: Props) {
             diversos passeios que existem na cidade.
           </p>
         </section>
-        <section>
-          <ul className={styles.itens}>
-            {guias.map((item: any) => {
-              return (
-                <li key={item.id} className={styles.item}>
-                  <h2>{item.nome}</h2>
-                  <p>Telefone: {item.telefone}</p>
-                  <p>Tipos de turismo: {item.tipos_turismo}</p>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
+        <CardSection itens={guias} />
       </main>
       <Footer />
     </>
