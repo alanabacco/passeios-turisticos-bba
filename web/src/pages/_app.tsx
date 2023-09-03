@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
         <meta
           name="keywords"
-          content="Borborema SP, turismo, guias turisticos, interior de São Paulo, informações turísticas"
+          content="Borborema SP, turismo, guias turisticos, interior de São Paulo, informações turísticas, eventos, passeios turisticos borborema"
         ></meta>
 
         <meta property="og:title" content="Passeios Turísticos de Borborema" />
@@ -24,6 +24,8 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Descubra eventos, passeios turísticos, restaurantes, guias e hospedagens, além de uma variedade de informações essenciais para aproveitar ao máximo sua experiência na cidade."
         />
         <meta property="og:image" content="/pag-inicial-img.png" />
+        <meta property="og:url" content="https://passeiosturisticosbba.vercel.app/" />
+        <meta property="og:type" content="website" />
       </Head>
       <Component {...pageProps} />
     </>
