@@ -21,7 +21,8 @@
     "dev": "nodemon ./src/app.js",
     "migrate": "npx sequelize-cli db:migrate",
     "seed": "npx sequelize-cli db:seed:all",
-    "lint": "npx eslint ./src"
+    "lint": "npx eslint ./src",
+    "lint:fix": "npx eslint ./src --fix"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
