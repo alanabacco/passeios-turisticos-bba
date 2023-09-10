@@ -20,7 +20,8 @@
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js",
     "migrate": "npx sequelize-cli db:migrate",
-    "seed": "npx sequelize-cli db:seed:all"
+    "seed": "npx sequelize-cli db:seed:all",
+    "lint": "npx eslint ./src"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -37,7 +38,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.41.0",
-    "nodemon": "^2.0.22"
+    "eslint": "^8.49.0",
+    "nodemon": "^3.0.1"
   }
 }
