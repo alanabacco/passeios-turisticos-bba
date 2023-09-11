@@ -1,6 +1,6 @@
 {
   "name": "passeios-turisticos-bba",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "",
   "author": "",
   "keywords": [
@@ -22,23 +22,23 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "next": "^13.4.4",
+    "next": "^13.4.19",
     "nookies": "^2.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^5.1.3"
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.4.4",
-    "@types/node": "^18.16.3",
-    "@types/react": "^18.2.8",
-    "@types/react-dom": "^18.2.4",
-    "@typescript-eslint/eslint-plugin": "^5.59.8",
-    "@typescript-eslint/parser": "^5.59.8",
+    "@next/eslint-plugin-next": "^13.4.19",
+    "@types/node": "^18.17.15",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "eslint": "^8.49.0",
-    "eslint-plugin-react": "^7.32.2"
+    "eslint-plugin-react": "^7.33.2"
   }
 }
