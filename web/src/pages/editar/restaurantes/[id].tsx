@@ -72,7 +72,7 @@ function Restaurante(): JSX.Element {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(dados),
+      body: dados,
     };
 
     try {
