@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: ['main', 'develop-pi2']
+    branches: ["main", "develop-pi2"]
   pull_request:
     types: [opened, synchronize]
 
@@ -34,3 +34,16 @@ jobs:
         run: npm install
       - name: Run Linter
         run: npm run lint
+
+  testes-backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Tests
+        run: npm run test
