@@ -75,6 +75,10 @@ INSERT INTO restaurantes (nome, descricao, endereco, telefone, "createdAt", "upd
 	('Lanchonete da Tiga', 'lanchonete', 'Rua Joaquim M. Carvalho, 000', '1632662252', '2023-09-07 21:30:06', '2023-09-07 21:30:06'),
 	('Pizzaria do Zaca', 'pizzaria', 'Rua tal tal, 000', '1632660000', '2023-09-07 21:30:06', '2023-09-07 21:30:06');
 
+INSERT INTO hospedagens (nome, descricao, endereco, telefone, "createdAt", "updatedAt") VALUES
+	('Hotel Avenida', '', 'Avenida tal tal, 000', '1632661111', '2023-09-07 21:30:06', '2023-09-07 21:30:06'),
+	('Pousada Prainha', '', 'Praia do juqueta, 000', '1632660000', '2023-09-07 21:30:06', '2023-09-07 21:30:06');
+
 INSERT INTO usuarios (id, nome, senha, "createdAt", "updatedAt") VALUES
 	('8c444964-e172-4066-884a-73ed95a2ffcb', 'usuario', '$2a$08$gyCFbjZRcgEv4.wpKZgpzOfZZJ9TJJCt/pyyDg0y3ZIVWanocDHB2', '2023-09-07 21:30:06', '2023-09-07 21:30:06'); -- 123456
 
