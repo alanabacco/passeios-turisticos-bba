@@ -95,6 +95,11 @@ INSERT INTO eventos (nome, descricao, endereco, data_inicio, data_fim, "createdA
 	('Feira Livre', 'Todas as quintas', 'Praça Central', '2023-09-28', '2023-09-28', '2023-09-11 21:30:06', '2023-09-11 21:30:06'),
 	('Feira Livre', 'Todas as quintas', 'Praça Central', '2023-11-30', '2023-11-30', '2023-09-11 21:30:06', '2023-09-11 21:30:06');
 
+INSERT INTO informacoes_uteis (nome, descricao, endereco, telefone, "createdAt", "updatedAt") VALUES
+	('Taxi 1', '', 'centro', '1632661111', '2023-09-07 21:30:06', '2023-09-07 21:30:06'),
+	('Posto Gasolina 1', '', 'Rodovia tal, km000', '1632660000', '2023-09-07 21:30:06', '2023-09-07 21:30:06');
+
+
 -- DROP TABLE 
 -- 	atracoes_turisticas, 
 -- 	guias_turisticos, 

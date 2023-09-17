@@ -11,7 +11,7 @@ const app = require("../../src/app");
 
 let server;
 beforeEach(() => {
-  server = app.listen(3000);
+  server = app.listen(3333);
 });
 afterEach((done) => {
   server.close(done);

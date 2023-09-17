@@ -20,7 +20,7 @@
   "scripts": {
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
-    "test": "npm run db:reset && jest --detectOpenHandles --colors",
+    "test": "npm run db:reset && jest --detectOpenHandles",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "migrate": "npx sequelize-cli db:migrate",
@@ -41,7 +41,7 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.33.0",
     "sequelize-cli": "^6.6.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "eslint": "^8.49.0",
