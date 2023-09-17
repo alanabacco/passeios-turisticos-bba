@@ -1,6 +1,21 @@
-const { describe, test, expect, beforeAll } = require("@jest/globals");
+const {
+  describe,
+  test,
+  expect,
+  beforeAll,
+  afterEach,
+  beforeEach,
+} = require("@jest/globals");
 const request = require("supertest");
 const app = require("../../src/app");
+
+let server;
+beforeEach(() => {
+  server = app.listen(3000);
+});
+afterEach((done) => {
+  server.close(done);
+});
 
 describe("Rotas de hospedagens", () => {
   test("get /hospedagens deve retornar status code 200 quando chamada", async () => {

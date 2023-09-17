@@ -1,6 +1,14 @@
-const { describe, test, expect } = require("@jest/globals");
+const { describe, test, expect, beforeEach, afterEach } = require("@jest/globals");
 const request = require("supertest");
 const app = require("../../src/app");
+
+let server;
+beforeEach(() => {
+  server = app.listen(3000);
+});
+afterEach((done) => {
+  server.close(done);
+});
 
 describe("Rotas de auth", () => {
   test("post /auth/login deve retornar status code 200 quando dados estiverem corretos", async () => {
