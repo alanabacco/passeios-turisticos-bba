@@ -4,7 +4,7 @@
 
 Passeios turísticos em Borborema é um sistema web criado para centralizar todas as informações sobre turismo na cidade de Borborema, como eventos na cidade, passeios turísticos, guias, restaurantes, hospedagens, entre outras informações.
 
-Sistema web feito para a disciplina do Projeto Integrador I dos cursos de Computação da UNIVESP, trabalho feito em grupo.
+Sistema web feito para a disciplina do Projeto Integrador dos cursos de Computação da UNIVESP, trabalho feito em grupo.
 
 ## Ferramentas e tecnologias utilizadas
 
@@ -17,11 +17,14 @@ Sistema web feito para a disciplina do Projeto Integrador I dos cursos de Comput
 Para executar o projeto de maneira local, primeiro você precisa ter o [NodeJS](https://nodejs.org/) e o [Git](https://git-scm.com/) instalados na sua máquina. Em seguida, execute os seguintes comandos, um de cada vez em um terminal:
 
 ```bash
-git clone https://github.com/alanabacco/passeios-turisticos-bba
-cd passeios-turisticos-bba
-cd web
-npm install
-npm run dev
+git clone https://github.com/alanabacco/passeios-turisticos-bba # clona o repositório
+cd passeios-turisticos-bba # entra na pasta do projeto
+
+cd web # entra na pasta web
+npm install # instala dependencias
+npm run dev # roda o projeto
 ```
+
+crie um arquivo .env na raiz da pasta web e coloque a variável de ambiente. Exemplo está no arquivo .env.exemplo.
 
 abra o navegador e entre em http://localhost:3000/.
