@@ -49,13 +49,21 @@ class UsuariosController {
 
   static async criarUsuario(req, res, next) {
     const { nome, senha } = req.body;
-    const senhaHash = await hash(senha, 8);
 
+    if (nome === undefined || senha === undefined) {
+      return res.status(400).send({
+        mensagem: "Nome e senha são obrigatórios.",
+        status: 400,
+      });
+    }
+
+    const senhaHash = await hash(senha, 8); // criptografa a senha
     const novoUsuario = {
       id: uuid.v4(),
       nome: nome,
       senha: senhaHash,
     };
+
     try {
       const usuarioExiste = await usuariosServices.listarRegistroPorNomeUsuario(nome);
 
