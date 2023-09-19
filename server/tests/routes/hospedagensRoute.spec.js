@@ -18,7 +18,7 @@ afterEach((done) => {
 });
 
 describe("Rotas de hospedagens", () => {
-  test("get /hospedagens deve retornar status code 200 quando chamada", async () => {
+  test("GET /hospedagens deve retornar status code 200 quando chamada", async () => {
     const response = await request(app).get("/hospedagens");
     expect(response.statusCode).toBe(200);
   });
@@ -35,23 +35,50 @@ describe("Rotas de hospedagens com autenticação", () => {
     token = response.body.accessToken;
   });
 
-  test("get /hospedagens/:id deve retornar status code 200 quando for chamada com autenticação correta", async () => {
+  let respostaId;
+  test("POST /hospedagens deve retornar status code 201", async () => {
     const response = await request(app)
-      .get("/hospedagens/1")
+      .post("/hospedagens")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        nome: "Hospedagem 5 estrelas",
+        telefone: "1632660000",
+        descricao: "",
+        endereco: "Rua tal, 000",
+      });
+
+    respostaId = response.body.id;
+    expect(response.statusCode).toBe(201);
+  });
+
+  test("POST /hospedagens deve retornar status code 500 quando não estiver enviando nome", async () => {
+    const response = await request(app)
+      .post("/hospedagens")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        telefone: "1632661111",
+      });
+
+    expect(response.statusCode).toBe(500);
+  });
+
+  test("GET /hospedagens/:id deve retornar status code 200 quando for chamada com autenticação correta", async () => {
+    const response = await request(app)
+      .get(`/hospedagens/${respostaId}`)
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.statusCode).toBe(200);
   });
 
-  test("get /hospedagens/:id deve retornar status code 401 quando for chamada com autenticação incorreta", async () => {
+  test("GET /hospedagens/:id deve retornar status code 401 quando for chamada com autenticação incorreta", async () => {
     const response = await request(app)
-      .get("/hospedagens/1")
+      .get(`/hospedagens/${respostaId}`)
       .set("Authorization", "Bearer 123456");
 
     expect(response.statusCode).toBe(401);
   });
 
-  test("get /hospedagens/:id deve retornar status code 404 quando buscado por um id que não esta no bd", async () => {
+  test("GET /hospedagens/:id deve retornar status code 404 quando buscado por um id que não esta no bd", async () => {
     const response = await request(app)
       .get("/hospedagens/100")
       .set("Authorization", `Bearer ${token}`);
@@ -59,16 +86,16 @@ describe("Rotas de hospedagens com autenticação", () => {
     expect(response.statusCode).toBe(404);
   });
 
-  test("put /hospedagens/:id deve retornar status code 200", async () => {
+  test("PUT /hospedagens/:id deve retornar status code 200", async () => {
     const response = await request(app)
-      .put("/hospedagens/1")
+      .put(`/hospedagens/${respostaId}`)
       .set("Authorization", `Bearer ${token}`)
       .send({ nome: "Hospedagem tal" });
 
     expect(response.statusCode).toBe(200);
   });
 
-  test("put /hospedagens/:id deve retornar status code 404 quando buscado por um id que não esta no bd", async () => {
+  test("PUT /hospedagens/:id deve retornar status code 404 quando buscado por um id que não esta no bd", async () => {
     const response = await request(app)
       .put("/hospedagens/100")
       .set("Authorization", `Bearer ${token}`)
@@ -77,15 +104,15 @@ describe("Rotas de hospedagens com autenticação", () => {
     expect(response.statusCode).toBe(404);
   });
 
-  test("delete /hospedagens/:id deve retornar status code 200", async () => {
+  test("DELETE /hospedagens/:id deve retornar status code 200", async () => {
     const response = await request(app)
-      .delete("/hospedagens/2")
+      .delete(`/hospedagens/${respostaId}`)
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.statusCode).toBe(200);
   });
 
-  test("delete /hospedagens/:id deve retornar status code 404 quando buscado por um id que não esta no bd", async () => {
+  test("DELETE /hospedagens/:id deve retornar status code 404 quando buscado por um id que não esta no bd", async () => {
     const response = await request(app)
       .delete("/hospedagens/100")
       .set("Authorization", `Bearer ${token}`);

@@ -28,81 +28,99 @@ describe("Rotas de usuarios com autenticação", () => {
     token = response.body.accessToken;
   });
 
-  const usuarioBdId = "8c444964-e172-4066-884a-73ed95a2ffcb";
-  const novoUsuarioId = "8c666965-e172-4066-884a-73ed95a2ggcb";
+  const novoUsuarioNome = "usuarioTeste";
   const usuarioIdErrado = "3a333333-a333-3333-333a-33aa33a3aaaa";
 
-  test("get /usuarios deve retornar status code 200 quando chamada", async () => {
+  let respostaId;
+  test("POST /usuarios deve retornar status code 201", async () => {
+    const response = await request(app)
+      .post("/usuarios")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        nome: `${novoUsuarioNome}`,
+        senha: "teste123",
+      });
+
+    respostaId = response.body.id;
+    expect(response.statusCode).toBe(201);
+  });
+
+  test("POST /usuarios deve retornar status code 400 quando não enviar nome", async () => {
+    const response = await request(app)
+      .post("/usuarios")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        senha: "teste123",
+      });
+
+    expect(response.statusCode).toBe(400);
+  });
+
+  test("POST /usuarios deve retornar status code 400 quando não enviar senha", async () => {
+    const response = await request(app)
+      .post("/usuarios")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        nome: "outroUsuario",
+      });
+
+    expect(response.statusCode).toBe(400);
+  });
+
+  test("GET /usuarios deve retornar status code 200 quando chamada", async () => {
     const response = await request(app)
       .get("/usuarios")
       .set("Authorization", `Bearer ${token}`);
     expect(response.statusCode).toBe(200);
   });
 
-  test("get /usuarios deve retornar status code 401 quando não tiver autenticação", async () => {
+  test("GET /usuarios deve retornar status code 401 quando não tiver autenticação", async () => {
     const response = await request(app).get("/usuarios");
     expect(response.statusCode).toBe(401);
   });
 
-  test("get /usuarios/:id deve retornar status code 200 quando for chamada com autenticação correta", async () => {
+  test("GET /usuarios/usuario/:nome deve retornar status code 200 quando for chamada com autenticação correta", async () => {
     const response = await request(app)
-      .get(`/usuarios/${usuarioBdId}`)
+      .get(`/usuarios/usuario/${novoUsuarioNome}`)
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.statusCode).toBe(200);
   });
 
-  test("get /usuarios/:id deve retornar status code 401 quando for chamada com autenticação incorreta", async () => {
+  test("GET /usuarios/usuario/:nome deve retornar status code 401 quando for chamada com autenticação incorreta", async () => {
     const response = await request(app)
-      .get(`/usuarios/${usuarioBdId}`)
+      .get(`/usuarios/usuario/${novoUsuarioNome}`)
       .set("Authorization", "Bearer 123456");
 
     expect(response.statusCode).toBe(401);
   });
 
-  test("get /usuarios/:id deve retornar status code 404 quando buscado por um id que não esta no bd", async () => {
+  test("GET /usuarios/usuario/:nome deve retornar status code 404 quando buscado por um nome de usuario que não esta no bd", async () => {
     const response = await request(app)
-      .get(`/usuarios/${usuarioIdErrado}`)
+      .get("/usuarios/usuario/usuarioErrado")
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.statusCode).toBe(404);
   });
 
-  test("post /usuarios deve retornar status code 201", async () => {
+  test("GET /usuarios/:id deve retornar status code 200 quando for chamada corretamente", async () => {
     const response = await request(app)
-      .post("/usuarios")
-      .set("Authorization", `Bearer ${token}`)
-      .send({
-        id: `${novoUsuarioId}`,
-        nome: "usuarioTeste",
-        senha: "teste123",
-      });
+      .get(`/usuarios/${respostaId}`)
+      .set("Authorization", `Bearer ${token}`);
 
-    expect(response.statusCode).toBe(201);
+    expect(response.statusCode).toBe(200);
   });
 
-  test("post /usuarios deve retornar status code 500 quando não estiver enviando nome", async () => {
+  test("PUT /usuarios/:id deve retornar status code 200", async () => {
     const response = await request(app)
-      .post("/usuarios")
-      .set("Authorization", `Bearer ${token}`)
-      .send({
-        id: `${novoUsuarioId}`,
-        senha: "teste123",
-      });
-
-    expect(response.statusCode).toBe(500);
-  });
-
-  test("put /usuarios/:id deve retornar status code 200", async () => {
-    const response = await request(app)
-      .put(`/usuarios/${usuarioBdId}`)
+      .put(`/usuarios/${respostaId}`)
       .set("Authorization", `Bearer ${token}`)
       .send({ nome: "mudandoUsuario" });
 
     expect(response.statusCode).toBe(200);
   });
 
-  test("put /usuarios/:id deve retornar status code 404 quando buscado por um id que não esta no bd", async () => {
+  test("PUT /usuarios/:id deve retornar status code 404 quando buscado por um id que não esta no bd", async () => {
     const response = await request(app)
       .put(`/usuarios/${usuarioIdErrado}`)
       .set("Authorization", `Bearer ${token}`)
@@ -111,11 +129,19 @@ describe("Rotas de usuarios com autenticação", () => {
     expect(response.statusCode).toBe(404);
   });
 
-  test("delete /usuarios/:id deve retornar status code 200", async () => {
+  test("DELETE /usuarios/:id deve retornar status code 200", async () => {
     const response = await request(app)
-      .delete(`/usuarios/${usuarioBdId}`)
+      .delete(`/usuarios/${respostaId}`)
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.statusCode).toBe(200);
+  });
+
+  test("DELETE /usuarios/:id deve retornar status code 404 quando buscado por um id que não esta no bd", async () => {
+    const response = await request(app)
+      .delete(`/usuarios/${usuarioIdErrado}`)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(response.statusCode).toBe(404);
   });
 });
