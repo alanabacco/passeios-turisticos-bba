@@ -7,7 +7,7 @@ import comumStyles from "src/styles/comum.module.css";
 export default function PaginaInicial(): JSX.Element {
   return (
     <>
-      <Head title="Página Inicial | Passeios Turísticos de Borborema" />
+      <Head title="Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>

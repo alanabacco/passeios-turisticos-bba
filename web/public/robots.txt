@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+User-agent: *
+Disallow: /login
+
+User-agent: *
+Disallow: /logout
+
+User-agent: *
+Disallow: /painel-administrativo
+
+User-agent: *
+Disallow: /cadastrar/
+
+User-agent: *
+Disallow: /editar/
+
+User-agent: *
+Disallow: /excluir/
+
+Sitemap: https://passeiosturisticosbba.vercel.app/sitemap.xml

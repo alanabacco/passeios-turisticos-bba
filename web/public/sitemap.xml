@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://passeiosturisticosbba.vercel.app</loc>
+    <lastmod>2023-06-06</lastmod>
+  </url>
+
+  <url>
+    <loc>https://passeiosturisticosbba.vercel.app/catalogo/eventos-cidade</loc>
+    <lastmod>2023-06-07</lastmod>
+  </url>
+
+  <url>
+    <loc>https://passeiosturisticosbba.vercel.app/catalogo/atracoes-turisticas</loc>
+    <lastmod>2023-06-07</lastmod>
+  </url>
+
+  <url>
+    <loc>https://passeiosturisticosbba.vercel.app/catalogo/guias-turisticos</loc>
+    <lastmod>2023-06-07</lastmod>
+  </url>
+
+  <url>
+    <loc>https://passeiosturisticosbba.vercel.app/catalogo/restaurantes</loc>
+    <lastmod>2023-06-07</lastmod>
+  </url>
+
+  <url>
+    <loc>https://passeiosturisticosbba.vercel.app/catalogo/hospedagens</loc>
+    <lastmod>2023-06-07</lastmod>
+  </url>
+
+  <url>
+    <loc>https://passeiosturisticosbba.vercel.app/catalogo/informacoes-uteis</loc>
+    <lastmod>2023-06-07</lastmod>
+  </url>
+</urlset>
