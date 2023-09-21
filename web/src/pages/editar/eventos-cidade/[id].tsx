@@ -138,7 +138,7 @@ function Evento(): JSX.Element {
               id="descricao"
               name="descricao"
               placeholder="Digite a descrição"
-              maxLength={240}
+              maxLength={250}
               onChange={handleChange}
               className={`${styles.input} ${styles.textarea}`}
             />
