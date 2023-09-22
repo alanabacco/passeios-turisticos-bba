@@ -88,7 +88,7 @@ export default function Login(): JSX.Element {
           <div className={styles.botoes}>
             <button
               type="button"
-              onClick={() => router.back()}
+              onClick={() => router.push("/")}
               className={styles.botaoCancelar}
             >
               Cancelar

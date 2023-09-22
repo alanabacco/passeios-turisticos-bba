@@ -171,7 +171,7 @@ function Restaurante(): JSX.Element {
           <div className={styles.botoes}>
             <button
               type="button"
-              onClick={() => router.back()}
+              onClick={() => router.push("/editar/restaurantes")}
               className={styles.botaoCancelar}
             >
               Cancelar

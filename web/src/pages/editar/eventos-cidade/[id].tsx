@@ -193,7 +193,7 @@ function Evento(): JSX.Element {
           <div className={styles.botoes}>
             <button
               type="button"
-              onClick={() => router.back()}
+              onClick={() => router.push("/editar/eventos-cidade")}
               className={styles.botaoCancelar}
             >
               Cancelar

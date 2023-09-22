@@ -30,7 +30,7 @@ export default function PaginaAtrTuristicas({ atracoesTuristicas }: Props) {
     <>
       <Head title="Atrações Turísticas | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
-        <BotaoVoltar />
+        <BotaoVoltar href="/" />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Atrações Turísticas</h1>
           <p className={comumStyles.introDescricao}>

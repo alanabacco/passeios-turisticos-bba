@@ -174,7 +174,7 @@ function AtracaoTuristica(): JSX.Element {
           <div className={styles.botoes}>
             <button
               type="button"
-              onClick={() => router.back()}
+              onClick={() => router.push("/editar/atracoes-turisticas")}
               className={styles.botaoCancelar}
             >
               Cancelar

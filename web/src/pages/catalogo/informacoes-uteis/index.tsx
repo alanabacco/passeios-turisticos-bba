@@ -30,7 +30,7 @@ export default function PaginaInfoUteis({ informacoesUteis }: Props) {
     <>
       <Head title="Informações Úteis | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
-        <BotaoVoltar />
+        <BotaoVoltar href="/" />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Informações Úteis</h1>
           <p className={comumStyles.introDescricao}>

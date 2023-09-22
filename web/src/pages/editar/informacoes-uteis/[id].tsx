@@ -171,7 +171,7 @@ function InformacaoUtil(): JSX.Element {
           <div className={styles.botoes}>
             <button
               type="button"
-              onClick={() => router.back()}
+              onClick={() => router.push("/editar/informacoes-uteis")}
               className={styles.botaoCancelar}
             >
               Cancelar
