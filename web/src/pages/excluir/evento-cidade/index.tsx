@@ -84,7 +84,7 @@ export default function PaginaExcluirEventos({ eventos, session }: Props): JSX.E
         <section>
           {eventos.length > 0 ? (
             <ul className={styles.itens}>
-              {eventos.map((item: Evento) => {
+              {eventos.reverse().map((item: Evento) => {
                 const dataInicio = item.data_inicio.split("-").reverse().join("/");
                 const dataFim = item.data_fim.split("-").reverse().join("/");
                 return (
