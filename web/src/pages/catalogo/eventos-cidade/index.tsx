@@ -37,6 +37,7 @@ export default function PaginaEventos({ eventos }: Props) {
             Aqui você encontra uma lista de eventos em nossa cidade.
           </p>
         </section>
+        
         <CardSection itens={eventos} />
       </main>
       <Footer />
