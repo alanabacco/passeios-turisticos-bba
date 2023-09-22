@@ -35,30 +35,38 @@ Para executar o projeto de maneira local, primeiro você precisa ter o [NodeJS](
 Em seguida, execute os seguintes comandos, um de cada vez em um terminal:
 
 ```bash
-git clone https://github.com/alanabacco/passeios-turisticos-bba
-cd passeios-turisticos-bba
+git clone https://github.com/alanabacco/passeios-turisticos-bba # clona o repositório
+cd passeios-turisticos-bba # entra na pasta do projeto
 ```
 
-Para rodar o backend:
+### Para rodar o backend:
 
 ```bash
-cd server
-npm install
-npm run dev
+cd server # entra na pasta server
+npm install # instala dependencias
+
+# fazer a conexão com o banco de dados para continuar
+
+npm run db:reset # para criar o banco de dados, tabelas e popular com dados de teste
+npm run dev # roda o projeto
 ```
 
 o backend estará rodando na porta 8080.
 
-Obs.: é preciso fazer a **conexão com o banco de dados** em: ./src/config/config.js e colocar as variáveis ambiente em um arquivo .env na pasta server. Exemplo de variáveis ambiente está no arquivo .env.exemplo. A variável `HASH_SECRET` pode ser encontrada no repositório do github em `settings > environments > .env`
+**Obs.**: é preciso fazer a **conexão com o banco de dados** e colocar as variáveis ambiente em um arquivo .env na pasta server. Exemplo de variáveis ambiente está no arquivo .env.exemplo, coloque a senha do banco de dados da sua máquina em `DEV_DB_PASSWORD=''`. A variável `HASH_SECRET` pode ser encontrada no repositório do github em _settings > environments > .env_.
 
-Para rodar o frontend, em outro terminal rode os comandos:
+### Para rodar o frontend
+
+em outro terminal, entre no diretório do projeto e rode os comandos:
 
 ```bash
-cd web
-npm install
-npm run dev
+cd web # entra na pasta web
+npm install # instala dependencias
+npm run dev # roda o projeto
 ```
 
-crie um arquivo .env na raiz da pasta web e coloque a variável de ambiente. Exemplo está no arquivo .env.exemplo.
-
 o frontend estará rodando na porta 3000.
+
+**Obs.**: crie um arquivo .env na raiz da pasta web e coloque a variável de ambiente. Exemplo está no arquivo .env.exemplo.
+
+**Obs.**: para não ser bloqueado pelo erro de CORS é preciso alterar o arquivo em _server > src > app.js_ e na linha 11 colocar o endereço do frontend: `origin: "http://localhost:3000",`

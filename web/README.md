@@ -25,6 +25,8 @@ npm install # instala dependencias
 npm run dev # roda o projeto
 ```
 
-crie um arquivo .env na raiz da pasta web e coloque a variável de ambiente. Exemplo está no arquivo .env.exemplo.
+o frontend estará rodando na porta 3000.
 
-abra o navegador e entre em http://localhost:3000/.
+**Obs.**: crie um arquivo .env na raiz da pasta web e coloque a variável de ambiente. Exemplo está no arquivo .env.exemplo.
+
+**Obs.**: para não ser bloqueado pelo erro de CORS é preciso alterar o arquivo em _server > src > app.js_ e na linha 11 colocar o endereço do frontend: `origin: "http://localhost:3000",`
