@@ -77,7 +77,7 @@ export default function PaginaExcluirRestaurantes({
     <>
       <Head title="Excluir | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
-        <BotaoVoltar />
+        <BotaoVoltar href="/excluir" />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Restaurantes</h1>
           <p className={comumStyles.introDescricao}>
