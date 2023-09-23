@@ -4,4 +4,4 @@ const nextConfig = {
 };
 
 // eslint-disable-next-line no-undef
-export default nextConfig;
+module.exports = nextConfig;

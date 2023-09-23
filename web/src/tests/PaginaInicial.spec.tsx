@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import PaginaInicial from ".";
+import PaginaInicial from "../pages";
 
 describe("Página inicial", () => {
   beforeEach(() => {
