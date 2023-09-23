@@ -1,29 +1,17 @@
-import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import style from "./styles.module.css";
+import Link from "next/link";
 
 type Props = {
-  href?: string;
+  href: string;
 };
 
-export default function BotaoVoltar({ href }: Props): JSX.Element {
-  const router = useRouter();
-
-  function handleOnClick() {
-    if (href === undefined) {
-      router.back();
-    } else {
-      router.push(href);
-    }
-  }
-
+export default function BotaoVoltar({ href = "/"}: Props): JSX.Element {
   return (
-    <>
-      <a className={style.link} onClick={handleOnClick}>
-        <FontAwesomeIcon icon={faArrowLeftLong} className={style.icon} />
-        Voltar
-      </a>
-    </>
+    <Link href={href} className={style.link}>
+      <FontAwesomeIcon icon={faArrowLeftLong} className={style.icon} />
+      <p>Voltar</p>
+    </Link>
   );
 }

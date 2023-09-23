@@ -138,7 +138,7 @@ function Evento(): JSX.Element {
               id="descricao"
               name="descricao"
               placeholder="Digite a descrição"
-              maxLength={240}
+              maxLength={250}
               onChange={handleChange}
               className={`${styles.input} ${styles.textarea}`}
             />
@@ -193,7 +193,7 @@ function Evento(): JSX.Element {
           <div className={styles.botoes}>
             <button
               type="button"
-              onClick={() => router.back()}
+              onClick={() => router.push("/editar/eventos-cidade")}
               className={styles.botaoCancelar}
             >
               Cancelar

@@ -1,0 +1,17 @@
+{
+  "name": "Passeios Turísticos de Borborema",
+  "start_url": "/",
+  "lang": "pt-BR",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fbfbfb",
+  "theme_color": "#b00000",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon"
+    }
+  ],
+  "version": "2.0",
+  "manifest_version": 2
+}

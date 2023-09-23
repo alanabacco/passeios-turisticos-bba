@@ -30,13 +30,14 @@ export default function PaginaEventos({ eventos }: Props) {
     <>
       <Head title="Eventos | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
-        <BotaoVoltar />
+        <BotaoVoltar href="/" />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Eventos</h1>
           <p className={comumStyles.introDescricao}>
             Aqui você encontra uma lista de eventos em nossa cidade.
           </p>
         </section>
+        
         <CardSection itens={eventos} />
       </main>
       <Footer />

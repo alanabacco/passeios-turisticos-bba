@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 import Link from "next/link";
+import { FC } from "react";
 import styles from "./styles.module.css";
 
 type Item = {
@@ -35,10 +36,7 @@ type CardSectionProps<T extends Item> = {
   linkIdParam?: string;
 };
 
-const CardSection = <T extends Item>({
-  itens = [],
-  linkIdParam,
-}: CardSectionProps<T>): JSX.Element => (
+const CardSection: FC<CardSectionProps<Item>> = ({ itens = [], linkIdParam }) => (
   <section>
     {itens.length > 0 ? (
       <ul className={styles.itens}>
@@ -46,7 +44,7 @@ const CardSection = <T extends Item>({
           const { id, createdAt, updatedAt, deletedAt, nome, ...rest } = item;
 
           const lista = (
-            <li key={id} className={styles.item}>
+            <li key={id} className={styles.item} tabIndex={linkIdParam ? -1 : 0}>
               <h2 key={nome}>{nome}</h2>
               {Object.entries(rest).map(([key, value]) => {
                 if (key === "data_inicio" || key === "data_fim") {
@@ -65,13 +63,13 @@ const CardSection = <T extends Item>({
             </li>
           );
 
-          const listaComLink = (
-            <Link href={`${linkIdParam}${item.id}`} key={id}>
-              {lista}
-            </Link>
-          );
-
           if (linkIdParam) {
+            const listaComLink = (
+              <Link href={`${linkIdParam}${item.id}`} key={id}>
+                {lista}
+              </Link>
+            );
+
             return listaComLink;
           }
           return lista;

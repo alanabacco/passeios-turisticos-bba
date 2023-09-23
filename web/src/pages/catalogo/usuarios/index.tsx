@@ -33,7 +33,7 @@ function PaginaUsuarios() {
     <>
       <Head title="Usuários | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
-        <BotaoVoltar />
+        <BotaoVoltar href="/" />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Usuários</h1>
           <p className={comumStyles.introDescricao}>Lista de usuários do sistema.</p>

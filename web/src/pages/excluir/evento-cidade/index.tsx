@@ -74,7 +74,7 @@ export default function PaginaExcluirEventos({ eventos, session }: Props): JSX.E
     <>
       <Head title="Excluir | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
-        <BotaoVoltar />
+        <BotaoVoltar href="/excluir" />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Eventos</h1>
           <p className={comumStyles.introDescricao}>
@@ -84,7 +84,7 @@ export default function PaginaExcluirEventos({ eventos, session }: Props): JSX.E
         <section>
           {eventos.length > 0 ? (
             <ul className={styles.itens}>
-              {eventos.map((item: Evento) => {
+              {eventos.reverse().map((item: Evento) => {
                 const dataInicio = item.data_inicio.split("-").reverse().join("/");
                 const dataFim = item.data_fim.split("-").reverse().join("/");
                 return (

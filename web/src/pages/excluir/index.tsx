@@ -11,7 +11,7 @@ function Excluir(): JSX.Element {
     <>
       <Head title="Excluir | Passeios Turísticos de Borborema" />
       <main className={comumStyles.mainContainer}>
-        <BotaoVoltar />
+        <BotaoVoltar href="/painel-administrativo" />
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Excluir</h1>
           <p className={comumStyles.introDescricao}>
