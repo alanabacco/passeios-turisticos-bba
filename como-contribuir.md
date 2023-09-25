@@ -4,7 +4,7 @@ Para enviar seus commits a um projeto no GitHub que pertence a outra pessoa, voc
 
 1. **Faça um Fork do repositório que deseja colaborar**:
 
-   - Acesse o repositório do GitHub para o qual deseja contribuir:
+   - Acesse o repositório do GitHub para o qual deseja contribuir (nesse caso, esse aqui https://github.com/alanabacco/passeios-turisticos-bba)
    - Clique no botão "Fork" no canto superior direito da página do repositório. Isso criará uma cópia do repositório em sua conta do GitHub.
 
 2. **Clone seu repositório forkado**:
