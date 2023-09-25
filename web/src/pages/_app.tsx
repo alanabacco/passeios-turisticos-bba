@@ -1,8 +1,17 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "src/styles/global.css";
+import Router from "next/router";
+import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    Router.events.on("routeChangeStart", (url) => setLoading(true));
+    Router.events.on("routeChangeComplete", (url) => setLoading(false));
+    Router.events.on("routeChangeError", (url) => setLoading(false));
+  }, []);
+
   return (
     <>
       <Head>
@@ -40,7 +49,16 @@ export default function App({ Component, pageProps }: AppProps) {
           content="https://passeiosturisticosbba.vercel.app/og-img.png"
         />
       </Head>
+
+      {loading && (
+        <div className="spinner-wraper">
+          <div className="spinner" />
+        </div>
+      )}
+
       <Component {...pageProps} />
     </>
   );
 }
+
+// Referência do Loading: https://www.youtube.com/watch?v=Dgnr3akrMHg
