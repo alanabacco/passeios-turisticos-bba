@@ -6,6 +6,9 @@ class GuiasTuristicosController {
   static async listarGuias(req, res, next) {
     try {
       const todosOsGuias = await guiasTuristicosServices.listarRegistros();
+      todosOsGuias.sort((a, b) => {
+        return a.nome.localeCompare(b.nome);
+      });
       return res.status(200).json(todosOsGuias);
     } catch (error) {
       next(error);

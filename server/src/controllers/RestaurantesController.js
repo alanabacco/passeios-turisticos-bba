@@ -6,6 +6,9 @@ class RestaurantesController {
   static async listarRestaurantes(req, res, next) {
     try {
       const todosOsRestaurantes = await restaurantesServices.listarRegistros();
+      todosOsRestaurantes.sort((a, b) => {
+        return a.nome.localeCompare(b.nome);
+      });
       return res.status(200).json(todosOsRestaurantes);
     } catch (error) {
       next(error);

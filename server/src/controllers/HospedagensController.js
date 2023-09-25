@@ -6,6 +6,9 @@ class HospedagensController {
   static async listarHospedagens(req, res, next) {
     try {
       const todasAsHospedagens = await hospedagensServices.listarRegistros();
+      todasAsHospedagens.sort((a, b) => {
+        return a.nome.localeCompare(b.nome);
+      });
       return res.status(200).json(todasAsHospedagens);
     } catch (error) {
       next(error);

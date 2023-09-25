@@ -6,6 +6,10 @@ class AtracoesTuristicasController {
   static async listarAtracoesTuristicas(req, res, next) {
     try {
       const todasAsAtracoes = await atracoesTuristicasServices.listarRegistros();
+      // ordem alfabetica por nome
+      todasAsAtracoes.sort((a, b) => {
+        return a.nome.localeCompare(b.nome);
+      });
       return res.status(200).json(todasAsAtracoes);
     } catch (error) {
       next(error);

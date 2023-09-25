@@ -6,6 +6,9 @@ class InformacoesUteisController {
   static async listarInformacoesUteis(req, res, next) {
     try {
       const todasInformacoes = await informacoesUteisServices.listarRegistros();
+      todasInformacoes.sort((a, b) => {
+        return a.nome.localeCompare(b.nome);
+      });
       return res.status(200).json(todasInformacoes);
     } catch (error) {
       next(error);
