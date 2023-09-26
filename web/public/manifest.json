@@ -15,7 +15,7 @@
     {
       "src": "/favicon-512x512",
       "sizes": "512x512",
-      "type": "image/x-icon"
+      "type": "image/png"
     }
   ],
   "version": "2.0",
