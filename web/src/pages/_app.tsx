@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon-192x192.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
@@ -25,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
           name="description"
           content="Passeios turísticos em Borborema é um sistema web que centraliza várias informações sobre turismo na cidade de Borborema, como eventos na cidade, passeios turísticos, guias, restaurantes, hospedagens, entre outras informações."
         />
+        <meta name="theme-color" content="#b00000"/>
         <link rel="manifest" href="/manifest.json" />
 
         <meta property="og:title" content="Passeios Turísticos de Borborema" />
