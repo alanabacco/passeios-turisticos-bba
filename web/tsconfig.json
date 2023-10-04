@@ -19,6 +19,6 @@
     },
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/infra/VLibrasWidget/index.jsx"],
   "exclude": ["node_modules"]
 }
