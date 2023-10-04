@@ -11,23 +11,34 @@
 
 .footerTitle {
   font-family: var(--font-montserrat_alternates);
+  text-decoration: none;
   font-size: 1.6rem;
-  margin-bottom: 0.8rem;
+  font-weight: bold;
 }
 
 .appFooter p {
+  margin-top: 0.8rem;
   font-size: 1.2rem;
 }
 
-.footerTitle a {
-  text-decoration: none;
-}
-
 .footerLink {
+  display: block;
   font-size: 1.2rem;
   line-height: 2rem;
 }
 
 .BoxLink {
   text-align: right;
+}
+
+@media (max-width: 768px) {
+  .appFooter {
+    padding-inline: 1.6rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .appFooter {
+    padding-inline: .8rem;
+  }
 }

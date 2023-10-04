@@ -1,24 +1,23 @@
 .linksBox {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 2.4rem;
+  gap: 1.6rem;
 }
 
 .link {
+  flex: 1;
   text-decoration: none;
   color: var(--white);
   background-color: var(--red);
   border-radius: 0.8rem;
-  padding: 2.4rem;
+  padding: 1.6rem;
   text-align: center;
-  width: 24rem;
+  min-width: 20rem;
 
   transition: all 0.1s ease-in-out;
 }
 
 .link:hover {
-  transform: scale(1.02);
+  transform: scale(1.01);
   background-color: #aa0b0b;
 }

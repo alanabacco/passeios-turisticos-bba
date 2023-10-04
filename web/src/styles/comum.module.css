@@ -6,8 +6,8 @@
   margin: auto;
 
   max-width: 100rem;
-  min-height: calc(100vh - 9.7rem); /* (altura pág - altura footer) */
-  padding: 3.2rem 8rem;
+  min-height: calc(100vh - 9.3rem); /* (altura pág - altura footer) */
+  padding: 3.2rem 4rem;
 }
 
 .introSection {
@@ -27,12 +27,12 @@
 
 @media (max-width: 768px) {
   .mainContainer {
-    padding: 3.2rem;
+    padding: 2.8rem;
   }
 }
 
 @media (max-width: 360px) {
   .mainContainer {
-    padding: 2.4rem;
+    padding: 2rem .8rem;
   }
 }
