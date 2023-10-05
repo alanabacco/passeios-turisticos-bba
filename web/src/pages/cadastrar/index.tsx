@@ -7,6 +7,15 @@ import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 
 function Cadastrar(): JSX.Element {
+  const links = [
+    { href: "cadastrar/evento-cidade", label: "Cadastrar evento na cidade" },
+    { href: "cadastrar/atracao-turistica", label: "Cadastrar atração turística" },
+    { href: "cadastrar/guia-turistico", label: "Cadastrar guia turítico" },
+    { href: "cadastrar/restaurante", label: "Cadastrar restaurante" },
+    { href: "cadastrar/hospedagem", label: "Cadastrar hospedagem" },
+    { href: "cadastrar/informacao-util", label: "Cadastrar informação útil" },
+  ];
+
   return (
     <>
       <Head title="Cadastrar | Passeios Turísticos de Borborema" />
@@ -20,25 +29,14 @@ function Cadastrar(): JSX.Element {
         </section>
 
         <section>
-          <nav className={paginaInicialStyle.linksBox}>
-            <Link className={paginaInicialStyle.link} href="cadastrar/evento-cidade">
-              Cadastrar Evento na Cidade
-            </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/atracao-turistica">
-              Cadastrar Atração Turística
-            </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/guia-turistico">
-              Cadastrar Guia Turítico
-            </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/restaurante">
-              Cadastrar Restaurante
-            </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/hospedagem">
-              Cadastrar Hospedagem
-            </Link>
-            <Link className={paginaInicialStyle.link} href="cadastrar/informacao-util">
-              Cadastrar Informação Útil
-            </Link>
+          <nav>
+            <ul className={paginaInicialStyle.linksBox}>
+              {links.map((link) => (
+                <li key={link.href} className={paginaInicialStyle.linkLi}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         </section>
       </main>

@@ -7,6 +7,15 @@ import { withSessionHOC } from "src/services/auth/session";
 import BotaoVoltar from "src/components/BotaoVoltar";
 
 function Excluir(): JSX.Element {
+  const links = [
+    { href: "excluir/evento-cidade", label: "Excluir um evento na cidade" },
+    { href: "excluir/atracao-turistica", label: "Excluir uma atração turística" },
+    { href: "excluir/guia-turistico", label: "Excluir um guia turítico" },
+    { href: "excluir/restaurante", label: "Excluir um restaurante" },
+    { href: "excluir/hospedagem", label: "Excluir uma hospedagem" },
+    { href: "excluir/informacao-util", label: "Excluir uma informação útil" },
+  ];
+
   return (
     <>
       <Head title="Excluir | Passeios Turísticos de Borborema" />
@@ -20,25 +29,14 @@ function Excluir(): JSX.Element {
         </section>
 
         <section>
-          <nav className={paginaInicialStyle.linksBox}>
-            <Link className={paginaInicialStyle.link} href="excluir/evento-cidade">
-              Excluir um Evento na Cidade
-            </Link>
-            <Link className={paginaInicialStyle.link} href="excluir/atracao-turistica">
-              Excluir uma Atração Turística
-            </Link>
-            <Link className={paginaInicialStyle.link} href="excluir/guia-turistico">
-              Excluir um Guia Turítico
-            </Link>
-            <Link className={paginaInicialStyle.link} href="excluir/restaurante">
-              Excluir um Restaurante
-            </Link>
-            <Link className={paginaInicialStyle.link} href="excluir/hospedagem">
-              Excluir uma Hospedagem
-            </Link>
-            <Link className={paginaInicialStyle.link} href="excluir/informacao-util">
-              Excluir uma Informação Útil
-            </Link>
+          <nav>
+            <ul className={paginaInicialStyle.linksBox}>
+              {links.map((link) => (
+                <li key={link.href} className={paginaInicialStyle.linkLi}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         </section>
       </main>

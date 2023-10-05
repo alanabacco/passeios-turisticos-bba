@@ -6,22 +6,28 @@
 
 .linkLi {
   flex: 1;
+}
+
+.linkLi a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
   color: var(--white);
+  text-align: center;
+  text-wrap: pretty;
+
   background-color: var(--red);
   border-radius: 0.8rem;
   padding: 1.6rem;
-  text-align: center;
   min-width: 20rem;
-  cursor: pointer;
+  height: 100%;
 
   transition: all 0.1s ease-in-out;
 }
 
-.linkLi:hover {
+.linkLi a:hover {
   transform: scale(1.01);
-  background-color: #aa0b0b;
-}
-
-.linkLi a {
-  text-decoration: none;
+  background-color: var(--red-darker);
 }

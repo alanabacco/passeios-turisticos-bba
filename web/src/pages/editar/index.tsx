@@ -7,6 +7,15 @@ import comumStyles from "src/styles/comum.module.css";
 import BotaoVoltar from "src/components/BotaoVoltar";
 
 function Editar(): JSX.Element {
+  const links = [
+    { href: "editar/eventos-cidade", label: "Editar um evento na cidade" },
+    { href: "editar/atracoes-turisticas", label: "Editar uma atração turística" },
+    { href: "editar/guias-turisticos", label: "Editar um guia turítico" },
+    { href: "editar/restaurantes", label: "Editar um restaurante" },
+    { href: "editar/hospedagens", label: "Editar uma hospedagem" },
+    { href: "editar/informacoes-uteis", label: "Editar uma informação útil" },
+  ];
+
   return (
     <>
       <Head title="Editar | Passeios Turísticos de Borborema" />
@@ -20,25 +29,14 @@ function Editar(): JSX.Element {
         </section>
 
         <section>
-          <nav className={paginaInicialStyle.linksBox}>
-            <Link className={paginaInicialStyle.link} href="editar/eventos-cidade">
-              Editar um Evento na Cidade
-            </Link>
-            <Link className={paginaInicialStyle.link} href="editar/atracoes-turisticas">
-              Editar uma Atração Turística
-            </Link>
-            <Link className={paginaInicialStyle.link} href="editar/guias-turisticos">
-              Editar um Guia Turítico
-            </Link>
-            <Link className={paginaInicialStyle.link} href="editar/restaurantes">
-              Editar um Restaurante
-            </Link>
-            <Link className={paginaInicialStyle.link} href="editar/hospedagens">
-              Editar uma Hospedagem
-            </Link>
-            <Link className={paginaInicialStyle.link} href="editar/informacoes-uteis">
-              Editar uma Informação Útil
-            </Link>
+          <nav>
+            <ul className={paginaInicialStyle.linksBox}>
+              {links.map((link) => (
+                <li key={link.href} className={paginaInicialStyle.linkLi}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         </section>
       </main>

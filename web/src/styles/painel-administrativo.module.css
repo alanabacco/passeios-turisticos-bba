@@ -42,7 +42,7 @@
 
 .link:hover {
   transform: scale(1.01);
-  background-color: #aa0b0b;
+  background-color: var(--red-darker);
 }
 
 @media (max-width: 768px) {

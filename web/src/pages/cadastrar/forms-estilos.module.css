@@ -88,7 +88,7 @@
 }
 
 .botaoCadastrar:hover {
-  background-color: #aa0b0b;
+  background-color: var(--red-darker);
 }
 
 .botaoCancelar {
