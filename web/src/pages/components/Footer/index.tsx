@@ -8,7 +8,7 @@ export default function Footer(): JSX.Element {
         <Link href="/" className={styles.footerTitle}>
           Trilhas e Passeios <br /> Turísticos de Borborema
         </Link>
-        <p>Versão 2.0</p>
+        <p className={styles.versionText}>Versão 2.0</p>
       </div>
 
       <div className={styles.BoxLink}>

@@ -34,7 +34,7 @@ export default function PaginaEventos({ eventos }: Props) {
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Eventos</h1>
           <p className={comumStyles.introDescricao}>
-            Aqui você encontra uma lista de eventos em nossa cidade.
+            Aqui você encontra uma lista de eventos em Borborema e região.
           </p>
         </section>
         

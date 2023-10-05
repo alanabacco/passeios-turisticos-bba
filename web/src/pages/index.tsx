@@ -44,17 +44,17 @@ export default function PaginaInicial(): JSX.Element {
         <nav>
           <ul className={styles.linksBox}>
             {links.map((link) => (
-              <Link
-                key={link.href}
-                className={styles.link}
-                href={link.href}
-                {...(link.target && {
-                  target: link.target,
-                  rel: "noopener noreferrer",
-                })}
-              >
-                {link.label}
-              </Link>
+              <li key={link.href} className={styles.linkLi}>
+                <Link
+                  href={link.href}
+                  {...(link.target && {
+                    target: link.target,
+                    rel: "noopener noreferrer",
+                  })}
+                >
+                  {link.label}
+                </Link>
+              </li>
             ))}
           </ul>
         </nav>

@@ -4,20 +4,24 @@
   gap: 1.6rem;
 }
 
-.link {
+.linkLi {
   flex: 1;
-  text-decoration: none;
   color: var(--white);
   background-color: var(--red);
   border-radius: 0.8rem;
   padding: 1.6rem;
   text-align: center;
   min-width: 20rem;
+  cursor: pointer;
 
   transition: all 0.1s ease-in-out;
 }
 
-.link:hover {
+.linkLi:hover {
   transform: scale(1.01);
   background-color: #aa0b0b;
+}
+
+.linkLi a {
+  text-decoration: none;
 }

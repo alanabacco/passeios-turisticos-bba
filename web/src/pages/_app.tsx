@@ -1,8 +1,8 @@
 import type { AppProps } from "next/app";
-import Head from "next/head";
-import "src/styles/global.css";
-import Router from "next/router";
 import { useEffect, useState } from "react";
+import Head from "next/head";
+import Router from "next/router";
+import "src/styles/global.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
@@ -19,8 +19,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
-          content="Borborema, Turismo, Pérola Paulista, Território dos Enxovais, Caminhos do Tietê, Encantos do Interior, Rio Tietê, Interior São Paulo, Informações Turísticas, Eventos"
-        ></meta>
+          content="Borborema, Turismo, Rio Tietê, Interior São Paulo, Informações Turísticas, Eventos, Borborema SP, Praia, Pescaria, Pesca, Camping, O que fazer em Borborema, Onde comer em Borborema"
+        />
         <meta
           name="description"
           content="Passeios turísticos em Borborema é um sistema web que centraliza várias informações sobre turismo na cidade de Borborema, como eventos na cidade, passeios turísticos, guias, restaurantes, hospedagens, entre outras informações."
@@ -51,13 +51,13 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
 
-      {loading && (
+      {loading ? (
         <div className="spinner-wraper">
           <div className="spinner" />
         </div>
+      ) : (
+        <Component {...pageProps} />
       )}
-
-      <Component {...pageProps} />
     </>
   );
 }

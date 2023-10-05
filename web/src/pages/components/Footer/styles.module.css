@@ -16,7 +16,7 @@
   font-weight: bold;
 }
 
-.appFooter p {
+.versionText {
   margin-top: 0.8rem;
   font-size: 1.2rem;
 }
@@ -39,6 +39,6 @@
 
 @media (max-width: 360px) {
   .appFooter {
-    padding-inline: .8rem;
+    padding-inline: 0.8rem;
   }
 }
