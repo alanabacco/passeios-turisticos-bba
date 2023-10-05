@@ -40,8 +40,8 @@ const CardSection: FC<CardSectionProps<Item>> = ({ itens = [], linkIdParam }) =>
   <section>
     {itens.length > 0 ? (
       <ul className={styles.itens}>
-        {itens.map((item) => {
-          const { id, createdAt, updatedAt, deletedAt, nome, ...rest } = item;
+        {itens.map(({ id, createdAt, updatedAt, deletedAt, nome, ...rest }) => {
+          // const { id, createdAt, updatedAt, deletedAt, nome, ...rest } = item;
 
           const lista = (
             <li key={id} className={styles.item} tabIndex={linkIdParam ? -1 : 0}>
@@ -65,7 +65,7 @@ const CardSection: FC<CardSectionProps<Item>> = ({ itens = [], linkIdParam }) =>
 
           if (linkIdParam) {
             const listaComLink = (
-              <Link href={`${linkIdParam}${item.id}`} key={id}>
+              <Link href={`${linkIdParam}${id}`} key={id}>
                 {lista}
               </Link>
             );
