@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { withSessionHOC } from "src/services/auth/session";
 import Head from "src/infra/Head";
-import BotaoVoltar from "../components/BotaoVoltar";
-import Footer from "src/pages/components/Footer";
+import BotaoVoltar from "src/components/BotaoVoltar";
+import Footer from "src/components/Footer";
 import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import CardSection from "src/pages/components/CardSection";
+import CardSection from "src/components/CardSection";
 
 const mockEventos = [
   {

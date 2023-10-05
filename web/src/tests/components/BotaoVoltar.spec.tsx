@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import BotaoVoltar from "src/pages/components/BotaoVoltar";
+import BotaoVoltar from "src/components/BotaoVoltar";
 
 describe("Componente BotaoVoltar", () => {
   beforeEach(() => {

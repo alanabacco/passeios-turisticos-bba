@@ -3,10 +3,10 @@ import { withSessionHOC } from "src/services/auth/session";
 import { tokenService } from "src/services/auth/tokenService";
 import { HttpClient } from "src/infra/HttpClient";
 import Head from "src/infra/Head";
-import Footer from "src/pages/components/Footer";
-import BotaoVoltar from "src/pages/components/BotaoVoltar";
+import Footer from "src/components/Footer";
+import BotaoVoltar from "src/components/BotaoVoltar";
 import comumStyles from "src/styles/comum.module.css";
-import CardSection from "src/pages/components/CardSection";
+import CardSection from "src/components/CardSection";
 
 function PaginaUsuarios() {
   const token = tokenService.get();

@@ -1,8 +1,8 @@
-import Footer from "src/pages/components/Footer";
+import Footer from "src/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import Head from "src/infra/Head";
-import BotaoVoltar from "src/pages/components/BotaoVoltar";
-import CardSection from "src/pages/components/CardSection";
+import BotaoVoltar from "src/components/BotaoVoltar";
+import CardSection from "src/components/CardSection";
 
 export const getServerSideProps = async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/guias-turisticos`;

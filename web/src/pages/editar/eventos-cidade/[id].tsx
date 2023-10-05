@@ -4,7 +4,7 @@ import Head from "src/infra/Head";
 import { HttpClient } from "src/infra/HttpClient";
 import { tokenService } from "src/services/auth/tokenService";
 import { withSessionHOC } from "src/services/auth/session";
-import Footer from "src/pages/components/Footer";
+import Footer from "src/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import styles from "../forms-estilos.module.css";
 

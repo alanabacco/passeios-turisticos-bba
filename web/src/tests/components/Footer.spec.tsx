@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Footer from "src/pages/components/Footer";
+import Footer from "src/components/Footer";
 
 const versao = "Versão 2.0";
 const textoPrincipal = {

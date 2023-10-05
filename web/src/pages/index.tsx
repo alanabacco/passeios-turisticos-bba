@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Head from "src/infra/Head";
-import Footer from "./components/Footer";
+import Footer from "src/components/Footer";
 import styles from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 

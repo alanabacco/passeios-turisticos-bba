@@ -1,9 +1,9 @@
 import Head from "src/infra/Head";
 import { withSession } from "src/services/auth/session";
-import Footer from "src/pages/components/Footer";
-import BotaoVoltar from "src/pages/components/BotaoVoltar";
+import Footer from "src/components/Footer";
+import BotaoVoltar from "src/components/BotaoVoltar";
 import comumStyles from "src/styles/comum.module.css";
-import CardSection from "src/pages/components/CardSection";
+import CardSection from "src/components/CardSection";
 
 export const getServerSideProps = withSession(async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/informacoes-uteis`;

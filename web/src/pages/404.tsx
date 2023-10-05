@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Head from "src/infra/Head";
-import Footer from "./components/Footer";
+import Footer from "src/components/Footer";
 import style404 from "../styles/pagina404.module.css";
 import comumStyles from "../styles/comum.module.css";
 

@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 import Head from "src/infra/Head";
-import Footer from "./components/Footer";
+import Footer from "src/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 import painelAdministrativoStyle from "src/styles/painel-administrativo.module.css";
 import { withSessionHOC } from "src/services/auth/session";
-import BotaoVoltar from "./components/BotaoVoltar";
+import BotaoVoltar from "src/components/BotaoVoltar";
 
 function PainelAdministrativo(): JSX.Element {
   return (
