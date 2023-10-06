@@ -3,6 +3,7 @@ const database = require("../models");
 const { Op } = require("sequelize");
 
 const dataAtual = new Date();
+dataAtual.setHours(dataAtual.getHours() - 3);
 
 class EventosServices extends Services {
   constructor() {

@@ -7,7 +7,7 @@ class EventosController {
     try {
       const todosOsEventos = await eventosServices.listarRegistros();
       const eventosOrdenados = ordenarEventosPorData(todosOsEventos);
-      return res.status(200).json(eventosOrdenados);
+      return res.status(200).json(eventosOrdenados.reverse());
     } catch (error) {
       next(error);
     }

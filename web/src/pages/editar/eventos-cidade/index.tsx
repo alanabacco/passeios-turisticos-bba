@@ -38,7 +38,7 @@ export default function PaginaEditarEventos({ eventos, session }: Props): JSX.El
           <h1 className={comumStyles.introTitulo}>Eventos</h1>
           <p className={comumStyles.introDescricao}>Escolha um dos itens para editar.</p>
         </section>
-        <CardSection itens={eventos.reverse()} linkIdParam="/editar/eventos-cidade/" />
+        <CardSection itens={eventos} linkIdParam="/editar/eventos-cidade/" />
       </main>
       <Footer />
     </>
