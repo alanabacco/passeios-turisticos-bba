@@ -1,5 +1,6 @@
 .link {
   display: flex;
+  width: fit-content;
   gap: 0.8rem;
   color: var(--red);
   background-color: transparent;

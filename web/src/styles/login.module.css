@@ -1,6 +1,6 @@
 .formContainer {
   border-radius: 8px;
-  box-shadow: 2px 2px 8px #aaa;
+  box-shadow: var(--box-shadow);
   margin: 0 auto;
   min-width: 40rem;
   padding: 5.6rem;
@@ -30,7 +30,7 @@
   padding: 1.6rem 1.6rem;
   margin-top: 0.4rem;
 
-  transition: border 0.2s ease-in-out;
+  transition: border 0.1s ease-in-out;
 }
 
 .input::placeholder {
@@ -59,7 +59,7 @@
   border-radius: 4px;
   cursor: pointer;
   border-width: 1px;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
 }
 
 .botaoCancelar:focus,

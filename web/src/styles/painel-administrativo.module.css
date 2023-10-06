@@ -19,38 +19,3 @@
 .introDescricao {
   margin-right: 4rem;
 }
-
-.linksBox {
-  display: flex;
-  justify-content: space-between;
-  gap: 2.4rem;
-  align-items: center;
-}
-
-.link {
-  text-decoration: none;
-  text-align: center;
-  color: var(--white);
-  background-color: var(--red);
-  border-radius: 0.8rem;
-  padding: 2.4rem 4rem;
-
-  width: 20rem;
-
-  transition: all 0.1s ease-in-out;
-}
-
-.link:hover {
-  transform: scale(1.01);
-  background-color: var(--red-darker);
-}
-
-@media (max-width: 768px) {
-  .linksBox {
-    flex-direction: column;
-  }
-
-  .link {
-    width: 80%;
-  }
-}

@@ -10,6 +10,7 @@
   --red: #b00000;
   --red-darker: #a00000;
   --white: #fbfbfb;
+  --box-shadow: 2px 2px 8px #aaa;
   --font-montserrat_alternates: "Montserrat Alternates", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
 }

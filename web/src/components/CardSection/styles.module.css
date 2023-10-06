@@ -1,17 +1,19 @@
 .itens {
   display: flex;
-  justify-content: center;
-  align-items: baseline;
   flex-wrap: wrap;
   gap: 2.4rem;
 }
 
 .item {
+  flex: 1;
   border: 1px solid var(--red);
   border-radius: 0.8rem;
   padding: 2.4rem;
-  box-shadow: 2px 2px 8px #aaa;
-  width: 40rem;
+  box-shadow: var(--box-shadow);
+  width: 48%;
+  min-width: 32rem;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
 
   transition: transform 0.1s ease-in-out;
 }
@@ -30,4 +32,10 @@
 
 .item p {
   margin-bottom: 0.8rem;
+}
+
+@media (min-width: 700px) {
+  .item:nth-last-child(1):nth-child(odd) {
+    flex: none;
+  }
 }
