@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import CadastrarRestaurante from "../pages/cadastrar/restaurante";
+import CadastrarRestaurante from "src/pages/cadastrar/restaurante";
 import { jest } from "@jest/globals";
 
 // referência: https://stackoverflow.com/questions/76858797/error-invariant-expected-app-router-to-be-mounted-why-this-happened-when-using

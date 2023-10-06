@@ -1,19 +1,19 @@
 import { render, screen } from "@testing-library/react";
-import PaginaEventos from "src/pages/catalogo/eventos-cidade";
+import PaginaInfoUteis from "src/pages/catalogo/informacoes-uteis";
 
-describe("Página eventos-cidade", () => {
+describe("Página informacoes-uteis", () => {
   beforeEach(() => {
-    render(<PaginaEventos eventos={[]} />);
+    render(<PaginaInfoUteis informacoesUteis={[]} />);
   });
 
   test("deve renderizar o título principal da página", () => {
     const texto = screen.getByRole("heading", { level: 1 });
-    expect(texto).toHaveTextContent("Eventos");
+    expect(texto).toHaveTextContent("Informações Úteis");
   });
 
   test("deve renderizar o texto da descrição corretamente", () => {
     const text = screen.getByText(
-      "Aqui você encontra uma lista de eventos em Borborema e região."
+      "Aqui você encontra uma lista de informações que podem ser úteis durante seu passeio."
     );
     expect(text).toBeVisible();
   });

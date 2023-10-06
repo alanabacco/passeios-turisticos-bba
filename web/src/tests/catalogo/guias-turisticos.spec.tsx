@@ -1,19 +1,19 @@
 import { render, screen } from "@testing-library/react";
-import PaginaEventos from "src/pages/catalogo/eventos-cidade";
+import PaginaGuiasTuristicos from "src/pages/catalogo/guias-turisticos";
 
-describe("Página eventos-cidade", () => {
+describe("Página guias-turisticos", () => {
   beforeEach(() => {
-    render(<PaginaEventos eventos={[]} />);
+    render(<PaginaGuiasTuristicos guias={[]} />);
   });
 
   test("deve renderizar o título principal da página", () => {
     const texto = screen.getByRole("heading", { level: 1 });
-    expect(texto).toHaveTextContent("Eventos");
+    expect(texto).toHaveTextContent("Guias Turísticos");
   });
 
   test("deve renderizar o texto da descrição corretamente", () => {
     const text = screen.getByText(
-      "Aqui você encontra uma lista de eventos em Borborema e região."
+      "Aqui você encontra uma lista guias turísticos que podem te guiar para os mais diversos passeios que existem na cidade."
     );
     expect(text).toBeVisible();
   });

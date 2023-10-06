@@ -15,4 +15,9 @@ describe("Página inicial", () => {
     const nav = screen.queryByRole("navigation");
     expect(nav).toBeVisible();
   });
+
+  test("deve renderizar 8 links do conteúdo da página", () => {
+    const li = screen.getAllByRole("listitem");
+    expect(li).toHaveLength(8);
+  });
 });
