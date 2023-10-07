@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import VLibrasWidget from "src/infra/VLibrasWidget";
+import VLibrasWidget from "src/components/VLibrasWidget";
 
 export default function Document() {
   return (

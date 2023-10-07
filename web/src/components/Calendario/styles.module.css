@@ -1,0 +1,24 @@
+.calendarioContainer {
+  background-color: var(--white);
+  height: 460px;
+  min-width: 500px;
+  grid-column: span 2;
+}
+.rbc-toolbar-label {
+  font-weight: bold;
+}
+.rbc-event,
+.rbc-button-link[role="cell"] {
+  cursor: auto !important;
+}
+
+.rbc-button-link[role="cell"] {
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .calendarioContainer {
+    height: 300px;
+    min-width: 300px;
+  }
+}

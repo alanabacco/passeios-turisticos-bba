@@ -3,6 +3,7 @@ import comumStyles from "src/styles/comum.module.css";
 import Head from "src/infra/Head";
 import BotaoVoltar from "src/components/BotaoVoltar";
 import CardSection from "src/components/CardSection";
+import Calendario from "src/components/Calendario";
 
 export const getServerSideProps = async (context: any) => {
   const API = `${process.env.NEXT_PUBLIC_API_URL}/eventos-futuros`;
@@ -37,7 +38,9 @@ export default function PaginaEventos({ eventos }: Props) {
             Aqui você encontra uma lista de eventos em Borborema e região.
           </p>
         </section>
-        
+
+        <Calendario />
+
         <CardSection itens={eventos} />
       </main>
       <Footer />
