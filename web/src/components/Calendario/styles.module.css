@@ -4,21 +4,28 @@
   min-width: 500px;
   grid-column: span 2;
 }
-.rbc-toolbar-label {
+.toolbarStyle {
   font-weight: bold;
+  color: var(--red);
 }
-.rbc-event,
-.rbc-button-link[role="cell"] {
-  cursor: auto !important;
-}
-
 .rbc-button-link[role="cell"] {
   pointer-events: none;
 }
 
 @media (max-width: 600px) {
   .calendarioContainer {
-    height: 300px;
+    height: 360px;
     min-width: 300px;
+  }
+  .eventStyle {
+    font-size: 10px !important;
+  }
+  .rbc-button-link,
+  .rbc-show-more {
+    font-size: 12px !important;
+  }
+  .rbc-event,
+  .rbc-button-link[role="cell"] {
+    font-size: 12px !important;
   }
 }

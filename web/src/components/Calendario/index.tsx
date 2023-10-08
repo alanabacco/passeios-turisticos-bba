@@ -1,9 +1,10 @@
-import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import { useEffect, useState } from "react";
+import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "moment-timezone";
+import "moment/locale/pt-BR";
 import styles from "./styles.module.css";
-import { useEffect, useState } from "react";
 
 export default function Calendario() {
   moment.tz.setDefault("America/Sao_Paulo");
@@ -109,7 +110,7 @@ export default function Calendario() {
     return <div>Carregando calendário...</div>;
   } else {
     return (
-      <div className={styles.calendarioContainer}>
+      <section className={styles.calendarioContainer}>
         <Calendar
           culture="pt-br"
           messages={messages["pt-br"]}
@@ -121,10 +122,13 @@ export default function Calendario() {
           endAccessor={"data_fim"}
           popup
           views={["month"]}
-          eventPropGetter={() => ({ style: { backgroundColor: "#B00000" } })}
+          eventPropGetter={() => ({
+            style: { backgroundColor: "#B00000" },
+            className: styles.eventStyle,
+          })}
           tooltipAccessor={"nome"}
         />
-      </div>
+      </section>
     );
   }
 }
