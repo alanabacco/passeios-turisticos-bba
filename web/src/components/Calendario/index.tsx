@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "moment-timezone";
-import "moment/locale/pt-BR";
+import "moment/locale/pt";
 import styles from "./styles.module.css";
 
 export default function Calendario() {
