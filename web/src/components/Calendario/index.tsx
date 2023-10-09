@@ -77,10 +77,9 @@ export default function Calendario() {
   };
 
   const novaListaEventos = listaEventos.map((evento) => {
-    const dataInicio = new Date(evento.data_inicio);
-    dataInicio.setHours(dataInicio.getHours() + 3);
-    const dataFim = new Date(evento.data_fim);
-    dataFim.setHours(dataFim.getHours() + 3);
+    const dataInicio = moment(evento.data_inicio).toDate();
+    const dataFim = moment(evento.data_fim).toDate();
+    dataFim.setHours(dataFim.getHours() + 1);
     return {
       nome: evento.nome,
       data_inicio: dataInicio,
@@ -89,8 +88,7 @@ export default function Calendario() {
   });
 
   const novaListaFeriados = feriados.map((feriado) => {
-    const data = new Date(feriado["date"]);
-    data.setHours(data.getHours() + 3);
+    const data = moment(feriado["date"]).toDate();
     return {
       nome: feriado["name"],
       data_inicio: data,
@@ -123,7 +121,7 @@ export default function Calendario() {
           popup
           views={["month"]}
           eventPropGetter={() => ({
-            style: { backgroundColor: "#B00000" },
+            style: { backgroundColor: "var(--red)" },
             className: styles.eventStyle,
           })}
           tooltipAccessor={"nome"}
