@@ -1,37 +1,42 @@
-import { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from "next/router";
-import Head from "src/infra/Head";
-import Footer from "src/components/Footer";
 import { authService } from "src/services/auth/authService";
+import Head from "src/infra/Head";
+import Formulario from "src/components/Formulario";
+import Footer from "src/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
-import styles from "src/styles/login.module.css";
 
 export default function Login(): JSX.Element {
   const router = useRouter();
 
-  const [values, setValues] = useState({
+  const valoresIniciais = {
     nomeUsuario: "",
     senha: "",
-  });
+  };
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    const valorCampo = e.target.value;
-    const nomeCampo = e.target.name;
-    setValues((valorAtual) => {
-      return {
-        ...valorAtual,
-        [nomeCampo]: valorCampo,
-      };
-    });
-  }
+  const campos = [
+    {
+      label: "Nome de usuário*",
+      name: "nomeUsuario",
+      required: true,
+      type: "text",
+      placeholder: "Usuário",
+      minLength: 3,
+    },
+    {
+      label: "Senha*",
+      name: "senha",
+      required: true,
+      type: "password",
+      placeholder: "••••••••••",
+      minLength: 6,
+    },
+  ];
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
+  function handleSubmit(formData: { [key: string]: string }) {
     authService
       .login({
-        nome: values.nomeUsuario,
-        senha: values.senha,
+        nome: formData["nomeUsuario"],
+        senha: formData["senha"],
       })
       .then(() => {
         router.push("/painel-administrativo");
@@ -49,55 +54,12 @@ export default function Login(): JSX.Element {
         <section className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Entrar com usuário e senha</h1>
         </section>
-
-        <form className={styles.formContainer} onSubmit={handleSubmit}>
-          <div className={styles.inputContainer}>
-            <label htmlFor="nomeUsuario" className={styles.label}>
-              Nome de usuário
-            </label>
-            <input
-              type="text"
-              required
-              id="nomeUsuario"
-              name="nomeUsuario"
-              placeholder="Usuário"
-              minLength={3}
-              value={values.nomeUsuario}
-              onChange={handleChange}
-              className={styles.input}
-            />
-          </div>
-
-          <div className={styles.inputContainer}>
-            <label htmlFor="senha" className={styles.label}>
-              Senha
-            </label>
-            <input
-              type="password"
-              required
-              id="senha"
-              name="senha"
-              placeholder="••••••••••"
-              minLength={6}
-              value={values.senha}
-              onChange={handleChange}
-              className={`${styles.input} ${styles.inputSenha}`}
-            />
-          </div>
-
-          <div className={styles.botoes}>
-            <button
-              type="button"
-              onClick={() => router.push("/")}
-              className={styles.botaoCancelar}
-            >
-              Cancelar
-            </button>
-            <button type="submit" className={styles.botaoEntrar}>
-              Entrar
-            </button>
-          </div>
-        </form>
+        <Formulario
+          fields={campos}
+          initialValues={valoresIniciais}
+          onSubmit={handleSubmit}
+          textoBotaoSubmit="Entrar"
+        />
       </div>
       <Footer />
     </>
