@@ -97,7 +97,6 @@ export default function Calendario() {
   });
 
   const todosEventos = [...novaListaFeriados, ...novaListaEventos];
-  console.log("Lista de eventos:", todosEventos);
 
   if (error) {
     console.log("Error", error.message);

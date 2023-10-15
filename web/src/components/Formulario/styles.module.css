@@ -2,7 +2,6 @@
   border-radius: 8px;
   box-shadow: var(--box-shadow);
   margin: 0 auto;
-  /* min-width: 40rem; */
   padding: 5.6rem;
   display: grid;
   gap: 1.6rem;
@@ -47,8 +46,7 @@
 }
 
 .input:focus {
-  border: 2px solid var(--red);
-  outline: 0;
+  outline-color: var(--red);
 }
 
 .inputSenha {
@@ -100,6 +98,13 @@
 @media (max-width: 600px) {
   .formContainer {
     padding: 2.4rem;
-    /* min-width: 20rem; */
+    width: 92vw;
+  }
+  .input {
+    width: 100%;
+  }
+  .botaoCancelar,
+  .botaoSubmit {
+    min-width: 10rem;
   }
 }

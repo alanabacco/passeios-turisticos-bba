@@ -55,8 +55,8 @@ export default function Login(): JSX.Element {
           <h1 className={comumStyles.introTitulo}>Entrar com usuário e senha</h1>
         </section>
         <Formulario
-          fields={campos}
-          initialValues={valoresIniciais}
+          inputs={campos}
+          valoresIniciais={valoresIniciais}
           onSubmit={handleSubmit}
           textoBotaoSubmit="Entrar"
         />

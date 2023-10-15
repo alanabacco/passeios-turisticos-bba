@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { mascararTelefone } from "src/utils/mascararTelefone";
 import styles from "./styles.module.css";
 
@@ -14,24 +14,24 @@ interface Field {
   maxLength?: number;
 }
 
-interface ReusableFormProps {
-  fields: Field[];
-  initialValues: { [key: string]: string };
+interface FormularioProps {
+  inputs: Field[];
+  valoresIniciais: { [key: string]: string };
   onSubmit: (formData: { [key: string]: string }) => void;
   rotaBotaoCancelar?: string;
   textoBotaoSubmit?: string;
 }
 
 export default function Formulario({
-  fields,
-  initialValues,
+  inputs,
+  valoresIniciais,
   onSubmit,
   rotaBotaoCancelar = "/",
   textoBotaoSubmit = "Cadastrar",
-}: ReusableFormProps) {
+}: FormularioProps) {
   const router = useRouter();
-  const [formData, setFormData] = useState<{ [key: string]: string }>(initialValues);
-  const [dataMin, setDataMin] = useState(initialValues.dataInicio || "");
+  const [formData, setFormData] = useState<{ [key: string]: string }>(valoresIniciais);
+  const [dataMin, setDataMin] = useState(valoresIniciais.dataInicio || "");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = e.target.value;
@@ -53,38 +53,37 @@ export default function Formulario({
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       <p className={styles.info}>Campos com * são obrigatórios.</p>
-      {fields.map((field, index) => (
+      {inputs.map((input, index) => (
         <div key={index} className={styles.inputContainer}>
-          <label htmlFor={field.name} className={styles.label}>
-            {field.label}
+          <label htmlFor={input.name} className={styles.label}>
+            {input.label}
           </label>
-          {field.type === "textarea" ? (
+          {input.type === "textarea" ? (
             <textarea
-              id={field.name}
-              name={field.name}
-              value={formData[field.name]}
+              id={input.name}
+              name={input.name}
+              value={formData[input.name]}
               onChange={handleChange}
-              placeholder={field.placeholder || ""}
-              required={field.required || false}
+              placeholder={input.placeholder || ""}
+              required={input.required || false}
               className={`${styles.input} ${styles.textarea}`}
-              maxLength={field.maxLength || undefined}
+              maxLength={input.maxLength || undefined}
             />
           ) : (
             <input
-              type={field.type || "text"}
-              id={field.name}
-              name={field.name}
-              value={formData[field.name]}
+              type={input.type || "text"}
+              id={input.name}
+              name={input.name}
               onChange={handleChange}
-              placeholder={field.placeholder || ""}
-              required={field.required || false}
+              placeholder={input.placeholder || ""}
+              required={input.required || false}
               className={`${styles.input} ${
-                field.type === "password" && styles.inputSenha
+                input.type === "password" && styles.inputSenha
               }`}
-              onKeyUp={field.type === "tel" ? mascararTelefone : undefined}
-              min={field.type === "date" ? dataMin : undefined}
-              minLength={field.minLength || undefined}
-              maxLength={field.maxLength || undefined}
+              onKeyUp={input.type === "tel" ? mascararTelefone : undefined}
+              min={input.type === "date" ? dataMin : undefined}
+              minLength={input.minLength || undefined}
+              maxLength={input.maxLength || undefined}
             />
           )}
         </div>

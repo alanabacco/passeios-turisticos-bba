@@ -33,6 +33,6 @@
 
 @media (max-width: 360px) {
   .mainContainer {
-    padding: 2rem .8rem;
+    padding: 2rem 0.8rem;
   }
 }

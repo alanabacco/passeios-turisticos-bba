@@ -21,6 +21,8 @@ body {
   font-family: var(--font-montserrat);
   color: var(--red);
   background: var(--white);
+  min-width: fit-content;
+  min-height: fit-content;
 }
 
 a {

@@ -60,7 +60,7 @@ describe("Component CardSection com linkIdParam", () => {
     render(<CardSection itens={mockEventos} linkIdParam="/editar/eventos/" />);
   });
   test("deve renderizar link corretamente quando linkIdParam é passado", () => {
-    const link = document.getElementsByClassName("item").item(0)?.parentElement;
+    const link = screen.getByText(mockEventos[0].nome).closest("a");
     expect(link).toHaveAttribute("href", `/editar/eventos/${mockEventos[0].id}`);
   });
 });
