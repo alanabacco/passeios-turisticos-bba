@@ -5,6 +5,7 @@
   padding: 5.6rem;
   display: grid;
   gap: 1.6rem;
+  min-width: 40rem;
 }
 
 .info {
@@ -98,7 +99,8 @@
 @media (max-width: 600px) {
   .formContainer {
     padding: 2.4rem;
-    width: 92vw;
+    width: 84vw;
+    min-width: 0;
   }
   .input {
     width: 100%;
