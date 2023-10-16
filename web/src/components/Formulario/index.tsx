@@ -37,9 +37,11 @@ export default function Formulario({
     const value = e.target.value;
     const name = e.target.name;
 
+    const maskedValue = e.target.type === "tel" ? mascararTelefone(value) : value;
+
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: maskedValue,
     }));
 
     if (name == "dataInicio") setDataMin(value);
@@ -74,13 +76,13 @@ export default function Formulario({
               type={input.type || "text"}
               id={input.name}
               name={input.name}
+              value={input.type !== "password" ? formData[input.name] : undefined}
               onChange={handleChange}
               placeholder={input.placeholder || ""}
               required={input.required || false}
               className={`${styles.input} ${
                 input.type === "password" && styles.inputSenha
               }`}
-              onKeyUp={input.type === "tel" ? mascararTelefone : undefined}
               min={input.type === "date" ? dataMin : undefined}
               minLength={input.minLength || undefined}
               maxLength={input.maxLength || undefined}

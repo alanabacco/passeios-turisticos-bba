@@ -1,46 +1,68 @@
-import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "src/infra/Head";
+import { HttpClient } from "src/infra/HttpClient";
 import { tokenService } from "src/services/auth/tokenService";
 import { withSessionHOC } from "src/services/auth/session";
+import Formulario from "src/components/Formulario";
 import Footer from "src/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
-import styles from "../forms-estilos.module.css";
-import { HttpClient } from "src/infra/HttpClient";
-
-interface EventProps extends ChangeEvent<HTMLFormElement> {
-  target: HTMLFormElement & {
-    nome: { value: string };
-    descricao: { value: string };
-    endereco: { value: string };
-    data_inicio: { value: Date };
-    data_fim: { value: Date };
-  };
-}
 
 function CadastrarEvento(): JSX.Element {
-  const dataAtual = new Date();
-  const dataAtualInvertida = dataAtual
-    .toLocaleDateString()
-    .split("/")
-    .reverse()
-    .join("-");
-
-  const [dataMin, setDataMin] = useState(dataAtualInvertida);
+  const valoresIniciais = {
+    nome: "",
+    descricao: "",
+    endereco: "",
+    data_inicio: "",
+    data_fim: "",
+  };
+  const campos = [
+    {
+      label: "Nome*",
+      name: "nome",
+      required: true,
+      type: "text",
+      placeholder: "Digite o nome do evento",
+      minLength: 3,
+    },
+    {
+      label: "Descrição",
+      name: "descricao",
+      type: "textarea",
+      placeholder: "Digite a descrição",
+      maxLength: 250,
+    },
+    {
+      label: "Endereço",
+      name: "endereco",
+      type: "text",
+      placeholder: "Digite o endereço",
+      maxLength: 200,
+    },
+    {
+      label: "Data de início do evento*",
+      name: "dataInicio",
+      type: "date",
+      required: true,
+    },
+    {
+      label: "Data de fim do evento*",
+      name: "dataFim",
+      type: "date",
+      required: true,
+    },
+  ];
 
   const router = useRouter();
   const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/eventos`;
   const token = tokenService.get();
 
-  const handleSubmit = async (e: EventProps) => {
-    e.preventDefault();
-
+  const handleSubmit = async (formData: { [key: string]: string }) => {
     const dados = {
-      nome: e.target.nome.value.trim(),
-      descricao: e.target.descricao.value.trim(),
-      endereco: e.target.endereco.value.trim(),
-      data_inicio: e.target.dataInicio.value,
-      data_fim: e.target.dataFim.value,
+      nome: formData["nome"].trim(),
+      descricao: formData["descricao"].trim(),
+      endereco: formData["endereco"].trim(),
+      data_inicio: formData["dataInicio"],
+      data_fim: formData["dataFim"],
     };
 
     const options = {
@@ -69,11 +91,6 @@ function CadastrarEvento(): JSX.Element {
     }
   };
 
-  function handleDataFim(e: ChangeEvent<HTMLInputElement>) {
-    const dataMin = e.target.value;
-    setDataMin(dataMin);
-  }
-
   return (
     <>
       <Head title="Cadastrar | Passeios Turísticos de Borborema" />
@@ -84,89 +101,12 @@ function CadastrarEvento(): JSX.Element {
             Esse formulário serve para cadastrar eventos da cidade.
           </p>
         </div>
-        <form onSubmit={handleSubmit} className={styles.formContainer}>
-          <p className={styles.info}>Campos com * são obrigatórios.</p>
-          <div className={styles.inputContainer}>
-            <label htmlFor="nome" className={styles.label}>
-              Nome*
-            </label>
-            <input
-              type="text"
-              required
-              id="nome"
-              name="nome"
-              placeholder="Digite o nome do evento"
-              minLength={3}
-              className={styles.input}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="descricao" className={styles.label}>
-              Descrição
-            </label>
-            <textarea
-              id="descricao"
-              name="descricao"
-              placeholder="Digite a descrição"
-              maxLength={250}
-              className={`${styles.input} ${styles.textarea}`}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="endereco" className={styles.label}>
-              Endereço
-            </label>
-            <input
-              type="text"
-              id="endereco"
-              name="endereco"
-              placeholder="Digite o endereço"
-              maxLength={200}
-              className={styles.input}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="dataInicio" className={styles.label}>
-              Data de início do evento*
-            </label>
-            <input
-              required
-              type="date"
-              id="dataInicio"
-              name="dataInicio"
-              maxLength={10}
-              className={styles.input}
-              onChange={handleDataFim}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="dataFim" className={styles.label}>
-              Data de fim do evento*
-            </label>
-            <input
-              required
-              type="date"
-              id="dataFim"
-              name="dataFim"
-              maxLength={10}
-              className={styles.input}
-              min={dataMin}
-            />
-          </div>
-
-          <div className={styles.botoes}>
-            <button
-              type="button"
-              onClick={() => router.push("/cadastrar")}
-              className={styles.botaoCancelar}
-            >
-              Cancelar
-            </button>
-            <button type="submit" className={styles.botaoCadastrar}>
-              Cadastrar
-            </button>
-          </div>
-        </form>
+        <Formulario
+          inputs={campos}
+          valoresIniciais={valoresIniciais}
+          onSubmit={handleSubmit}
+          rotaBotaoCancelar="/cadastrar"
+        />
       </section>
       <Footer />
     </>

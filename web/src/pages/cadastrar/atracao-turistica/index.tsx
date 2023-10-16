@@ -4,12 +4,10 @@ import { HttpClient } from "src/infra/HttpClient";
 import { withSessionHOC } from "src/services/auth/session";
 import { tokenService } from "src/services/auth/tokenService";
 import Footer from "src/components/Footer";
-import comumStyles from "src/styles/comum.module.css";
 import Formulario from "src/components/Formulario";
+import comumStyles from "src/styles/comum.module.css";
 
 function CadastrarAtracao(): JSX.Element {
-  const router = useRouter();
-
   const valoresIniciais = {
     nome: "",
     descricao: "",
@@ -49,8 +47,10 @@ function CadastrarAtracao(): JSX.Element {
     },
   ];
 
+  const router = useRouter();
   const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/atracoes-turisticas`;
   const token = tokenService.get();
+
   const handleSubmit = async (formData: { [key: string]: string }) => {
     const dados = {
       nome: formData["nome"].trim(),
