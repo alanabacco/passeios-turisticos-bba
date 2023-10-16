@@ -1,7 +1,8 @@
 .calendarioContainer {
   background-color: var(--white);
   height: 460px;
-  min-width: 500px;
+  width: 88vw;
+  margin-inline: auto;
   grid-column: span 2;
 }
 .toolbarStyle {
