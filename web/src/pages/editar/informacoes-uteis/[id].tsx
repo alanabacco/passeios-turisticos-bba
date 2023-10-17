@@ -1,27 +1,58 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "src/infra/Head";
 import { HttpClient } from "src/infra/HttpClient";
 import { tokenService } from "src/services/auth/tokenService";
 import { withSessionHOC } from "src/services/auth/session";
-import { mascararTelefone } from "src/utils/mascararTelefone";
 import Footer from "src/components/Footer";
+import Formulario from "src/components/Formulario";
 import comumStyles from "src/styles/comum.module.css";
-import styles from "../forms-estilos.module.css";
 
 function InformacaoUtil(): JSX.Element {
-  const router = useRouter();
-  const token = tokenService.get();
-
-  const params = router.query;
-  const API = `${process.env.NEXT_PUBLIC_API_URL}/informacoes-uteis/${params.id}`;
-
-  const [values, setValues] = useState({
+  const [valoresIniciais, setValoresIniciais] = useState({
     nome: "",
     descricao: "",
     endereco: "",
     telefone: "",
   });
+  const campos = [
+    {
+      label: "Nome*",
+      name: "nome",
+      required: true,
+      type: "text",
+      placeholder: "Digite o nome da informação",
+      minLength: 3,
+    },
+    {
+      label: "Descrição",
+      name: "descricao",
+      type: "textarea",
+      placeholder: "Digite a descrição",
+      maxLength: 250,
+    },
+    {
+      label: "Telefone",
+      name: "telefone",
+      type: "tel",
+      placeholder: "(16) 00000-0000",
+      minLength: 14,
+      maxLength: 15,
+    },
+    {
+      label: "Endereço",
+      name: "endereco",
+      type: "text",
+      placeholder: "Digite o endereço",
+      maxLength: 200,
+    },
+  ];
+
+  const router = useRouter();
+  const token = tokenService.get();
+
+  const params = router.query;
+  const API = `${process.env.NEXT_PUBLIC_API_URL}/informacoes-uteis/${params.id}`;
 
   useEffect(() => {
     try {
@@ -31,13 +62,13 @@ function InformacaoUtil(): JSX.Element {
           Authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        setValues((valorAtual) => {
+        setValoresIniciais((valorAtual) => {
           return {
             ...valorAtual,
             nome: res.body.nome,
-            telefone: res.body.telefone,
-            descricao: res.body.descricao,
-            endereco: res.body.endereco,
+            telefone: res.body.telefone || "",
+            descricao: res.body.descricao || "",
+            endereco: res.body.endereco || "",
           };
         });
       });
@@ -48,24 +79,12 @@ function InformacaoUtil(): JSX.Element {
     }
   }, []);
 
-  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
-    const valorCampo = e.target.value;
-    const nomeCampo = e.target.name;
-    setValues((valorAtual) => {
-      return {
-        ...valorAtual,
-        [nomeCampo]: valorCampo,
-      };
-    });
-  }
-
-  const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (formData: { [key: string]: string }) => {
     const dados = {
-      nome: e.target.nome.value.trim(),
-      descricao: e.target.descricao.value.trim(),
-      endereco: e.target.endereco.value.trim(),
-      telefone: e.target.telefone.value,
+      nome: formData["nome"].trim(),
+      descricao: formData["descricao"].trim(),
+      endereco: formData["endereco"].trim(),
+      telefone: formData["telefone"],
     };
     const options = {
       method: "PUT",
@@ -103,84 +122,13 @@ function InformacaoUtil(): JSX.Element {
             Esse formulário serve para editar as informações.
           </p>
         </div>
-        <form onSubmit={handleSubmit} className={styles.formContainer}>
-          <p className={styles.info}>Campos com * são obrigatórios.</p>
-          <div className={styles.inputContainer}>
-            <label htmlFor="nome" className={styles.label}>
-              Nome*
-            </label>
-            <input
-              value={values.nome}
-              type="text"
-              required
-              id="nome"
-              name="nome"
-              placeholder="Digite o nome do lugar"
-              minLength={3}
-              onChange={handleChange}
-              className={styles.input}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="descricao" className={styles.label}>
-              Descrição
-            </label>
-            <textarea
-              value={values.descricao}
-              id="descricao"
-              name="descricao"
-              placeholder="Digite a descrição"
-              maxLength={250}
-              onChange={handleChange}
-              className={`${styles.input} ${styles.textarea}`}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="telefone" className={styles.label}>
-              Telefone
-            </label>
-            <input
-              value={values.telefone}
-              type="tel"
-              id="telefone"
-              name="telefone"
-              placeholder="(16) 00000-0000"
-              minLength={14}
-              maxLength={15}
-              onKeyUp={mascararTelefone}
-              onChange={handleChange}
-              className={`${styles.input} ${styles.inputNumber}`}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="endereco" className={styles.label}>
-              Endereço
-            </label>
-            <input
-              value={values.endereco}
-              onChange={handleChange}
-              type="text"
-              id="endereco"
-              name="endereco"
-              placeholder="Digite o endereço"
-              maxLength={200}
-              className={styles.input}
-            />
-          </div>
-
-          <div className={styles.botoes}>
-            <button
-              type="button"
-              onClick={() => router.push("/editar/informacoes-uteis")}
-              className={styles.botaoCancelar}
-            >
-              Cancelar
-            </button>
-            <button type="submit" className={styles.botaoCadastrar}>
-              Cadastrar
-            </button>
-          </div>
-        </form>
+        <Formulario
+          inputs={campos}
+          valoresIniciais={valoresIniciais}
+          onSubmit={handleSubmit}
+          rotaBotaoCancelar="/editar/informacoes-uteis"
+          textoBotaoSubmit="Editar"
+        />
       </section>
       <Footer />
     </>

@@ -1,29 +1,63 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "src/infra/Head";
 import { HttpClient } from "src/infra/HttpClient";
 import { tokenService } from "src/services/auth/tokenService";
 import { withSessionHOC } from "src/services/auth/session";
 import Footer from "src/components/Footer";
+import Formulario from "src/components/Formulario";
 import comumStyles from "src/styles/comum.module.css";
-import styles from "../forms-estilos.module.css";
 
 function Evento(): JSX.Element {
-  const router = useRouter();
-  const token = tokenService.get();
-
-  const params = router.query;
-  const API = `${process.env.NEXT_PUBLIC_API_URL}/eventos/${params.id}`;
-
-  const [values, setValues] = useState({
+  const [valoresIniciais, setValoresIniciais] = useState({
     nome: "",
     descricao: "",
     endereco: "",
     dataInicio: "",
     dataFim: "",
   });
+  const campos = [
+    {
+      label: "Nome*",
+      name: "nome",
+      required: true,
+      type: "text",
+      placeholder: "Digite o nome do evento",
+      minLength: 3,
+    },
+    {
+      label: "Descrição",
+      name: "descricao",
+      type: "textarea",
+      placeholder: "Digite a descrição",
+      maxLength: 250,
+    },
+    {
+      label: "Endereço",
+      name: "endereco",
+      type: "text",
+      placeholder: "Digite o endereço",
+      maxLength: 200,
+    },
+    {
+      label: "Data de início do evento*",
+      name: "dataInicio",
+      type: "date",
+      required: true,
+    },
+    {
+      label: "Data de fim do evento*",
+      name: "dataFim",
+      type: "date",
+      required: true,
+    },
+  ];
 
-  const [dataMin, setDataMin] = useState("");
+  const router = useRouter();
+  const token = tokenService.get();
+
+  const params = router.query;
+  const API = `${process.env.NEXT_PUBLIC_API_URL}/eventos/${params.id}`;
 
   useEffect(() => {
     try {
@@ -33,15 +67,14 @@ function Evento(): JSX.Element {
           Authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        setDataMin(res.body.data_inicio);
-        setValues((valorAtual) => {
+        setValoresIniciais((valorAtual) => {
           return {
             ...valorAtual,
             nome: res.body.nome,
-            descricao: res.body.descricao,
-            endereco: res.body.endereco,
-            dataInicio: res.body.data_inicio,
-            dataFim: res.body.data_fim,
+            descricao: res.body.descricao || "",
+            endereco: res.body.endereco || "",
+            dataInicio: res.body.data_inicio || "",
+            dataFim: res.body.data_fim || "",
           };
         });
       });
@@ -52,28 +85,13 @@ function Evento(): JSX.Element {
     }
   }, []);
 
-  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
-    const valorCampo = e.target.value;
-    const nomeCampo = e.target.name;
-
-    setValues((valorAtual) => {
-      return {
-        ...valorAtual,
-        [nomeCampo]: valorCampo,
-      };
-    });
-
-    if (nomeCampo == "dataInicio") setDataMin(valorCampo);
-  }
-
-  const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (formData: { [key: string]: string }) => {
     const dados = {
-      nome: e.target.nome.value.trim(),
-      descricao: e.target.descricao.value.trim(),
-      endereco: e.target.endereco.value.trim(),
-      data_inicio: e.target.dataInicio.value,
-      data_fim: e.target.dataFim.value,
+      nome: formData["nome"].trim(),
+      descricao: formData["descricao"].trim(),
+      endereco: formData["endereco"].trim(),
+      data_inicio: formData["dataInicio"],
+      data_fim: formData["dataFim"],
     };
     const options = {
       method: "PUT",
@@ -111,98 +129,13 @@ function Evento(): JSX.Element {
             Esse formulário serve para editar as informações.
           </p>
         </div>
-        <form onSubmit={handleSubmit} className={styles.formContainer}>
-          <p className={styles.info}>Campos com * são obrigatórios.</p>
-          <div className={styles.inputContainer}>
-            <label htmlFor="nome" className={styles.label}>
-              Nome*
-            </label>
-            <input
-              value={values.nome}
-              type="text"
-              required
-              id="nome"
-              name="nome"
-              placeholder="Digite o nome do evento"
-              minLength={3}
-              onChange={handleChange}
-              className={styles.input}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="descricao" className={styles.label}>
-              Descrição
-            </label>
-            <textarea
-              value={values.descricao}
-              id="descricao"
-              name="descricao"
-              placeholder="Digite a descrição"
-              maxLength={250}
-              onChange={handleChange}
-              className={`${styles.input} ${styles.textarea}`}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="endereco" className={styles.label}>
-              Endereço
-            </label>
-            <input
-              value={values.endereco}
-              onChange={handleChange}
-              type="text"
-              id="endereco"
-              name="endereco"
-              placeholder="Digite o endereço"
-              maxLength={200}
-              className={styles.input}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="dataInicio" className={styles.label}>
-              Data de inicio do evento*
-            </label>
-            <input
-              required
-              value={values.dataInicio}
-              onChange={handleChange}
-              type="date"
-              id="dataInicio"
-              name="dataInicio"
-              maxLength={10}
-              className={styles.input}
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <label htmlFor="dataFim" className={styles.label}>
-              Data de fim do evento*
-            </label>
-            <input
-              required
-              value={values.dataFim}
-              onChange={handleChange}
-              type="date"
-              id="dataFim"
-              name="dataFim"
-              maxLength={10}
-              className={styles.input}
-              min={dataMin}
-            />
-          </div>
-
-          <div className={styles.botoes}>
-            <button
-              type="button"
-              onClick={() => router.push("/editar/eventos-cidade")}
-              className={styles.botaoCancelar}
-            >
-              Cancelar
-            </button>
-            <button type="submit" className={styles.botaoCadastrar}>
-              Cadastrar
-            </button>
-          </div>
-        </form>
+        <Formulario
+          inputs={campos}
+          valoresIniciais={valoresIniciais}
+          onSubmit={handleSubmit}
+          rotaBotaoCancelar="/editar/eventos-cidade"
+          textoBotaoSubmit="Editar"
+        />
       </section>
       <Footer />
     </>

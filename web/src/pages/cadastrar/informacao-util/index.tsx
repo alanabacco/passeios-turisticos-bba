@@ -20,7 +20,7 @@ function CadastrarInformacaoUtil(): JSX.Element {
       name: "nome",
       required: true,
       type: "text",
-      placeholder: "Digite o nome do lugar",
+      placeholder: "Digite o nome da informação",
       minLength: 3,
     },
     {

@@ -11,7 +11,7 @@ function CadastrarGuia(): JSX.Element {
   const valoresIniciais = {
     nome: "",
     telefone: "",
-    tipos_turismo: "",
+    tiposTurismo: "",
   };
   const campos = [
     {
@@ -32,7 +32,7 @@ function CadastrarGuia(): JSX.Element {
     },
     {
       label: "Tipos de Turismo",
-      name: "tipos_turismo",
+      name: "tiposTurismo",
       type: "text",
       placeholder: "ex: pesca - trilha - ciclismo - camping",
       maxLength: 200,
@@ -47,7 +47,7 @@ function CadastrarGuia(): JSX.Element {
     const dados = {
       nome: formData["nome"].trim(),
       telefone: formData["telefone"],
-      tipos_turismo: formData["tipos_turismo"].trim(),
+      tipos_turismo: formData["tiposTurismo"].trim(),
     };
 
     const options = {

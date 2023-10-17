@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { mascararNumero } from "src/utils/mascararTelefone";
 import styles from "./styles.module.css";
@@ -33,6 +33,11 @@ export default function Formulario({
   const [formData, setFormData] = useState<{ [key: string]: string }>(valoresIniciais);
   const [dataMin, setDataMin] = useState(valoresIniciais.dataInicio || "");
 
+  useEffect(() => {
+    setFormData(valoresIniciais);
+    if (valoresIniciais.dataInicio) setDataMin(valoresIniciais.dataInicio);
+  }, [valoresIniciais]);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -41,7 +46,7 @@ export default function Formulario({
 
     setFormData((prevData) => ({
       ...prevData,
-      [name]: maskedValue,
+      [name]: maskedValue || "",
     }));
 
     if (name == "dataInicio") setDataMin(value);
@@ -83,7 +88,7 @@ export default function Formulario({
               className={`${styles.input} ${
                 input.type === "password" && styles.inputSenha
               }`}
-              min={input.type === "date" ? dataMin : undefined}
+              min={input.name === "dataFim" ? dataMin : undefined}
               minLength={input.minLength || undefined}
               maxLength={input.maxLength || undefined}
             />
