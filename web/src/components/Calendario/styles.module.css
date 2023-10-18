@@ -1,7 +1,7 @@
 .calendarioContainer {
   background-color: var(--white);
   height: 460px;
-  width: 100%;
+  width: 88vw;
   margin-inline: auto;
   grid-column: span 2;
 }
