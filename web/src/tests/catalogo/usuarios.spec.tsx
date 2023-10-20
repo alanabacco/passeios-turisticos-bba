@@ -1,7 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import PaginaUsuarios from "src/pages/catalogo/usuarios";
 
-describe.skip("Página usuarios", () => {
+jest.mock("next/router", () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+  }),
+}));
+
+jest.mock("src/infra/HttpClient", () => ({
+  HttpClient: jest.fn(),
+}));
+
+describe("Página usuarios", () => {
   beforeEach(() => {
     render(<PaginaUsuarios usuarios={[]} />);
   });
@@ -9,6 +19,7 @@ describe.skip("Página usuarios", () => {
   test("deve renderizar o título principal da página", () => {
     const texto = screen.getByRole("heading", { level: 1 });
     expect(texto).toHaveTextContent("Usuários");
+    expect(texto).toBeVisible();
   });
 
   test("deve renderizar o texto da descrição corretamente", () => {

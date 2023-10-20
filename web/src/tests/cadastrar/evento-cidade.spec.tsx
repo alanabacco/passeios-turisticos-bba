@@ -17,7 +17,8 @@ describe("Página CadastrarEvento", () => {
   });
 
   test("deve renderizar o título da página corretamente", () => {
-    const texto = screen.getByText("Cadastrar Eventos");
+    const texto = screen.getByRole("heading", { level: 1 });
+    expect(texto).toHaveTextContent("Cadastrar Eventos");
     expect(texto).toBeVisible();
   });
 

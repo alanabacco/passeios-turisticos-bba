@@ -17,7 +17,8 @@ describe("Página CadastrarHospedagem", () => {
   });
 
   test("deve renderizar o título da página corretamente", () => {
-    const texto = screen.getByText("Cadastrar Hospedagem");
+    const texto = screen.getByRole("heading", { level: 1 });
+    expect(texto).toHaveTextContent("Cadastrar Hospedagem");
     expect(texto).toBeVisible();
   });
 

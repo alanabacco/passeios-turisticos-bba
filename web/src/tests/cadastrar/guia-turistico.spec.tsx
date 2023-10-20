@@ -17,7 +17,8 @@ describe("Página CadastrarGuia", () => {
   });
 
   test("deve renderizar o título da página corretamente", () => {
-    const texto = screen.getByText("Cadastrar Guias Turísticos");
+    const texto = screen.getByRole("heading", { level: 1 });
+    expect(texto).toHaveTextContent("Cadastrar Guias Turísticos");
     expect(texto).toBeVisible();
   });
 

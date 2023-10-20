@@ -9,6 +9,7 @@ describe("Página restaurantes", () => {
   test("deve renderizar o título principal da página", () => {
     const texto = screen.getByRole("heading", { level: 1 });
     expect(texto).toHaveTextContent("Restaurantes");
+    expect(texto).toBeVisible();
   });
 
   test("deve renderizar o texto da descrição corretamente", () => {

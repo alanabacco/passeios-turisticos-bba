@@ -9,6 +9,7 @@ describe("Página informacoes-uteis", () => {
   test("deve renderizar o título principal da página", () => {
     const texto = screen.getByRole("heading", { level: 1 });
     expect(texto).toHaveTextContent("Informações Úteis");
+    expect(texto).toBeVisible();
   });
 
   test("deve renderizar o texto da descrição corretamente", () => {

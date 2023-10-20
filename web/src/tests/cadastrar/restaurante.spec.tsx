@@ -17,7 +17,8 @@ describe("Página CadastrarRestaurante", () => {
   });
 
   test("deve renderizar o título da página corretamente", () => {
-    const texto = screen.getByText("Cadastrar Restaurantes");
+    const texto = screen.getByRole("heading", { level: 1 });
+    expect(texto).toHaveTextContent("Cadastrar Restaurantes");
     expect(texto).toBeVisible();
   });
 
