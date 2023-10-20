@@ -15,6 +15,7 @@ app.use(
 
 routes(app);
 
+app.use("/", express.static("public"));
 app.use(manipulador404);
 app.use(manipuladorDeErros);
 
