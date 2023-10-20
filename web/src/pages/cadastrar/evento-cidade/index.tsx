@@ -98,7 +98,7 @@ function CadastrarEvento(): JSX.Element {
         <div className={comumStyles.introSection}>
           <h1 className={comumStyles.introTitulo}>Cadastrar Eventos</h1>
           <p className={comumStyles.introDescricao}>
-            Esse formulário serve para cadastrar eventos da cidade.
+            Esse formulário serve para cadastrar eventos da cidade e região.
           </p>
         </div>
         <Formulario

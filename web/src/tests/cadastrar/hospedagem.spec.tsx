@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import CadastrarRestaurante from "src/pages/cadastrar/restaurante";
+import CadastrarHospedagem from "src/pages/cadastrar/hospedagem";
 
 jest.mock("next/router", () => ({
   useRouter: () => ({
@@ -11,19 +11,19 @@ jest.mock("src/infra/HttpClient", () => ({
   HttpClient: jest.fn(),
 }));
 
-describe("Página CadastrarRestaurante", () => {
+describe("Página CadastrarHospedagem", () => {
   beforeEach(() => {
-    render(<CadastrarRestaurante />);
+    render(<CadastrarHospedagem />);
   });
 
   test("deve renderizar o título da página corretamente", () => {
-    const texto = screen.getByText("Cadastrar Restaurantes");
+    const texto = screen.getByText("Cadastrar Hospedagem");
     expect(texto).toBeVisible();
   });
 
   test("deve renderizar o texto da descrição corretamente", () => {
     const texto = screen.getByText(
-      "Esse formulário serve para cadastrar restaurantes, lanchonetes, pizzarias, entre outras coisas onde os turistas possam se alimentar."
+      "Esse formulário serve para cadastrar qualquer tipo de hospedagem, como hotéis, acampamentos, entre outros."
     );
     expect(texto).toBeVisible();
   });

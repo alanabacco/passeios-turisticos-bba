@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { mascararNumero } from "src/utils/mascararTelefone";
+import { mascararTelefone } from "src/utils/mascararTelefone";
 import styles from "./styles.module.css";
 
 interface Field {
@@ -42,7 +42,7 @@ export default function Formulario({
     const value = e.target.value;
     const name = e.target.name;
 
-    const maskedValue = e.target.type === "tel" ? mascararNumero(value) : value;
+    const maskedValue = e.target.type === "tel" ? mascararTelefone(value) : value;
 
     setFormData((prevData) => ({
       ...prevData,
