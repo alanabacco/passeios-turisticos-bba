@@ -1,7 +1,7 @@
 # Passeios turísticos em Borborema
 
 ## Sobre o projeto
-
+ 
 Passeios turísticos em Borborema é um sistema web criado para centralizar todas as informações sobre turismo na cidade de Borborema, como eventos na cidade, passeios turísticos, guias, restaurantes, hospedagens, entre outras informações.
 
 Sistema web feito para a disciplina do Projeto Integrador dos cursos de Computação da UNIVESP, trabalho feito em grupo.
