@@ -48,11 +48,11 @@ describe("Componente CardSection", () => {
     expect(item).toBeVisible();
   });
 
-  test.skip("handles keyboard navigation correctly", () => {
-    const item = document.getElementsByClassName("item").item(0);
-    userEvent.tab();
-    expect(item).toHaveFocus();
-  });
+  // test.skip("handles keyboard navigation correctly", () => {
+  //   const item = document.getElementsByClassName("item").item(0);
+  //   userEvent.tab();
+  //   expect(item).toHaveFocus();
+  // });
 });
 
 describe("Component CardSection com linkIdParam", () => {
