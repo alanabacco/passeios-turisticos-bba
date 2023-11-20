@@ -8,12 +8,25 @@ Sistema web feito para a disciplina do Projeto Integrador dos cursos de Computa�
 
 Para acessar a página online do projeto, entre em [passeiosturisticosbba.vercel.app](https://passeiosturisticosbba.vercel.app/)
 
+### Funcionalidades
+
+- Página Inicial com informações sobre a cidade e links que levam à outras páginas;
+- Links que levam ao site oficial do município;
+- Páginas com as informações cadastradas sobre Eventos, Atrações Turisticas, Guias Turísticos, Restaurantes, Hospedagens e Outras Informações;
+- Página de Login para autenticação do usuário administrativo;
+- Página principal de gerenciamento do Painel Administrativo;
+- Páginas dedicadas para cadastrar, editar e excluir informações.
+- Formulários com validação de campos obrigatórios;
+- Campos de data com validação para garantir que a data de fim seja posterior ou igual à data de início;
+- Máscara no campo de telefone para garantir o formato correto;
+- Calendário de Eventos na Página de Eventos utilizando a biblioteca [React Big Calendar](https://www.npmjs.com/package//react-big-calendar) contendo os eventos cadastrados e feriados nacionais usando a API da [BrasilApi](https://brasilapi.com.br/docs#tag/Feriados-Nacionais)
+
+## Ferramentas e tecnologias utilizadas
+
 Neste repositório se encontram os diretórios
 
 - [server](https://github.com/alanabacco/passeios-turisticos-bba/tree/main/server), que contém o backend da aplicação;
 - [web](https://github.com/alanabacco/passeios-turisticos-bba/tree/main/web), contendo o frontend.
-
-## Ferramentas e tecnologias utilizadas
 
 ### Backend
 
