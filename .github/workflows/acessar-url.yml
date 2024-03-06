@@ -1,7 +1,7 @@
 name: Acessar URL a cada 48h
 
 on:
-  shedule:
+  schedule:
     - cron: '* * * * *'
 
 jobs:
