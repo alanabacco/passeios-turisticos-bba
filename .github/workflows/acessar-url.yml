@@ -1,4 +1,5 @@
-name: Acessa URL a cada 48h
+# Acessar URL a cada 48h para manter o Banco de Dados funcionando
+name: AcessaUrl
 
 on:
   schedule:
@@ -11,10 +12,10 @@ jobs:
     steps:
       - name: Acessa URL
         run: |
-          response=$(curl -sSf -w "%{http_code}" https://passeios-turisticos-bba-server.vercel.app/hospedagens)
-          if [ "$response" != "200" ]; then
+          response=$(curl -sSf -w "%{http_code}" -o /dev/null "%{http_code}" https://passeios-turisticos-bba-server.vercel.app/hospedagens)
+          if [ "$response" = "200" ]; then
+            echo "Resposta do servidor: $response"
+          else
             echo "Erro: A resposta do servidor não foi bem-sucedida. Status: $response"
             exit 1
-          else
-            echo "Resposta do servidor: $response"
           fi
