@@ -12,10 +12,11 @@ jobs:
     steps:
       - name: Acessa URL
         run: |
-          response=$(curl -sSf -w "%{http_code}" -o /dev/null "%{http_code}" https://passeios-turisticos-bba-server.vercel.app/hospedagens)
-          if [ "$response" = "200" ]; then
-            echo "Resposta do servidor: $response"
+          URL="https://passeios-turisticos-bba-server.vercel.app/hospedagens"
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" $URL)
+          if [ $STATUS_CODE -eq 200 ]; then
+            echo "Status Code: $STATUS_CODE"
           else
-            echo "Erro: A resposta do servidor não foi bem-sucedida. Status: $response"
+            echo "Falha ao acessar a URL. Status code: $STATUS_CODE"
             exit 1
           fi
