@@ -1,0 +1,18 @@
+name: Acessar URL a cada 48h
+
+on:
+  shedule:
+    - cron: '* * * * *'
+
+jobs:
+  acessar-url:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Acessar URL
+        run: |
+          response=$(curl -sSf -w "%{http_code}" https://passeios-turisticos-bba-server.vercel.app/hospedagens)
+          if [ "$response" != "200" ]; then
+            echo "Erro: A resposta do servidor não foi bem-sucedida. Status: $response"
+            exit 1
+          fi
