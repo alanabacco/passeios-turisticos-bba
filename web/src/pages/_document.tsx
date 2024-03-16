@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Analytics from "src/components/Analytics";
 import VLibrasWidget from "src/components/VLibrasWidget";
 
 export default function Document() {
@@ -16,6 +17,7 @@ export default function Document() {
         <Main />
         <NextScript />
         <VLibrasWidget />
+        <Analytics />
       </body>
     </Html>
   );
