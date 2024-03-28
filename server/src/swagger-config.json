@@ -1,0 +1,278 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API de Passeios Turísticos de Borborema",
+    "version": "1.0.0",
+    "description": "Documentação da API de Passeios Turísticos de Borborema | Site do projeto: https://passeiosturisticosbba.vercel.app"
+  },
+  "externalDocs": {
+    "description": "Github do Projeto",
+    "url": "https://github.com/alanabacco/passeios-turisticos-bba"
+  },
+  "servers": [
+    { "url": "https://passeios-turisticos-bba-server" },
+    { "url": "http://localhost:8080" }
+  ],
+  "paths": {
+    "/eventos-futuros": {
+      "get": {
+        "tags": ["Eventos"],
+        "summary": "Lista todos os eventos que irão acontecer",
+        "description": "Lista todos os eventos que ainda irão acontecer",
+        "operationId": "GetEventosFuturos",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      }
+    },
+    "/eventos": {
+      "get": {
+        "tags": ["Eventos"],
+        "summary": "Lista todos os eventos",
+        "description": "Lista todos os eventos",
+        "operationId": "GetEventos",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      },
+      "post": {
+        "tags": ["Eventos"],
+        "summary": "Cria novo evento",
+        "description": "Cria novo evento",
+        "operationId": "PostEvento",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Feira na praça",
+                "descricao": "A partir das 19h",
+                "data_inicio": "28/03/2024",
+                "data_fim": "28/03/2024",
+                "endereco": "Praça Central"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/eventos/{id}": {
+      "get": {
+        "tags": ["Eventos"],
+        "summary": "Lista um evento por id",
+        "description": "Lista um evento por id",
+        "operationId": "GetEventoPorId",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do evento",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": ["Eventos"],
+        "summary": "Edita um evento",
+        "description": "Edita um evento",
+        "operationId": "PutEvento",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do evento",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Feira na praça",
+                "descricao": "A partir das 19h",
+                "data_inicio": "28/03/2024",
+                "data_fim": "28/03/2024",
+                "endereco": "Praça Central"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": ["Eventos"],
+        "summary": "Exclui um evento",
+        "description": "Exclui um evento",
+        "operationId": "DeleteEvento",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do evento",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Faz login",
+        "description": "Coloque usuário e senha para fazer login, pegue o token e coloque no 'Authorize' lá em cima na página para acessar as rotas protegidas",
+        "operationId": "PostAuthLogin",
+        "tags": ["Login"],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "usuario",
+                "senha": "123456"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AtracaoTuristica": {
+        "required": ["nome"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 2 },
+          "nome": { "type": "string", "example": "Prainha do Juqueta" },
+          "descricao": {
+            "type": "string",
+            "example": "Banhada pelo Rio Tietê, encanta turistas com águas limpas e oferece lazer, pesca, camping e eventos. Aluguel de quiosques disponível."
+          },
+          "endereco": {
+            "type": "string",
+            "example": "Praia do Juqueta - Rio Tietê, Borborema, SP"
+          },
+          "telefone": { "type": "string", "example": "(16) 99783-5810" },
+          "createdAt": { "type": "string", "example": "2023-05-25T03:39:22.837Z" },
+          "updatedAt": { "type": "string", "example": "2023-09-07T21:43:21.956Z" }
+        }
+      },
+      "Evento": {
+        "required": ["nome", "data_inicio", "data_fim"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 10 },
+          "nome": { "type": "string", "example": "Feira na praça" },
+          "descricao": { "type": "string", "example": "A partir das 19h" },
+          "data_inicio": { "type": "string", "example": "28/03/2024" },
+          "data_fim": { "type": "string", "example": "28/03/2024" },
+          "endereco": { "type": "string", "example": "Centro da cidade" },
+          "createdAt": { "type": "string", "example": "2024-03-20T04:04:46.783Z" },
+          "updatedAt": { "type": "string", "example": "2024-03-20T04:04:46.783Z" }
+        }
+      },
+      "GuiaTuristico": {
+        "required": ["nome"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 5 },
+          "nome": { "type": "string", "example": "Fulano" },
+          "telefone": { "type": "string", "example": "(00) 00000-0000" },
+          "tipo_turismo": { "type": "string", "example": "Pesca" },
+          "createdAt": { "type": "string", "example": "2023-05-25T03:39:22.837Z" },
+          "updatedAt": { "type": "string", "example": "2023-09-07T21:43:21.956Z" }
+        }
+      },
+      "Hospedagem": {
+        "required": ["nome"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 3 },
+          "nome": { "type": "string", "example": "Lugar tal" },
+          "descricao": { "type": "string", "example": "Atendimento 24h" },
+          "endereco": { "type": "string", "example": "Rua tal tal" },
+          "telefone": { "type": "string", "example": "(00) 00000-00" },
+          "createdAt": { "type": "string", "example": "2023-05-25T03:39:22.837Z" },
+          "updatedAt": { "type": "string", "example": "2023-09-07T21:43:21.956Z" }
+        }
+      },
+      "InformacaoUtil": {
+        "required": ["nome"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 23 },
+          "nome": { "type": "string", "example": "Informação tal" },
+          "descricao": { "type": "string", "example": "Atendimento 24h" },
+          "endereco": { "type": "string", "example": "Rua tal tal" },
+          "telefone": { "type": "string", "example": "(00) 00000-00" },
+          "createdAt": { "type": "string", "example": "2023-05-25T03:39:22.837Z" },
+          "updatedAt": { "type": "string", "example": "2023-09-07T21:43:21.956Z" }
+        }
+      },
+      "Restaurante": {
+        "required": ["nome"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 15 },
+          "nome": { "type": "string", "example": "Restaurante tal" },
+          "descricao": { "type": "string", "example": "Atendimento 24h" },
+          "endereco": { "type": "string", "example": "Rua tal tal" },
+          "telefone": { "type": "string", "example": "(00) 00000-00" },
+          "createdAt": { "type": "string", "example": "2023-05-25T03:39:22.837Z" },
+          "updatedAt": { "type": "string", "example": "2023-09-07T21:43:21.956Z" }
+        }
+      },
+      "Usuario": {
+        "required": ["nome", "senha"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 2 },
+          "nome": { "type": "string", "example": "usuario" },
+          "senha": { "type": "string", "example": "********" },
+          "createdAt": { "type": "string", "example": "2024-03-20T04:04:46.783Z" },
+          "updatedAt": { "type": "string", "example": "2024-03-20T04:04:46.783Z" }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
