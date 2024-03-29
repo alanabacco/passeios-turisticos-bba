@@ -10,7 +10,8 @@ st.set_page_config(page_title='Dados | Passeios Turísticos de Borborema',
 st.title('Dados - Passeios Turísticos de Borborema/SP')
 
 st.write('## Google Analytics')
-df_ganalytics = pd.read_csv('ganalytics.csv')
+csv = 'https://raw.githubusercontent.com/alanabacco/passeios-turisticos-bba/main/dados/ganalytics.csv'
+df_ganalytics = pd.read_csv(csv)
 st.write(df_ganalytics)
 
 url = 'https://passeios-turisticos-bba-server.vercel.app'
