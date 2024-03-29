@@ -12,4 +12,4 @@ Análise de Dados do projeto Passeios Turísticos de Borborema.
 - criar o ambiente virtual `python -m venv venv`
 - ativar o ambiente `.\venv\Scripts\activate`, tem que ser no terminal do powershell
 - instalar as bibliotecas `pip install -r requirements.txt`
-- Rodar o projeto `streamlit run Dashboard.py` no ambiente virtual
+- Rodar o projeto `streamlit run app.py` no ambiente virtual
