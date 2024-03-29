@@ -3,11 +3,7 @@
   "info": {
     "title": "API de Passeios Turísticos de Borborema",
     "version": "1.0.0",
-    "description": "Documentação da API de Passeios Turísticos de Borborema | Site do projeto: https://passeiosturisticosbba.vercel.app"
-  },
-  "externalDocs": {
-    "description": "Github do Projeto",
-    "url": "https://github.com/alanabacco/passeios-turisticos-bba"
+    "description": "Documentação da [API](https://www.youtube.com/watch?v=vGuqKIRWosk) de Passeios Turísticos de Borborema. Essa documentação possui uma lista de todas as rotas disponíveis na API. As rotas que precisam de autenticação para serem usadas possuem um cadeado indicando. As outras podem ser usadas livremente. Para fazer a autenticação, use a rota de Login. As respostas da API são retornadas no formato [JSON](https://www.youtube.com/watch?v=P81dE-tkaaA).\n\nLinks:\n- [Projeto](https://passeiosturisticosbba.vercel.app)\n- [Github](https://github.com/alanabacco/passeios-turisticos-bba)"
   },
   "servers": [
     { "url": "https://passeios-turisticos-bba-server" },
@@ -48,8 +44,8 @@
               "example": {
                 "nome": "Feira na praça",
                 "descricao": "A partir das 19h",
-                "data_inicio": "28/03/2024",
-                "data_fim": "28/03/2024",
+                "data_inicio": "2024-03-28",
+                "data_fim": "2024-03-28",
                 "endereco": "Praça Central"
               }
             }
@@ -108,8 +104,8 @@
               "example": {
                 "nome": "Feira na praça",
                 "descricao": "A partir das 19h",
-                "data_inicio": "28/03/2024",
-                "data_fim": "28/03/2024",
+                "data_inicio": "2024-03-28",
+                "data_fim": "2024-03-28",
                 "endereco": "Praça Central"
               }
             }
