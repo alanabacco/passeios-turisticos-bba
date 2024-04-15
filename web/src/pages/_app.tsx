@@ -25,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
           name="description"
           content="Passeios turísticos em Borborema é um sistema web que centraliza várias informações sobre turismo na cidade de Borborema, como eventos na cidade, passeios turísticos, guias, restaurantes, hospedagens, entre outras informações."
         />
+        <meta name="google-site-verification" content="jpM0kRP0rFoxQUvgmbJOwsfhxzWMDPPlqjI3wn0fRgk" />
         <meta name="theme-color" content="#b00000" />
         <link rel="manifest" href="/manifest.json" />
 
