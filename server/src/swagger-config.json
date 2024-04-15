@@ -140,6 +140,240 @@
         }
       }
     },
+    "/restaurantes": {
+      "get": {
+        "tags": ["Restaurantes"],
+        "summary": "Lista todos os restaurantes",
+        "description": "Lista todos os restaurantes",
+        "operationId": "GetRestaurantes",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      },
+      "post": {
+        "tags": ["Restaurantes"],
+        "summary": "Cria novo restaurante",
+        "description": "Cria novo restaurante",
+        "operationId": "PostRestaurante",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Restaurante Exemplo",
+                "descricao": "Atendimento das 18h às 23h",
+                "telefone": "(16) 987654321",
+                "endereco": "Rua Fulano de Tal, 1234, Centro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/restaurantes/{id}": {
+      "get": {
+        "tags": ["Restaurantes"],
+        "summary": "Lista um restaurante por id",
+        "description": "Lista um restaurante por id",
+        "operationId": "GetRestaurantePorId",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do restaurante",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": ["Restaurantes"],
+        "summary": "Edita um restaurante",
+        "description": "Edita um Restaurante",
+        "operationId": "PutRestaurante",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do restaurante",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Restaurante Exemplo",
+                "descricao": "Atendimento das 18h às 23h",
+                "telefone": "(16) 987654321",
+                "endereco": "Rua Fulano de Tal, 1234, Centro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": ["Restaurantes"],
+        "summary": "Exclui um restaurante",
+        "description": "Exclui um restaurante",
+        "operationId": "DeleteRestaurante",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do restaurante",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/hospedagens": {
+      "get": {
+        "tags": ["Hospedagens"],
+        "summary": "Lista todos as hospedagens",
+        "description": "Lista todos as hospedagens",
+        "operationId": "GetHospedagens",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      },
+      "post": {
+        "tags": ["Hospedagens"],
+        "summary": "Cria nova hospedagens",
+        "description": "Cria nova hospedagens",
+        "operationId": "PostHospedagens",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Hospedagem de Exemplo",
+                "descricao": "Atendimento 24 horas",
+                "telefone": "(16) 987654321",
+                "endereco": "Rua Fulano de Tal, 4321, Centro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/hospedagens/{id}": {
+      "get": {
+        "tags": ["Hospedagens"],
+        "summary": "Lista uma hospedagem por id",
+        "description": "Lista uma hospedagem por id",
+        "operationId": "GetHospedagensPorId",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da hospedagem",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": ["Hospedagens"],
+        "summary": "Edita uma hospedagem",
+        "description": "Edita uma hospedagem",
+        "operationId": "PutHospedagem",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da hospedagem",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Hospedagem de Exemplo",
+                "descricao": "Atendimento 24 horas",
+                "telefone": "(16) 987654321",
+                "endereco": "Rua Fulano de Tal, 4321, Centro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": ["Hospedagens"],
+        "summary": "Exclui uma hospedagem",
+        "description": "Exclui uma hospedagem",
+        "operationId": "DeleteHoespedagem",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da hospedagem",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
     "/auth/login": {
       "post": {
         "summary": "Faz login",
