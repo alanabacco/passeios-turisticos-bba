@@ -12,6 +12,7 @@ Sistema web feito para a disciplina do Projeto Integrador dos cursos de Computa√
 - [Express](https://expressjs.com/)
 - [Sequelize](https://sequelize.org/)
 - [Postgresql](https://www.postgresql.org/)
+- [Swagger](https://swagger.io/)
 
 ## Como executar o projeto localmente
 

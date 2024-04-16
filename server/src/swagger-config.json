@@ -7,7 +7,7 @@
   },
   "servers": [
     { "url": "https://passeios-turisticos-bba-server" },
-    { "url": "http://localhost:8080" }
+    { "url": "http://localhost:8080", "description": "desenvolvimento"}
   ],
   "paths": {
     "/eventos-futuros": {
