@@ -6,6 +6,10 @@ const manipulador404 = require("./middlewares/manipulador404");
 
 const app = express();
 
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger-config.json");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.use(
   cors({
     origin: "https://passeiosturisticosbba.vercel.app",
@@ -13,9 +17,10 @@ app.use(
   })
 );
 
+app.get("/", express.static("public"));
+
 routes(app);
 
-app.use("/", express.static("public"));
 app.use(manipulador404);
 app.use(manipuladorDeErros);
 
