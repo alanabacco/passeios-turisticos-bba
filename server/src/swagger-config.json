@@ -6,7 +6,7 @@
     "description": "Documentação da [API](https://www.youtube.com/watch?v=vGuqKIRWosk) de Passeios Turísticos de Borborema. Aqui você encontrará todas as rotas disponíveis na API, incluindo aquelas que requerem autenticação para serem acessadas, indicadas por um cadeado. As demais rotas podem ser utilizadas livremente. \n\nPara acessar as rotas protegidas, é necessário autenticar-se através da rota de Login (/auth/login). Após realizar o login com sucesso, você receberá um token de acesso. Para aplicar esse token clique no botão \"Authorize\", e insira o token no campo que aparece. \n\nAs respostas da API são retornadas no formato [JSON](https://www.youtube.com/watch?v=P81dE-tkaaA).\n\nLinks:\n- [Projeto](https://passeiosturisticosbba.vercel.app)\n- [Github](https://github.com/alanabacco/passeios-turisticos-bba)"
   },
   "servers": [
-    { "url": "https://passeios-turisticos-bba-server" },
+    { "url": "https://passeios-turisticos-bba-server.vercel.app" },
     { "url": "http://localhost:8080", "description": "desenvolvimento"}
   ],
   "paths": {
