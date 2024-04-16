@@ -5,6 +5,7 @@ const manipuladorDeErros = require("./middlewares/manipuladorDeErros");
 const manipulador404 = require("./middlewares/manipulador404");
 
 const app = express();
+app.get(express.static("public"));
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger-config.json");
