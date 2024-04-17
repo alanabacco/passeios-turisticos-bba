@@ -5,11 +5,19 @@ const manipuladorDeErros = require("./middlewares/manipuladorDeErros");
 const manipulador404 = require("./middlewares/manipulador404");
 
 const app = express();
-app.get(express.static("public"));
+app.use(express.static("public"));
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger-config.json");
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get(
+  "/api-docs",
+  swaggerUi.setup(swaggerDocument, {
+    swaggerOptions: {
+      url: "./swagger-config.json",
+    },
+  })
+);
 
 app.use(
   cors({
@@ -17,8 +25,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
-app.get("/", express.static("public"));
 
 routes(app);
 
