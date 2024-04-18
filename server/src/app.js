@@ -10,7 +10,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 
 const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./public/swagger-config.json");
+const swaggerDocument = require("../public/swagger-config.json");
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get("/", (req, res) => {
