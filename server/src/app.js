@@ -8,16 +8,8 @@ const app = express();
 app.use(express.static("public"));
 
 const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger-config.json");
-// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.get(
-  "/api-docs",
-  swaggerUi.setup(swaggerDocument, {
-    swaggerOptions: {
-      url: "./swagger-config.json",
-    },
-  })
-);
+const swaggerDocument = require("../public/swagger-config.json");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(
   cors({
