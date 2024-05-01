@@ -13,7 +13,7 @@ const swaggerDocument = require("../public/swagger-config.json");
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get("/", (req, res) => {
-  res.sendFile("index.html", { root: "./public" });
+  res.sendFile("./public/index.html");
 });
 
 app.use(
