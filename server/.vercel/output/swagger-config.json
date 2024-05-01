@@ -1,0 +1,1018 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API de Passeios Turísticos de Borborema",
+    "version": "1.0.0",
+    "description": "Documentação da [API](https://www.youtube.com/watch?v=vGuqKIRWosk) de Passeios Turísticos de Borborema. Aqui você encontrará todas as rotas disponíveis na API, incluindo aquelas que requerem autenticação para serem acessadas, indicadas por um cadeado. As demais rotas podem ser utilizadas livremente. \n\nPara acessar as rotas protegidas, é necessário autenticar-se através da rota de Login (/auth/login). Após realizar o login com sucesso, você receberá um token de acesso. Para aplicar esse token clique no botão \"Authorize\", e insira o token no campo que aparece. \n\nAs respostas da API são retornadas no formato [JSON](https://www.youtube.com/watch?v=P81dE-tkaaA).\n\nLinks:\n- [Projeto](https://passeiosturisticosbba.vercel.app)\n- [Github](https://github.com/alanabacco/passeios-turisticos-bba)"
+  },
+  "servers": [
+    { "url": "https://passeios-turisticos-bba-server.vercel.app" },
+    { "url": "http://localhost:8080", "description": "desenvolvimento"}
+  ],
+  "paths": {
+    "/eventos-futuros": {
+      "get": {
+        "tags": ["Eventos"],
+        "summary": "Lista todos os eventos que irão acontecer",
+        "description": "Lista todos os eventos que ainda irão acontecer",
+        "operationId": "GetEventosFuturos",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      }
+    },
+    "/eventos": {
+      "get": {
+        "tags": ["Eventos"],
+        "summary": "Lista todos os eventos",
+        "description": "Lista todos os eventos",
+        "operationId": "GetEventos",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      },
+      "post": {
+        "tags": ["Eventos"],
+        "summary": "Cria novo evento",
+        "description": "Cria novo evento",
+        "operationId": "PostEvento",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Feira na praça",
+                "descricao": "A partir das 19h",
+                "data_inicio": "2024-03-28",
+                "data_fim": "2024-03-28",
+                "endereco": "Praça Central"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/eventos/{id}": {
+      "get": {
+        "tags": ["Eventos"],
+        "summary": "Lista um evento por id",
+        "description": "Lista um evento por id",
+        "operationId": "GetEventoPorId",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do evento",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": ["Eventos"],
+        "summary": "Edita um evento",
+        "description": "Edita um evento",
+        "operationId": "PutEvento",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do evento",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Feira na praça",
+                "descricao": "A partir das 19h",
+                "data_inicio": "2024-03-28",
+                "data_fim": "2024-03-28",
+                "endereco": "Praça Central"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": ["Eventos"],
+        "summary": "Exclui um evento",
+        "description": "Exclui um evento",
+        "operationId": "DeleteEvento",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do evento",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/restaurantes": {
+      "get": {
+        "tags": ["Restaurantes"],
+        "summary": "Lista todos os restaurantes",
+        "description": "Lista todos os restaurantes",
+        "operationId": "GetRestaurantes",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      },
+      "post": {
+        "tags": ["Restaurantes"],
+        "summary": "Cria novo restaurante",
+        "description": "Cria novo restaurante",
+        "operationId": "PostRestaurante",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Restaurante Exemplo",
+                "descricao": "Atendimento das 18h às 23h",
+                "telefone": "(16) 987654321",
+                "endereco": "Rua Fulano de Tal, 1234, Centro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/restaurantes/{id}": {
+      "get": {
+        "tags": ["Restaurantes"],
+        "summary": "Lista um restaurante por id",
+        "description": "Lista um restaurante por id",
+        "operationId": "GetRestaurantePorId",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do restaurante",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": ["Restaurantes"],
+        "summary": "Edita um restaurante",
+        "description": "Edita um Restaurante",
+        "operationId": "PutRestaurante",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do restaurante",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Restaurante Exemplo",
+                "descricao": "Atendimento das 18h às 23h",
+                "telefone": "(16) 987654321",
+                "endereco": "Rua Fulano de Tal, 1234, Centro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": ["Restaurantes"],
+        "summary": "Exclui um restaurante",
+        "description": "Exclui um restaurante",
+        "operationId": "DeleteRestaurante",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do restaurante",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/hospedagens": {
+      "get": {
+        "tags": ["Hospedagens"],
+        "summary": "Lista todos as hospedagens",
+        "description": "Lista todos as hospedagens",
+        "operationId": "GetHospedagens",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      },
+      "post": {
+        "tags": ["Hospedagens"],
+        "summary": "Cria nova hospedagens",
+        "description": "Cria nova hospedagens",
+        "operationId": "PostHospedagens",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Hospedagem de Exemplo",
+                "descricao": "Atendimento 24 horas",
+                "telefone": "(16) 987654321",
+                "endereco": "Rua Fulano de Tal, 4321, Centro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/hospedagens/{id}": {
+      "get": {
+        "tags": ["Hospedagens"],
+        "summary": "Lista uma hospedagem por id",
+        "description": "Lista uma hospedagem por id",
+        "operationId": "GetHospedagensPorId",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da hospedagem",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": ["Hospedagens"],
+        "summary": "Edita uma hospedagem",
+        "description": "Edita uma hospedagem",
+        "operationId": "PutHospedagem",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da hospedagem",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Hospedagem de Exemplo",
+                "descricao": "Atendimento 24 horas",
+                "telefone": "(16) 987654321",
+                "endereco": "Rua Fulano de Tal, 4321, Centro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": ["Hospedagens"],
+        "summary": "Exclui uma hospedagem",
+        "description": "Exclui uma hospedagem",
+        "operationId": "DeleteHoespedagem",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da hospedagem",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/guias-turisticos": {
+      "get": {
+        "tags": ["Guias Turísticos"],
+        "summary": "Lista todos os guias turísticos",
+        "description": "Lista todos os guias turísticos",
+        "operationId": "GetGuiasTuristicos",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      },
+      "post": {
+        "tags": ["Guias Turísticos"],
+        "summary": "Cria novo guia turístico",
+        "description": "Cria novo guia turístico",
+        "operationId": "PostGuiasTuristicos",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Fulano de tal",
+                "telefone": "(16) 987654321",
+                "tipo_turismo": "Pesca"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/guias-turisticos/{id}": {
+      "get": {
+        "tags": ["Guias Turísticos"],
+        "summary": "Lista um guia turístico por id",
+        "description": "Lista um guia turístico por id",
+        "operationId": "GetGuiasTuristicosPorId",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do guia turístico",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": ["Guias Turísticos"],
+        "summary": "Edita um guia turístico",
+        "description": "Edita um guia turístico",
+        "operationId": "PutGuiaTuristico",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do guia turístico",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Fulano de tal",
+                "telefone": "(16) 987654321",
+                "tipo_turismo": "Pesca"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": ["Guias Turísticos"],
+        "summary": "Exclui um guia turístico",
+        "description": "Exclui um guia turístico",
+        "operationId": "DeleteGuiaTuristico",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do guia turístico",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/atracoes-turisticas": {
+      "get": {
+        "tags": ["Atrações Turísticas"],
+        "summary": "Lista todas as atrações turísticas",
+        "description": "Lista todas as atrações turísticas",
+        "operationId": "GetAtracoesTuristicas",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      },
+      "post": {
+        "tags": ["Atrações Turísticas"],
+        "summary": "Cria nova atração turística",
+        "description": "Cria nova atração turística",
+        "operationId": "PostAtracoesTuristicas",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Atração Turística de Exemplo",
+                "descricao": "Aberto 24h",
+                "telefone": "(16) 987654321",
+                "endereco": "Av. Beltrano de Tal, 1234, Centro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/atracoes-turisticas/{id}": {
+      "get": {
+        "tags": ["Atrações Turísticas"],
+        "summary": "Lista uma atração turística por id",
+        "description": "Lista uma atração turística por id",
+        "operationId": "GetAtracoesTuristicasPorId",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da atração turística",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": ["Atrações Turísticas"],
+        "summary": "Edita uma atração turística",
+        "description": "Edita uma atração turística",
+        "operationId": "PutAtracaoTuristica",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da atração turística",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Atração Turística de Exemplo",
+                "descricao": "Aberto 24h",
+                "telefone": "(16) 987654321",
+                "endereco": "Av. Beltrano de Tal, 1234, Centro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": ["Atrações Turísticas"],
+        "summary": "Exclui uma atração turística",
+        "description": "Exclui uma atração turística",
+        "operationId": "DeleteAtracaoTuristica",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da atração turística",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/informacoes-uteis": {
+      "get": {
+        "tags": ["Informações Úteis"],
+        "summary": "Lista todas as informações úteis",
+        "description": "Lista todas as informações úteis",
+        "operationId": "GetInformacoesUteis",
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      },
+      "post": {
+        "tags": ["Informações Úteis"],
+        "summary": "Cria nova informação útil",
+        "description": "Cria nova informação útil",
+        "operationId": "PostInformacoesUteis",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Informação Útil de Exemplo",
+                "descricao": "Informações importantes para os turistas",
+                "endereco": "Rua Fulano de Tal, 1234, Centro",
+                "telefone": "(16) 987654321"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/informacoes-uteis/{id}": {
+      "get": {
+        "tags": ["Informações Úteis"],
+        "summary": "Lista uma informação útil por id",
+        "description": "Lista uma informação útil por id",
+        "operationId": "GetInformacoesUteisPorId",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da informação útil",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": ["Informações Úteis"],
+        "summary": "Edita uma informação útil",
+        "description": "Edita uma informação útil",
+        "operationId": "PutInformacaoUtil",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da informação útil",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Informação Útil de Exemplo",
+                "descricao": "Informações importantes para os turistas",
+                "endereco": "Rua Fulano de Tal, 1234, Centro",
+                "telefone": "(16) 987654321"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": ["Informações Úteis"],
+        "summary": "Exclui uma informação útil",
+        "description": "Exclui uma informação útil",
+        "operationId": "DeleteInformacaoUtil",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da informação útil",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/usuarios": {
+      "get": {
+        "tags": ["Usuários"],
+        "summary": "Lista usuários",
+        "description": "Lista usuários",
+        "operationId": "GetUsuarios",
+        "security": [{ "BearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Ok" }
+        }
+      },
+      "post": {
+        "tags": ["Usuários"],
+        "summary": "Cria novo usuário",
+        "description": "Cria novo usuário",
+        "operationId": "PostUsuarios",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "userExemplo123",
+                "senha": "senha123"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "400": { "description": "Bad Request" }
+        }
+      }
+    },
+    "/usuarios/{id}": {
+      "get": {
+        "tags": ["Usuários"],
+        "summary": "Lista um usuário por id",
+        "description": "Lista um usuário por id",
+        "operationId": "GetUsuarioPorId",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "tags": ["Usuários"],
+        "summary": "Edita um usuário",
+        "description": "Edita um usuário",
+        "operationId": "PutUsuario",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "userName123",
+                "senha": "password321"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Ok" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "tags": ["Usuários"],
+        "summary": "Exclui um usuário",
+        "description": "Exclui um usuário",
+        "operationId": "DeleteUsuario",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/usuarios/usuario/{nome}": {
+      "get": {
+        "tags": ["Usuários"],
+        "summary": "Lista usuário por nome",
+        "description": "Lista usuário por nome",
+        "operationId": "GetUsuarioPorNome",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Nome do usuário",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/usuarios/{id}/restaura": {
+      "post": {
+        "tags": ["Usuários"],
+        "summary": "Restaura usuário deletado",
+        "description": "Restaura usuário deletado",
+        "operationId": "PostUsuarioAgain",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ok" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Faz login",
+        "description": "Coloque usuário e senha para fazer login, pegue o token e coloque no 'Authorize' lá em cima na página para acessar as rotas protegidas",
+        "operationId": "PostAuthLogin",
+        "tags": ["Login"],
+        "responses": {
+          "200": { "description": "Ok" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Not Found" }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "usuario",
+                "senha": "123456"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AtracaoTuristica": {
+        "required": ["nome"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 2 },
+          "nome": { "type": "string", "example": "Prainha do Juqueta" },
+          "descricao": {
+            "type": "string",
+            "example": "Banhada pelo Rio Tietê, encanta turistas com águas limpas e oferece lazer, pesca, camping e eventos. Aluguel de quiosques disponível."
+          },
+          "endereco": {
+            "type": "string",
+            "example": "Praia do Juqueta - Rio Tietê, Borborema, SP"
+          },
+          "telefone": { "type": "string", "example": "(16) 99783-5810" },
+          "createdAt": { "type": "string", "example": "2023-05-25T03:39:22.837Z" },
+          "updatedAt": { "type": "string", "example": "2023-09-07T21:43:21.956Z" }
+        }
+      },
+      "Evento": {
+        "required": ["nome", "data_inicio", "data_fim"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 10 },
+          "nome": { "type": "string", "example": "Feira na praça" },
+          "descricao": { "type": "string", "example": "A partir das 19h" },
+          "data_inicio": { "type": "string", "example": "28/03/2024" },
+          "data_fim": { "type": "string", "example": "28/03/2024" },
+          "endereco": { "type": "string", "example": "Centro da cidade" },
+          "createdAt": { "type": "string", "example": "2024-03-20T04:04:46.783Z" },
+          "updatedAt": { "type": "string", "example": "2024-03-20T04:04:46.783Z" }
+        }
+      },
+      "GuiaTuristico": {
+        "required": ["nome"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 5 },
+          "nome": { "type": "string", "example": "Fulano" },
+          "telefone": { "type": "string", "example": "(00) 00000-0000" },
+          "tipo_turismo": { "type": "string", "example": "Pesca" },
+          "createdAt": { "type": "string", "example": "2023-05-25T03:39:22.837Z" },
+          "updatedAt": { "type": "string", "example": "2023-09-07T21:43:21.956Z" }
+        }
+      },
+      "Hospedagem": {
+        "required": ["nome"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 3 },
+          "nome": { "type": "string", "example": "Lugar tal" },
+          "descricao": { "type": "string", "example": "Atendimento 24h" },
+          "endereco": { "type": "string", "example": "Rua tal tal" },
+          "telefone": { "type": "string", "example": "(00) 00000-00" },
+          "createdAt": { "type": "string", "example": "2023-05-25T03:39:22.837Z" },
+          "updatedAt": { "type": "string", "example": "2023-09-07T21:43:21.956Z" }
+        }
+      },
+      "InformacaoUtil": {
+        "required": ["nome"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 23 },
+          "nome": { "type": "string", "example": "Informação tal" },
+          "descricao": { "type": "string", "example": "Atendimento 24h" },
+          "endereco": { "type": "string", "example": "Rua tal tal" },
+          "telefone": { "type": "string", "example": "(00) 00000-00" },
+          "createdAt": { "type": "string", "example": "2023-05-25T03:39:22.837Z" },
+          "updatedAt": { "type": "string", "example": "2023-09-07T21:43:21.956Z" }
+        }
+      },
+      "Restaurante": {
+        "required": ["nome"],
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 15 },
+          "nome": { "type": "string", "example": "Restaurante tal" },
+          "descricao": { "type": "string", "example": "Atendimento 24h" },
+          "endereco": { "type": "string", "example": "Rua tal tal" },
+          "telefone": { "type": "string", "example": "(00) 00000-00" },
+          "createdAt": { "type": "string", "example": "2023-05-25T03:39:22.837Z" },
+          "updatedAt": { "type": "string", "example": "2023-09-07T21:43:21.956Z" }
+        }
+      },
+      "Usuario": {
+        "required": ["nome", "senha"],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "8c444964-e172-4066-884a-73ed95a2ffcb"
+          },
+          "nome": { "type": "string", "example": "usuario" },
+          "senha": { "type": "string", "example": "********" },
+          "createdAt": { "type": "string", "example": "2024-03-20T04:04:46.783Z" },
+          "updatedAt": { "type": "string", "example": "2024-03-20T04:04:46.783Z" }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

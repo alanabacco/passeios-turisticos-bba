@@ -1,0 +1,16 @@
+body {
+  font-family: sans-serif;
+  color: #b00000;
+  background-color: #fbfbfb;
+  padding: 1rem 2rem;
+}
+li {
+  line-height: 2.5rem;
+  font-size: 1.3rem;
+}
+a {
+  color: inherit;
+}
+a:hover {
+  color: #a00000;
+}
