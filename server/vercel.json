@@ -8,18 +8,6 @@
   ],
   "routes": [
     {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/swagger-config.json",
-      "dest": "/swagger-config.json"
-    },
-    {
-      "src": "/index.css",
-      "dest": "/index.css"
-    },
-    {
       "src": "/(.*)",
       "dest": "/src/server.js"
     }
