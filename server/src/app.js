@@ -9,11 +9,11 @@ const app = express();
 app.use(express.static("public"));
 
 const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("../public/swagger-config.json");
+const swaggerDocument = require(path.resolve(__dirname, "../public/swagger-config.json"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get("/", (req, res) => {
-  res.sendFile("/public/index.html", { root: __dirname });
+  res.sendFile(path.resolve(__dirname, "../public/index.html"));
 });
 
 app.use(
