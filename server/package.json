@@ -11,15 +11,15 @@
   ],
   "private": true,
   "license": "MIT",
-  "main": "/src/server.js",
+  "main": "/api/index.js",
   "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alanabacco/passeios-turisticos-bba"
   },
   "scripts": {
-    "start": "node ./src/server.js",
-    "dev": "nodemon ./src/server.js",
+    "start": "node ./api/index.js",
+    "dev": "nodemon ./api/index.js",
     "test": "npm run db:reset && jest --detectOpenHandles",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
