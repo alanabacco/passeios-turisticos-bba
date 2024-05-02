@@ -1,4 +1,16 @@
 {
   "version": 2,
-  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
+  "rewrites": [
+    { "source": "/", "destination": "/api" },
+    { "source": "/atracoes-turisticas", "destination": "/api" },
+    { "source": "/eventos", "destination": "/api" },
+    { "source": "/guias-turisticos", "destination": "/api" },
+    { "source": "/hospedagens", "destination": "/api" },
+    { "source": "/informacoes-uteis", "destination": "/api" },
+    { "source": "/restaurantes", "destination": "/api" },
+    { "source": "/usuarios", "destination": "/api" },
+    { "source": "/auth/login", "destination": "/api" },
+    { "source": "/auth/session", "destination": "/api" },
+    { "source": "/api-docs", "destination": "/api" }
+  ]
 }
