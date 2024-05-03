@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const routes = require("./routes");
 const manipuladorDeErros = require("./middlewares/manipuladorDeErros");
 const manipulador404 = require("./middlewares/manipulador404");
