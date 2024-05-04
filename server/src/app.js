@@ -2,6 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const swaggerUi = require("swagger-ui-express");
 const manipuladorDeErros = require("./middlewares/manipuladorDeErros");
 const manipulador404 = require("./middlewares/manipulador404");
 const routes = require("./routes");
@@ -19,6 +20,9 @@ app.use(
 app.get("/", (req, res) => {
   res.sendFile("index.html", { root: "./public" });
 });
+
+const swaggerDocument = require(path.join(__dirname, "../public/swagger-config.json"));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 routes(app);
 
