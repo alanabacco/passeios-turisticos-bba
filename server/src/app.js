@@ -23,7 +23,8 @@ app.get("/", (req, res) => {
 
 const swaggerDocument = require(path.join(__dirname, "../public/swagger-config.json"));
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+router.use("/api-docs", swaggerUi.serve);
+router.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
 routes(app);
 
