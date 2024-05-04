@@ -7,8 +7,7 @@ const manipuladorDeErros = require("./middlewares/manipuladorDeErros");
 const manipulador404 = require("./middlewares/manipulador404");
 
 const app = express();
-// app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("../public/swagger-config.json");
