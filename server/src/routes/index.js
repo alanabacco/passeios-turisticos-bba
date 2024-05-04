@@ -7,6 +7,7 @@ const atracoesTuristicas = require("./atracoesTuristicasRoute");
 const usuarios = require("./usuariosRoute");
 const eventos = require("./eventosRoute");
 const auth = require("./authRoute");
+const apiDocs = require("./apiDocsRoute");
 
 module.exports = (app) => {
   app.use(
@@ -18,6 +19,7 @@ module.exports = (app) => {
     atracoesTuristicas,
     usuarios,
     eventos,
-    auth
+    auth,
+    apiDocs
   );
 };
