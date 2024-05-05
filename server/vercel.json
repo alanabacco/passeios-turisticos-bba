@@ -6,11 +6,7 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
-    {
-      "source": "/api-docs/(.*)",
-      "destination": "/api-docs/$1"
-    },
+  "headers": [
     {
       "source": "/api-docs/swagger-ui.css",
       "headers": [{ "key": "Content-Type", "value": "text/css" }]
