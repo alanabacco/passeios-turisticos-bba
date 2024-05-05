@@ -21,6 +21,11 @@ app.get("/", (req, res) => {
   res.sendFile("index.html", { root: "./public" });
 });
 
+app.use("/api-docs/swagger-ui.css", (req, res, next) => {
+  res.setHeader("Content-Type", "text/css");
+  next();
+});
+
 const swaggerDocument = require(path.join(__dirname, "../public/swagger-config.json"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
