@@ -11,5 +11,11 @@
       "src": "/(.*)",
       "dest": "/src/server.js"
     }
+  ],
+  "headers": [
+    {
+      "source": "/api-docs/swagger-ui.css",
+      "headers": [{ "key": "Content-Type", "value": "text/css" }]
+    }
   ]
 }
