@@ -8,7 +8,15 @@ const manipulador404 = require("./middlewares/manipulador404");
 const routes = require("./routes");
 
 const app = express();
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(
+  express.static(path.join(__dirname, "../public"), {
+    setHeaders: (res, path, stat) => {
+      if (path.endsWith(".css")) {
+        res.setHeader("Content-Type", "text/css");
+      }
+    },
+  })
+);
 
 app.use(
   cors({
