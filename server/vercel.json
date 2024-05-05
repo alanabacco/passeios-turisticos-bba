@@ -6,6 +6,12 @@
       "use": "@vercel/node"
     }
   ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/src/server.js"
+    }
+  ],
   "headers": [
     {
       "source": "/api-docs/swagger-ui.css",
