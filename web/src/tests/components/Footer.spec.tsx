@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Footer from "src/components/Footer";
 
-const versao = "Versão 2.0";
+const versao = "Versão 3.0";
 const textoPrincipal = {
   texto: "Trilhas e Passeios Turísticos de Borborema",
   href: "/",
@@ -10,9 +10,9 @@ const painelAdministrativo = {
   texto: "Painel Administrativo",
   href: "/painel-administrativo",
 };
-const siteMunicipio = {
-  texto: "Site oficial do município de Borborema",
-  href: "https://www.borborema.sp.gov.br",
+const documentacaoAPI = {
+  texto: "Documentação da API",
+  href: "https://passeios-turisticos-bba-server.vercel.app/api-docs",
 };
 const paginaTurismo = {
   texto: "Página oficial do Turismo",
@@ -49,14 +49,14 @@ describe("Componente Footer", () => {
     expect(link).toHaveAttribute("href", painelAdministrativo.href);
   });
 
-  test("deve renderizar o link para o site do municipio", () => {
-    const link = screen.getByText(siteMunicipio.texto);
+  test("deve renderizar o link para a documentação da API", () => {
+    const link = screen.getByText(documentacaoAPI.texto);
     expect(link).toBeVisible();
   });
 
-  test("link para o site do municipio deve ter o atributo href correto", () => {
-    const link = screen.getByText(siteMunicipio.texto);
-    expect(link).toHaveAttribute("href", siteMunicipio.href);
+  test("link para a documentação da api deve ter o atributo href correto", () => {
+    const link = screen.getByText(documentacaoAPI.texto);
+    expect(link).toHaveAttribute("href", documentacaoAPI.href);
   });
 
   test("deve renderizar o link para a página do turismo", () => {

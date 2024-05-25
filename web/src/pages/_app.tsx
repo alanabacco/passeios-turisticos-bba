@@ -19,11 +19,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
-          content="Borborema, Turismo, Rio Tietê, Interior São Paulo, Informações Turísticas, Eventos, Borborema SP, Praia, Pescaria, Pesca, Camping, O que fazer em Borborema, Onde comer em Borborema"
+          content="borborema sp, prainha de borborema, interior de são paulo, eventos em borborema, prainha, pesca em borborema, camping em borborema, o que fazer em borborema, onde comer em borborema, borborema, praia do juqueta, hospedagens em borborema, passeios em borborema"
         />
         <meta
           name="description"
-          content="Passeios turísticos em Borborema é um sistema web que centraliza várias informações sobre turismo na cidade de Borborema, como eventos na cidade, passeios turísticos, guias, restaurantes, hospedagens, entre outras informações."
+          content="Descubra eventos em Borborema e explore o turismo no interior de São Paulo. Nosso sistema centraliza informações sobre restaurantes, hospedagens, guias turísticos e muito mais."
         />
         <meta name="google-site-verification" content="jpM0kRP0rFoxQUvgmbJOwsfhxzWMDPPlqjI3wn0fRgk" />
         <meta name="theme-color" content="#b00000" />
@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:title" content="Passeios Turísticos de Borborema" />
         <meta
           property="og:description"
-          content="Descubra eventos, restaurantes, atrações turísticas, guias e hospedagens, além de uma variedade de informações para aproveitar ao máximo sua experiência na cidade."
+          content="Descubra eventos em Borborema e explore o turismo no interior de São Paulo. Nosso sistema centraliza informações sobre restaurantes, hospedagens, guias turísticos e muito mais."
         />
         <meta property="og:image" content="/og-img.png" />
         <meta property="og:url" content="https://passeiosturisticosbba.vercel.app/" />
@@ -44,7 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:title" content="Passeios Turísticos de Borborema" />
         <meta
           name="twitter:description"
-          content="Descubra eventos, restaurantes, atrações turísticas, guias e hospedagens, além de uma variedade de informações para aproveitar ao máximo sua experiência na cidade."
+          content="Descubra eventos em Borborema e explore o turismo no interior de São Paulo. Nosso sistema centraliza informações sobre restaurantes, hospedagens, guias turísticos e muito mais."
         />
         <meta
           name="twitter:image"
