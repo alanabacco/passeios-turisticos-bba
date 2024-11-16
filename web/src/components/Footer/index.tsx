@@ -14,7 +14,7 @@ export default function Footer(): JSX.Element {
           rel="noopener noreferrer"
           className={styles.versionText}
         >
-          Versão 3.0
+          Versão 4.0
         </Link>
       </div>
 
