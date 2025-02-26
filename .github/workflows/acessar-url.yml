@@ -1,9 +1,9 @@
-# Acessar URL a cada 4 dias para manter o Banco de Dados funcionando
+# Acessar URL a cada 6 dias para manter o Banco de Dados funcionando
 name: AcessaUrl
 
 on:
   schedule:
-    - cron: '0 0 */4 * *'
+    - cron: '0 0 */6 * *'
 
 jobs:
   acessar-url:
