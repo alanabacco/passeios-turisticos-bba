@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Footer from "src/components/Footer";
 
-const versao = "Versão 3.0";
+const versao = "Versão 4.0";
 const textoPrincipal = {
   texto: "Trilhas e Passeios Turísticos de Borborema",
   href: "/",
