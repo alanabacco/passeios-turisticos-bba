@@ -3,62 +3,70 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const dataAtual = new Date();
+    const depoisDeAmanha = new Date(
+      dataAtual.getFullYear(),
+      dataAtual.getMonth(),
+      dataAtual.getDate() + 2
+    );
+    const amanha = new Date(
+      dataAtual.getFullYear(),
+      dataAtual.getMonth(),
+      dataAtual.getDate() + 1
+    );
+    const proxSemana = new Date(
+      dataAtual.getFullYear(),
+      dataAtual.getMonth(),
+      dataAtual.getDate() + 7
+    );
+
     await queryInterface.bulkInsert(
       "eventos",
       [
         {
           nome: "Feira Livre",
-          descricao: "Todas as quintas",
+          descricao: "Atração musical e brinquedos. A partir das 18h.",
           endereco: "Praça Central",
-          data_inicio: "2023-08-11",
-          data_fim: "2023-08-11",
-          createdAt: "2023-09-07 21:30:06",
-          updatedAt: "2023-09-07 21:30:06",
+          data_inicio: dataAtual,
+          data_fim: dataAtual,
+          createdAt: dataAtual,
+          updatedAt: dataAtual,
         },
         {
           nome: "Feira Livre",
-          descricao: "Todas as quintas",
+          descricao: "Atração musical e brinquedos. A partir das 18h.",
           endereco: "Praça Central",
-          data_inicio: "2023-09-28",
-          data_fim: "2023-09-28",
-          createdAt: "2023-09-07 21:30:06",
-          updatedAt: "2023-09-07 21:30:06",
+          data_inicio: proxSemana,
+          data_fim: proxSemana,
+          createdAt: dataAtual,
+          updatedAt: dataAtual,
         },
         {
           nome: "Evento Fictício",
-          descricao: "descroção",
+          descricao: "descrição",
           endereco: "Praça Central",
-          data_inicio: "2023-09-26",
-          data_fim: "2023-09-26",
-          createdAt: "2023-09-07 21:30:06",
-          updatedAt: "2023-09-07 21:30:06",
+          data_inicio: depoisDeAmanha,
+          data_fim: depoisDeAmanha,
+          createdAt: dataAtual,
+          updatedAt: dataAtual,
         },
         {
           nome: "Outro Evento Fictício",
           descricao: "descrição do evento fictício",
           endereco: "Praça Herculandia",
-          data_inicio: "2023-09-26",
-          data_fim: "2023-09-26",
-          createdAt: "2023-09-07 21:30:06",
-          updatedAt: "2023-09-07 21:30:06",
+          data_inicio: dataAtual,
+          data_fim: amanha,
+          createdAt: dataAtual,
+          updatedAt: dataAtual,
         },
         {
-          nome: "Evento Fictício Outubro",
-          descricao: "decrição do evento fictício de outubro",
+          nome: "Evento Fictício de Alguns Dias",
+          descricao: "decrição do evento fictício de alguns dias",
           endereco: "Praça Herculandia",
-          data_inicio: "2023-10-10",
-          data_fim: "2023-10-10",
-          createdAt: "2023-09-07 21:30:06",
-          updatedAt: "2023-09-07 21:30:06",
-        },
-        {
-          nome: "Feira Livre",
-          descricao: "Todas as quintas",
-          endereco: "Praça Central",
-          data_inicio: "2023-10-26",
-          data_fim: "2023-10-26",
-          createdAt: "2023-09-07 21:30:06",
-          updatedAt: "2023-09-07 21:30:06",
+          data_inicio: depoisDeAmanha,
+          data_fim: proxSemana,
+          createdAt: dataAtual,
+          updatedAt: dataAtual,
         },
       ],
       {}

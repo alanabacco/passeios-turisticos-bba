@@ -8,13 +8,13 @@ module.exports = {
       [
         {
           nome: "João",
-          telefone: "1632660000",
+          telefone: "(16) 3266-0000",
           createdAt: "2023-09-07 21:30:06",
           updatedAt: "2023-09-07 21:30:06",
         },
         {
           nome: "José",
-          telefone: "1632661111",
+          telefone: "(16) 3266-1111",
           createdAt: "2023-09-07 21:30:06",
           updatedAt: "2023-09-07 21:30:06",
         },
