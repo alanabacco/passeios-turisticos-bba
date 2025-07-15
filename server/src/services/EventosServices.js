@@ -3,7 +3,8 @@ const database = require("../models");
 const { Op } = require("sequelize");
 
 const dataAtual = new Date();
-dataAtual.setHours(dataAtual.getHours() - 3);
+dataAtual.setHours(dataAtual.getHours() - 6); 
+// o -6 é para os eventos aparecerem até 3h da manhã do outro dia
 
 class EventosServices extends Services {
   constructor() {
