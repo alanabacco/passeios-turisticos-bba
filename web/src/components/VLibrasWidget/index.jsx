@@ -1,4 +1,5 @@
-/* eslint-disable react/no-unknown-property */
+import Script from "next/script";
+
 const VLibrasWidget = () => {
   return (
     <>
@@ -10,8 +11,9 @@ const VLibrasWidget = () => {
           <div className="vw-plugin-top-wrapper"></div>
         </div>
       </div>
-      <script id="vlibras-js" src="https://vlibras.gov.br/app/vlibras-plugin.js" />
-      <script
+      <Script id="vlibras-js" src="https://vlibras.gov.br/app/vlibras-plugin.js" />
+      <Script
+        id="vlibras"
         dangerouslySetInnerHTML={{
           __html: `new window.VLibras.Widget("${"https://vlibras.gov.br/app"}");`,
         }}

@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/set-state-in-effect */
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { mascararTelefone } from "src/utils/mascararTelefone";
