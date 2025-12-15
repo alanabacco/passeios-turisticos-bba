@@ -30,9 +30,9 @@
     "eslint-config-next": "^15.5.9",
     "next": "^15.5.9",
     "nookies": "^2.5.2",
-    "react": "^18.3.1",
+    "react": "19.2.3",
     "react-big-calendar": "^1.19.4",
-    "react-dom": "^18.3.1"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.5.9",
@@ -41,9 +41,9 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.19.3",
-    "@types/react": "^18.3.27",
+    "@types/react": "19.2.7",
     "@types/react-big-calendar": "^1.16.3",
-    "@types/react-dom": "^18.3.7",
+    "@types/react-dom": "19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
     "eslint": "^9.21.0",
