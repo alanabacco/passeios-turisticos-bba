@@ -20,22 +20,22 @@
     "start": "next start",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.1",
-    "eslint-config-next": "^15.5.9",
-    "next": "^15.5.9",
+    "eslint-config-next": "16.0.10",
+    "next": "16.0.10",
     "nookies": "^2.5.2",
     "react": "19.2.3",
     "react-big-calendar": "^1.19.4",
     "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^15.5.9",
+    "@next/eslint-plugin-next": "16.0.10",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
