@@ -8,7 +8,7 @@ import Footer from "src/components/Footer";
 import Formulario from "src/components/Formulario";
 import comumStyles from "src/styles/comum.module.css";
 
-function InformacaoUtil(): JSX.Element {
+function InformacaoUtil() {
   const [valoresIniciais, setValoresIniciais] = useState({
     nome: "",
     descricao: "",

@@ -28,7 +28,7 @@ type Props = {
   session: null;
 };
 
-export default function PaginaEditarGuias({ guias, session }: Props): JSX.Element {
+export default function PaginaEditarGuias({ guias, session }: Props) {
   return (
     <>
       <Head title="Editar | Passeios Turísticos de Borborema" />

@@ -6,7 +6,7 @@ import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import styles from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 
-export default function PaginaInicial(): JSX.Element {
+export default function PaginaInicial() {
   const links = [
     { href: "catalogo/eventos-cidade", label: "Eventos na cidade" },
     { href: "catalogo/atracoes-turisticas", label: "Atrações turísticas" },

@@ -7,7 +7,7 @@ import Formulario from "src/components/Formulario";
 import Footer from "src/components/Footer";
 import comumStyles from "src/styles/comum.module.css";
 
-function CadastrarEvento(): JSX.Element {
+function CadastrarEvento() {
   const valoresIniciais = {
     nome: "",
     descricao: "",

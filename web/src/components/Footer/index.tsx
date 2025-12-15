@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
 
-export default function Footer(): JSX.Element {
+export default function Footer() {
   return (
     <footer className={styles.appFooter}>
       <div>

@@ -7,7 +7,7 @@ import Footer from "src/components/Footer";
 import Formulario from "src/components/Formulario";
 import comumStyles from "src/styles/comum.module.css";
 
-function CadastrarAtracao(): JSX.Element {
+function CadastrarAtracao() {
   const valoresIniciais = {
     nome: "",
     descricao: "",

@@ -6,7 +6,7 @@ type HeadProps = {
 
 export default function Head({
   title = "Passeios Turísticos de Borborema",
-}: HeadProps): JSX.Element {
+}: HeadProps) {
   return (
     <NextHead>
       <title>{title}</title>

@@ -6,7 +6,7 @@ import comumStyles from "src/styles/comum.module.css";
 import { withSessionHOC } from "src/services/auth/session";
 import BotaoVoltar from "src/components/BotaoVoltar";
 
-function Excluir(): JSX.Element {
+function Excluir() {
   const links = [
     { href: "excluir/evento-cidade", label: "Excluir um evento na cidade" },
     { href: "excluir/atracao-turistica", label: "Excluir uma atração turística" },

@@ -35,7 +35,7 @@ type Props = {
 export default function PaginaExcluirInformacoes({
   informacoesUteis,
   session,
-}: Props): JSX.Element {
+}: Props) {
   const router = useRouter();
 
   async function handleClick(id: number) {

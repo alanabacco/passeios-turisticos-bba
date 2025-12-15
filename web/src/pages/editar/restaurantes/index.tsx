@@ -31,7 +31,7 @@ type Props = {
 export default function PaginaEditarRestaurantes({
   restaurantes,
   session,
-}: Props): JSX.Element {
+}: Props) {
   return (
     <>
       <Head title="Editar | Passeios Turísticos de Borborema" />

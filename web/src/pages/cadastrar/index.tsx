@@ -6,7 +6,7 @@ import Footer from "src/components/Footer";
 import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 
-function Cadastrar(): JSX.Element {
+function Cadastrar() {
   const links = [
     { href: "cadastrar/evento-cidade", label: "Cadastrar evento na cidade" },
     { href: "cadastrar/atracao-turistica", label: "Cadastrar atração turística" },

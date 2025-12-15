@@ -4,7 +4,7 @@ import Footer from "src/components/Footer";
 import style from "../styles/paginas-de-erro.module.css";
 import comumStyles from "../styles/comum.module.css";
 
-export default function Pagina500(): JSX.Element {
+export default function Pagina500() {
   return (
     <>
       <Head title="500 | Passeios Turísticos de Borborema" />

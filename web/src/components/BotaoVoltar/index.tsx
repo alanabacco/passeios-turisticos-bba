@@ -7,7 +7,7 @@ type Props = {
   href: string;
 };
 
-export default function BotaoVoltar({ href = "/"}: Props): JSX.Element {
+export default function BotaoVoltar({ href = "/"}: Props) {
   return (
     <Link href={href} className={style.link}>
       <FontAwesomeIcon icon={faArrowLeftLong} className={style.icon} />

@@ -8,7 +8,7 @@ import Footer from "src/components/Footer";
 import Formulario from "src/components/Formulario";
 import comumStyles from "src/styles/comum.module.css";
 
-function GuiaTuristico(): JSX.Element {
+function GuiaTuristico() {
   const [valoresIniciais, setValoresIniciais] = useState({
     nome: "",
     telefone: "",

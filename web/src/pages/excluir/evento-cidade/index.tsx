@@ -32,7 +32,7 @@ type Props = {
   session: null;
 };
 
-export default function PaginaExcluirEventos({ eventos, session }: Props): JSX.Element {
+export default function PaginaExcluirEventos({ eventos, session }: Props) {
   const router = useRouter();
 
   async function handleClick(id: number) {

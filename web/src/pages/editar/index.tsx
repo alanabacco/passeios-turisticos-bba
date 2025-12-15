@@ -6,7 +6,7 @@ import paginaInicialStyle from "src/styles/pagina-inicial.module.css";
 import comumStyles from "src/styles/comum.module.css";
 import BotaoVoltar from "src/components/BotaoVoltar";
 
-function Editar(): JSX.Element {
+function Editar() {
   const links = [
     { href: "editar/eventos-cidade", label: "Editar um evento na cidade" },
     { href: "editar/atracoes-turisticas", label: "Editar uma atração turística" },
