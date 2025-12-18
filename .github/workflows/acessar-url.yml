@@ -3,20 +3,41 @@ name: AcessaUrl
 
 on:
   schedule:
-    - cron: '0 0 */5 * *'
+    - cron: "0 0 */5 * *"
+
+  workflow_dispatch:
 
 jobs:
   acessar-url:
     runs-on: ubuntu-latest
+    timeout-minutes: 10 # Timeout de segurança
 
     steps:
       - name: Acessa URL
         run: |
           URL="https://passeios-turisticos-bba-server.vercel.app/hospedagens"
-          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" $URL)
-          if [ $STATUS_CODE -eq 200 ]; then
-            echo "Status Code: $STATUS_CODE"
-          else
-            echo "Falha ao acessar a URL. Status code: $STATUS_CODE"
-            exit 1
-          fi
+          MAX_TENTATIVAS=3
+          TEMPO_ESPERA_ERRO=10
+          TEMPO_MANTER_ATIVO=15
+
+          for i in $(seq 1 $MAX_TENTATIVAS); do
+            echo "Tentativa $i/$MAX_TENTATIVAS..."
+            
+            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 60 $URL)
+            
+            if [ $STATUS_CODE -eq 200 ]; then
+              echo "Status Code: $STATUS_CODE. Aguardando ${TEMPO_MANTER_ATIVO}s..."
+              sleep $TEMPO_MANTER_ATIVO
+              exit 0
+            else
+              echo "Falha (Status: $STATUS_CODE)."
+              
+              if [ $i -lt $MAX_TENTATIVAS ]; then
+                echo "Aguardando ${TEMPO_ESPERA_ERRO}s..."
+                sleep $TEMPO_ESPERA_ERRO
+              fi
+            fi
+          done
+
+          echo "Falhou após $MAX_TENTATIVAS tentativas"
+          exit 1

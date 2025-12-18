@@ -2,11 +2,16 @@ name: CI
 
 on:
   push:
-    branches: ["main", "develop-pi2"]
+    branches: ["main", "develop"]
   pull_request:
     types: [opened, synchronize]
 
   workflow_dispatch:
+
+# garante que apenas uma execução do workflow por branch esteja ativa ao mesmo tempo.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   linter-frontend:
@@ -16,9 +21,18 @@ jobs:
         working-directory: ./web
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: ./web/package-lock.json
+
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
+
       - name: Run Linter
         run: npm run lint
 
@@ -29,8 +43,17 @@ jobs:
         working-directory: ./server
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: ./server/package-lock.json
+
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
+
       - name: Run Linter
         run: npm run lint
