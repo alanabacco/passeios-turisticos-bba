@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "moment-timezone";
-import "moment/locale/pt-br";
+// import "moment/locale/pt-br";
 import styles from "./styles.module.css";
+
+moment.locale("pt-br");
 
 export default function Calendario() {
   moment.tz.setDefault("America/Sao_Paulo");
