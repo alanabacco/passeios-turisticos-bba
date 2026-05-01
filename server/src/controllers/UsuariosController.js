@@ -2,7 +2,14 @@ const NaoEncontrado = require("../errors/NaoEncontrado");
 const { UsuariosServices } = require("../services");
 
 const { hash } = require("bcryptjs"); // lib pra criptografar senha
-const uuid = require("uuid");
+
+
+// IA sugere trocar uuid por 'crypto.randomUUID()'
+// const uuid = require("uuid");
+async function generateUUID() {
+  const { v4: uuidv4 } = await import("uuid");
+  return uuidv4();
+}
 
 const usuariosServices = new UsuariosServices();
 
@@ -59,7 +66,7 @@ class UsuariosController {
 
     const senhaHash = await hash(senha, 8); // criptografa a senha
     const novoUsuario = {
-      id: uuid.v4(),
+      id: await generateUUID(),
       nome: nome,
       senha: senhaHash,
     };
