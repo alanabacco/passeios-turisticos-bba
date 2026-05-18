@@ -27,12 +27,12 @@
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
-    "eslint-config-next": "^16.2.4",
-    "next": "^16.2.4",
+    "eslint-config-next": "^16.2.6",
+    "next": "^16.2.6",
     "nookies": "^2.5.2",
-    "react": "^19.2.5",
+    "react": "^19.2.6",
     "react-big-calendar": "^1.19.4",
-    "react-dom": "^19.2.5"
+    "react-dom": "^19.2.6"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^16.2.4",
@@ -41,16 +41,16 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.8.0",
     "@types/react": "^19.2.14",
     "@types/react-big-calendar": "^1.16.3",
     "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.59.1",
-    "@typescript-eslint/parser": "^8.59.1",
+    "@typescript-eslint/eslint-plugin": "^8.59.3",
+    "@typescript-eslint/parser": "^8.59.3",
     "eslint": "^9.39.4",
     "eslint-plugin-react": "^7.37.5",
-    "jest": "^30.3.0",
-    "jest-environment-jsdom": "^30.3.0",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "typescript": "^6.0.3"
   }
 }
