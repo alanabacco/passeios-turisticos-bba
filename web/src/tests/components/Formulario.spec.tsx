@@ -63,7 +63,7 @@ describe("Componente Formulario", () => {
   test("deve atualizar os dados do formulário na mudança de entrada no campo evento", () => {
     const eventoInput = screen.getByLabelText("Nome evento*");
     fireEvent.change(eventoInput, { target: { value: "Evento Fictício" } });
-    expect(eventoInput.value).toBe("Evento Fictício");
+    expect(eventoInput).toHaveValue("Evento Fictício");
   });
 
   test("deve ter o atributo 'required=true' no input", () => {

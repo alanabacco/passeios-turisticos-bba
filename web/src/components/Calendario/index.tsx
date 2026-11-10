@@ -18,6 +18,8 @@ export default function Calendario() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>();
 
+  const [dataAtual, setDataAtual] = useState<Date>(() => moment().toDate());
+
   useEffect(() => {
     const fetchFeriados = async () => {
       try {
@@ -113,7 +115,8 @@ export default function Calendario() {
         <Calendar
           culture="pt-br"
           messages={messages["pt-br"]}
-          defaultDate={moment().toDate()}
+          date={dataAtual}
+          onNavigate={(novaData) => setDataAtual(novaData)}
           localizer={localizer}
           events={todosEventos}
           titleAccessor={"nome"}
